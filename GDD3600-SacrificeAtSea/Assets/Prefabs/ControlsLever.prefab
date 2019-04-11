@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6483683505219866545}
   - component: {fileID: 6483683505219866546}
   - component: {fileID: 3874430297780814522}
+  - component: {fileID: 5677215906299952212}
   m_Layer: 10
-  m_Name: PropellorControls
+  m_Name: SubmarineControls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,3 +107,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 0.96}
   m_EdgeRadius: 0
+--- !u!114 &5677215906299952212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6483683505219866547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c093235251266242a915790d7c75d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leverUpSprite: {fileID: 21300000, guid: 2c841725d6a763a4fa90b7bddcbfb70e, type: 3}
+  leverLeftSprite: {fileID: 21300000, guid: 8b03ee9836daa9d4298b925a8e94228e, type: 3}
+  leverRightSprite: {fileID: 21300000, guid: 28e585de734d9e64e981628a2d0a2346, type: 3}
+  partsManager: {fileID: 0}
+  correspondingPart: 1

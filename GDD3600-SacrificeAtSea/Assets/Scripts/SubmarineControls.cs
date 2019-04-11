@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Script controlling player's interaction with propellor controls lever
 /// </summary>
-public class PropellorControls : MonoBehaviour
+public class SubmarineControls : MonoBehaviour
 {
     #region Fields
 
@@ -17,9 +17,10 @@ public class PropellorControls : MonoBehaviour
 
     // input support variables
     [SerializeField] PartsManager partsManager;
+    [SerializeField] SubmarineParts correspondingPart = SubmarineParts.ballastTanks;
     bool playerIsColliding = false;
     bool isOnRight = true;
-    int propellorInputAxis = 0;
+    int inputAxis = 0;
 
     #endregion
 
@@ -38,25 +39,25 @@ public class PropellorControls : MonoBehaviour
         // retrieve interaction input
         float interactInput = Input.GetAxisRaw("Interact");
 
-        // if player is colliding with controls, interacts with them, and propellors are not disabled
-        if (playerIsColliding && interactInput != 0 && partsManager.GetPartFunctionality(SubmarineParts.propellors))
+        // if player is colliding with controls, interacts with them, and corresponding parts are not disabled
+        if (playerIsColliding && interactInput != 0 && partsManager.GetPartFunctionality(correspondingPart))
         {
-            // adjust propellor input axis and swap sprite accordingly
+            // adjust input axis and swap sprite accordingly
             if (isOnRight)
             {
-                propellorInputAxis = 1;
+                inputAxis = 1;
                 mySpriteRenderer.sprite = leverRightSprite;
             }
             else
             {
-                propellorInputAxis = -1;
+                inputAxis = -1;
                 mySpriteRenderer.sprite = leverLeftSprite;
             }
         }
         // otherwise, lock input axis to 0 and set lever to up-position
         else
         {
-            propellorInputAxis = 0;
+            inputAxis = 0;
             mySpriteRenderer.sprite = leverUpSprite;
         }
     }
