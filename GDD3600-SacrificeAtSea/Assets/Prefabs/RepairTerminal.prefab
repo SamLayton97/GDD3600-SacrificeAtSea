@@ -97,6 +97,8 @@ MonoBehaviour:
   repairRate: 5
   myPart: 1
   functionalityThreshold: 30
+  functioningSprite: {fileID: 21300000, guid: e7e614486ade8f144bf89e1e6a364d1a, type: 3}
+  damagedSprite: {fileID: 21300000, guid: e8e76491d5720e94381f78f3056094f9, type: 3}
 --- !u!61 &3128722059214404569
 BoxCollider2D:
   m_ObjectHideFlags: 0

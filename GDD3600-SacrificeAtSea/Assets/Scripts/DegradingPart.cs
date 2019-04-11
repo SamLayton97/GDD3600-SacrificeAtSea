@@ -16,6 +16,11 @@ public class DegradingPart : MonoBehaviour
     [SerializeField] SubmarineParts myPart = SubmarineParts.ballastTanks;
     [SerializeField] float functionalityThreshold = 30;
 
+    // sprite variables
+    SpriteRenderer mySpriteRenderer;
+    [SerializeField] Sprite functioningSprite;
+    [SerializeField] Sprite damagedSprite;
+
     // health variables
     const float MaxHealth = 100;
     float currHealth = MaxHealth;
@@ -37,6 +42,9 @@ public class DegradingPart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // retrieve reference to part terminal's sprite renderer
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+
         // calculate time to degrade
         degredationTimer = 1 / degredationRate;
 
@@ -68,6 +76,9 @@ public class DegradingPart : MonoBehaviour
             // update functionality to be false
             isFunctioning = false;
             updateFunctionalityEvent.Invoke(myPart, false);
+
+            // swap sprite to damaged variant
+            mySpriteRenderer.sprite = damagedSprite;
         }
         // if part health rises above threshold and is currently not operating
         else if (currHealth >= functionalityThreshold && !isFunctioning)
@@ -75,6 +86,9 @@ public class DegradingPart : MonoBehaviour
             // update functionality to be true
             isFunctioning = true;
             updateFunctionalityEvent.Invoke(myPart, true);
+
+            // swap sprite to functioning variant
+            mySpriteRenderer.sprite = functioningSprite;
         }
     }
 
