@@ -14,8 +14,8 @@ TagManager:
   - 
   - 
   - Player
-  - SubmarineExteriorWalls
-  - SubmarineInteriorWalls
+  - SubmarineWalls
+  - 
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: SubmarineInteriorBack
+    uniqueID: 3619849497
+    locked: 0
+  - name: SubmarineInteriorWalls
+    uniqueID: 3729993697
+    locked: 0
+  - name: Player
+    uniqueID: 471631313
+    locked: 0
+  - name: SubmarineExteriorWalls
+    uniqueID: 1970564297
     locked: 0
