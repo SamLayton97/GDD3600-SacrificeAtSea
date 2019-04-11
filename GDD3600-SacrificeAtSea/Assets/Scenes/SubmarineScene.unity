@@ -586,6 +586,16 @@ PrefabInstance:
       propertyPath: myPart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: functionalityThreshold
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: degredationRate
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ea2393288806994e824a886ad425e65, type: 3}
 --- !u!1001 &1201747364961482938
