@@ -490,6 +490,24 @@ PrefabInstance:
       propertyPath: partsManager
       value: 
       objectReference: {fileID: 207542381}
+    - target: {fileID: 5677215906299952212, guid: 906559f1339377148917aed5ef82c455,
+        type: 3}
+      propertyPath: leverLeftSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e665b85155c4d1d42907c2c8390792ab,
+        type: 3}
+    - target: {fileID: 5677215906299952212, guid: 906559f1339377148917aed5ef82c455,
+        type: 3}
+      propertyPath: leverUpSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 927440797ee4ffb47985febfa65a3d81,
+        type: 3}
+    - target: {fileID: 5677215906299952212, guid: 906559f1339377148917aed5ef82c455,
+        type: 3}
+      propertyPath: leverRightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f116b9568e3afcc41a222d5d375b4c84,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906559f1339377148917aed5ef82c455, type: 3}
 --- !u!1001 &1952845119
