@@ -19,6 +19,11 @@ namespace UnityStandardAssets.Cameras
         [SerializeField] private float m_TargetVelocityLowerLimit = 4f;// the minimum velocity above which the camera turns towards the object's velocity. Below this we use the object's forward direction.
         [SerializeField] private float m_SmoothTurnTime = 0.2f; // the smoothing for the camera's rotation
 
+        // follow offset variables
+        [SerializeField] private float xOffset = 0; // x-position offset from camera's target
+        [SerializeField] private float yOffset = 0; // y-position offset from camera's target
+        [SerializeField] private float zOffset = 0; // z-position offset from camera's target
+
         private float m_LastFlatAngle; // The relative angle of the target and the rig from the previous frame.
         private float m_CurrentTurnAmount; // How much to turn the camera
         private float m_TurnSpeedVelocityChange; // The change in the turn speed velocity
@@ -84,8 +89,14 @@ namespace UnityStandardAssets.Cameras
                 m_LastFlatAngle = currentFlatAngle;
             }
 
+            // apply offsets to position camera will follow
+            Vector3 offsetFollowPosition = m_Target.position;
+            offsetFollowPosition.x += xOffset;
+            offsetFollowPosition.y += yOffset;
+            offsetFollowPosition.z += zOffset;
+
             // camera position moves towards target position:
-            transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime*m_MoveSpeed);
+            transform.position = Vector3.Lerp(transform.position, offsetFollowPosition, deltaTime*m_MoveSpeed);
 
             // camera's rotation is split into two parts, which can have independend speed settings:
             // rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')
