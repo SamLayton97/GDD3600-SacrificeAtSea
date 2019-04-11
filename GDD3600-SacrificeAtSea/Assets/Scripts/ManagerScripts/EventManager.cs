@@ -6,7 +6,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Manager to facilitate invoking and listening for events
 /// </summary>
-public class EventManager
+public static class EventManager
 {
     #region Updating Part Functionality
 

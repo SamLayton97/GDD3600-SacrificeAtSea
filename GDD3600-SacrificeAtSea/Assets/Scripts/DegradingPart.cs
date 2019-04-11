@@ -13,7 +13,7 @@ public class DegradingPart : MonoBehaviour
     // serialized variables
     [SerializeField] float degredationRate = 0.01f;
     [SerializeField] float repairRate = 5;
-    [SerializeField] SubmarineParts correspondingPart = SubmarineParts.ballastTanks;
+    [SerializeField] SubmarineParts myPart = SubmarineParts.ballastTanks;
     [SerializeField] float functionalityThreshold = 30;
 
     // health variables
@@ -42,6 +42,9 @@ public class DegradingPart : MonoBehaviour
         // add self as invoker of Update Functionality event
         updateFunctionalityEvent = new UpdateFunctionalityEvent();
         EventManager.AddUpdateFunctionalityInvoker(this);
+
+        // DEBUGGING: invoke update functionality event and set function to false
+        updateFunctionalityEvent.Invoke(myPart, false);
     }
 
     // Update is called once per frame

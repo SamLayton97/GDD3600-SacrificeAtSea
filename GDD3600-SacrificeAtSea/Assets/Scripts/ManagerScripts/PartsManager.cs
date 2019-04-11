@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Script controlling which submarine parts are currently enabled or disabled
@@ -20,13 +21,7 @@ public class PartsManager : MonoBehaviour
         {
             partFunctionalities.Add((SubmarineParts)i, true);
         }
-    }
 
-    /// <summary>
-    /// Called once before first Update(), used for initialization
-    /// </summary>
-    void Start()
-    {
         // add self as listener for update functionality event
         EventManager.AddUpdateFunctionalityListeners(UpdatePartFunctionality);
     }
@@ -49,6 +44,7 @@ public class PartsManager : MonoBehaviour
     /// <param name="isFunctioning">whether part now functions</param>
     void UpdatePartFunctionality(SubmarineParts partName, bool isFunctioning)
     {
+        // update part's functionality flag
         partFunctionalities[partName] = isFunctioning;
 
         Debug.Log(partName + " " + isFunctioning);
