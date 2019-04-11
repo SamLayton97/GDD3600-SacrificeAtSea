@@ -19,6 +19,7 @@ public class DegradingPart : MonoBehaviour
     // health variables
     const float MaxHealth = 100;
     float currHealth = MaxHealth;
+    bool isFunctioning = true;
 
     // degredation support variables
     float degredationTimer = 0;
@@ -42,9 +43,6 @@ public class DegradingPart : MonoBehaviour
         // add self as invoker of Update Functionality event
         updateFunctionalityEvent = new UpdateFunctionalityEvent();
         EventManager.AddUpdateFunctionalityInvoker(this);
-
-        // DEBUGGING: invoke update functionality event and set function to false
-        updateFunctionalityEvent.Invoke(myPart, false);
     }
 
     // Update is called once per frame
@@ -62,6 +60,21 @@ public class DegradingPart : MonoBehaviour
         else
         {
             currHealth = Mathf.Max(0, currHealth - (Time.deltaTime * degredationRate));
+        }
+
+        // if part health sinks below threshold and is currently operating
+        if (currHealth < functionalityThreshold && isFunctioning)
+        {
+            // update functionality to be false
+            isFunctioning = false;
+            updateFunctionalityEvent.Invoke(myPart, false);
+        }
+        // if part health rises above threshold and is currently not operating
+        else if (currHealth >= functionalityThreshold && !isFunctioning)
+        {
+            // update functionality to be true
+            isFunctioning = true;
+            updateFunctionalityEvent.Invoke(myPart, true);
         }
     }
 
