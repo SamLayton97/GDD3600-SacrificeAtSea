@@ -23,6 +23,15 @@ public class PartsManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Called once before first Update(), used for initialization
+    /// </summary>
+    void Start()
+    {
+        // add self as listener for update functionality event
+        EventManager.AddUpdateFunctionalityListeners(UpdatePartFunctionality);
+    }
+
+    /// <summary>
     /// Gets whether a submarine part is currently functioning
     /// </summary>
     /// <param name="part">name of part</param>
@@ -41,5 +50,7 @@ public class PartsManager : MonoBehaviour
     void UpdatePartFunctionality(SubmarineParts partName, bool isFunctioning)
     {
         partFunctionalities[partName] = isFunctioning;
+
+        Debug.Log(partName + " " + isFunctioning);
     }
 }

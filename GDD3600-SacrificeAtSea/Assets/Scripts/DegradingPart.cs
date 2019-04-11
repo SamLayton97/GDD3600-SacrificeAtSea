@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// A submarine part that degrades over time
 /// </summary>
 public class DegradingPart : MonoBehaviour
 {
+    #region Fields
 
     // serialized variables
     [SerializeField] float degredationRate = 0.01f;
@@ -24,11 +26,22 @@ public class DegradingPart : MonoBehaviour
     // repair support variables
     bool playerIsColliding = false;
 
+    // update part-functionality event support
+    UpdateFunctionalityEvent updateFunctionalityEvent;
+
+    #endregion
+
+    #region Unity Methods
+
     // Start is called before the first frame update
     void Start()
     {
         // calculate time to degrade
         degredationTimer = 1 / degredationRate;
+
+        // add self as invoker of Update Functionality event
+        updateFunctionalityEvent = new UpdateFunctionalityEvent();
+        EventManager.AddUpdateFunctionalityInvoker(this);
     }
 
     // Update is called once per frame
@@ -62,4 +75,19 @@ public class DegradingPart : MonoBehaviour
         // set player collision to false
         playerIsColliding = false;
     }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Adds given listener for Update Functionality event
+    /// </summary>
+    /// <param name="listener">listener</param>
+    public void AddUpdateFunctionalityListener(UnityAction<SubmarineParts, bool> listener)
+    {
+        updateFunctionalityEvent.AddListener(listener);
+    }
+
+    #endregion
 }
