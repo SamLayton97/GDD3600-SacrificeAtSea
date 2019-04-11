@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2607912467966569510}
   m_Layer: 9
-  m_Name: PropellorRoom
+  m_Name: EngineRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2607912469422701720}
   m_Layer: 9
-  m_Name: BallastTanksRoom
+  m_Name: PumpRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,7 +476,7 @@ PrefabInstance:
     - target: {fileID: 9068084330698109660, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1844554130044288930, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5,
         type: 3}
@@ -1366,7 +1366,7 @@ PrefabInstance:
     - target: {fileID: 9068084330698109660, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5, type: 3}
@@ -1701,7 +1701,7 @@ PrefabInstance:
     - target: {fileID: 9068084330698109660, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1844554130044288930, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5,
         type: 3}
@@ -1831,7 +1831,7 @@ PrefabInstance:
     - target: {fileID: 9068084330698109660, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1844554130044288930, guid: 5d5690d6dd57e7d4aa3c80a6050cfca5,
         type: 3}
@@ -2161,7 +2161,7 @@ PrefabInstance:
     - target: {fileID: 5791620064336325077, guid: fb1a3777ffe8a9f42bbb83c85f2c89fe,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1a3777ffe8a9f42bbb83c85f2c89fe, type: 3}

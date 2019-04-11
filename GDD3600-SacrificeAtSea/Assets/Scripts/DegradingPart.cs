@@ -9,16 +9,18 @@ public class DegradingPart : MonoBehaviour
 {
 
     // public variables
-    [SerializeField] float degredationRate = 1;
+    [SerializeField] float degredationRate = 0.01f;
     [SerializeField] float repairRate = 5;
 
     // health variables
-    const int MaxHealth = 100;
-    int currHealth = MaxHealth;
+    const float MaxHealth = 100;
+    float currHealth = MaxHealth;
 
-    // timer support variables
-    float degredationCounter = 0;
+    // degredation support variables
     float degredationTimer = 0;
+
+    // repair support variables
+    bool playerIsColliding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,17 +32,32 @@ public class DegradingPart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if degredation counter has exceeded timer and part's health is not 0
-        if (degredationCounter >= degredationTimer && currHealth > 0)
-        {
-            // reset counter
-            degredationCounter = 0;
+        // retrieve interact input
+        float interactInput = Input.GetAxisRaw("Interact");
 
-            // decrement submarine part's health if not already 0
-            currHealth = Mathf.Max(0, currHealth - 1);
+        // if player is colliding with part and interacting with it, increment health
+        if (playerIsColliding && interactInput != 0)
+        {
+            currHealth = Mathf.Min(MaxHealth, currHealth + (Time.deltaTime * repairRate)); 
+        }
+        // otherwise, decrement health
+        else
+        {
+            currHealth = Mathf.Max(0, currHealth - (Time.deltaTime * degredationRate));
         }
 
-        // increment counter by time between frames
-        degredationCounter += Time.deltaTime;
+        Debug.Log("Current Health: " + currHealth);
+    }
+
+    // Called on first frame part is in collision with another
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        playerIsColliding = true;
+    }
+
+    // Called on frame part leaves collision with another
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        playerIsColliding = false;
     }
 }
