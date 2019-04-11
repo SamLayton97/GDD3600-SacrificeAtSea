@@ -566,6 +566,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SubmarineEnvironment
       objectReference: {fileID: 0}
+    - target: {fileID: 2607912468287434845, guid: 941e148fef30a27409d5c3b794007756,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2607912468287434842, guid: 941e148fef30a27409d5c3b794007756,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 #if UNITY_EDITOR
 
 #endif
@@ -22,7 +23,6 @@ namespace UnityStandardAssets.Cameras
         private float m_CurrentTurnAmount; // How much to turn the camera
         private float m_TurnSpeedVelocityChange; // The change in the turn speed velocity
         private Vector3 m_RollUp = Vector3.up;// The roll of the camera around the z axis ( generally this will always just be up )
-
 
         protected override void FollowTarget(float deltaTime)
         {
@@ -102,6 +102,15 @@ namespace UnityStandardAssets.Cameras
             // and aligning with the target object's up direction (i.e. its 'roll')
             m_RollUp = m_RollSpeed > 0 ? Vector3.Slerp(m_RollUp, targetUp, m_RollSpeed*deltaTime) : Vector3.up;
             transform.rotation = Quaternion.Lerp(transform.rotation, rollRotation, m_TurnSpeed*m_CurrentTurnAmount*deltaTime);
+        }
+
+        /// <summary>
+        /// Updates target for AutoCam to follow
+        /// </summary>
+        /// <param name="newTarget">transform of new target to follow</param>
+        void SwapTarget(Transform newTarget)
+        {
+            m_Target = newTarget;
         }
     }
 }
