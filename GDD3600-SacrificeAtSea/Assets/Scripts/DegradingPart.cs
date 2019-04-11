@@ -8,10 +8,11 @@ using UnityEngine;
 public class DegradingPart : MonoBehaviour
 {
 
-    // public variables
+    // serialized variables
     [SerializeField] float degredationRate = 0.01f;
     [SerializeField] float repairRate = 5;
     [SerializeField] SubmarineParts correspondingPart = SubmarineParts.ballastTanks;
+    [SerializeField] float functionalityThreshold = 30;
 
     // health variables
     const float MaxHealth = 100;
@@ -46,19 +47,19 @@ public class DegradingPart : MonoBehaviour
         {
             currHealth = Mathf.Max(0, currHealth - (Time.deltaTime * degredationRate));
         }
-
-        Debug.Log("Current Health: " + currHealth);
     }
 
     // Called on first frame part is in collision with another
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // set player-collision to true
         playerIsColliding = true;
     }
 
     // Called on frame part leaves collision with another
     void OnTriggerExit2D(Collider2D collision)
     {
+        // set player collision to false
         playerIsColliding = false;
     }
 }
