@@ -47,6 +47,9 @@ TagManager:
   - name: SubmarineInteriorWalls
     uniqueID: 3729993697
     locked: 0
+  - name: Interactables
+    uniqueID: 314606731
+    locked: 0
   - name: Player
     uniqueID: 471631313
     locked: 0
