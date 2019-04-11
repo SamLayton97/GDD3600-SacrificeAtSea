@@ -17,7 +17,7 @@ public class PartsManager : MonoBehaviour
     private void Awake()
     {
         // load part functionality dictionary with part names and flags determining whether they work
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             partFunctionalities.Add((SubmarineParts)i, true);
         }

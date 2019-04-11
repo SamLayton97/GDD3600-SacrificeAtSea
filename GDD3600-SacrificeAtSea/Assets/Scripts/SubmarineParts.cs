@@ -10,6 +10,5 @@ public enum SubmarineParts
     propellors,
     ballastTanks,
     sonar,
-    stabalizer,
-    pump
+    stabalizer
 }
