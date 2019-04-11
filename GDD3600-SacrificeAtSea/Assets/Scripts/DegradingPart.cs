@@ -11,6 +11,7 @@ public class DegradingPart : MonoBehaviour
     // public variables
     [SerializeField] float degredationRate = 0.01f;
     [SerializeField] float repairRate = 5;
+    [SerializeField] SubmarineParts correspondingPart = SubmarineParts.ballastTanks;
 
     // health variables
     const float MaxHealth = 100;
