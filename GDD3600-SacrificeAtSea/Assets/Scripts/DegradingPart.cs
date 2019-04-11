@@ -38,9 +38,6 @@ public class DegradingPart : MonoBehaviour
 
             // decrement submarine part's health if not already 0
             currHealth = Mathf.Max(0, currHealth - 1);
-
-            // FOR DEGUBBING: print current health of part
-            Debug.Log("Current Health: " + currHealth);
         }
 
         // increment counter by time between frames
