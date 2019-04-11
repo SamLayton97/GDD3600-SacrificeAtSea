@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 445858706}
   - component: {fileID: 445858707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spr_square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 617346207}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NavPanelBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864008517}
   - component: {fileID: 864008518}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spr_square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 978884647}
   - component: {fileID: 978884648}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spr_square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1414919906}
   - component: {fileID: 1414919907}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spr_square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3839450827696830020}
   - component: {fileID: 3839450827696830021}
-  m_Layer: 0
+  - component: {fileID: 8561113136249846884}
+  - component: {fileID: 8313662992267599000}
+  - component: {fileID: 9062546149539353526}
+  - component: {fileID: 8700138864079754746}
+  m_Layer: 11
   m_Name: NavigationPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,3 +434,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &8561113136249846884
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839450827696830022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.751152, y: 2.0009181}
+  - {x: 2.7498074, y: 1.9999008}
+--- !u!68 &8313662992267599000
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839450827696830022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 2.7502518, y: -2.0010445}
+  - {x: 2.7495518, y: 1.9994886}
+--- !u!68 &9062546149539353526
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839450827696830022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.7503204, y: -2.000062}
+  - {x: 2.7500343, y: -1.9997327}
+--- !u!68 &8700138864079754746
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839450827696830022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.7503748, y: -2.000876}
+  - {x: -2.7505178, y: 2.000409}
