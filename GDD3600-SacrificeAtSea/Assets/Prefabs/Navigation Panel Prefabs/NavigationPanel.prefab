@@ -521,3 +521,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   underseaRockPrefab: {fileID: 3323217846868612947, guid: ea158df1c9f536044b2fb7dcb2e287fa,
     type: 3}
+  minSpawnDelay: 7
+  maxSpawnDelay: 12
+  target: {fileID: 0}
