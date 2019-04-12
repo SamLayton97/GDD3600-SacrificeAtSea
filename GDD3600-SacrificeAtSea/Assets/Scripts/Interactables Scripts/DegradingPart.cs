@@ -20,6 +20,7 @@ public class DegradingPart : MonoBehaviour
     SpriteRenderer mySpriteRenderer;
     [SerializeField] Sprite functioningSprite;
     [SerializeField] Sprite damagedSprite;
+    [SerializeField] Sprite underRepairSprite;
 
     // health variables
     const float MaxHealth = 100;
@@ -76,9 +77,6 @@ public class DegradingPart : MonoBehaviour
             // update functionality to be false
             isFunctioning = false;
             updateFunctionalityEvent.Invoke(myPart, false);
-
-            // swap sprite to damaged variant
-            mySpriteRenderer.sprite = damagedSprite;
         }
         // if part health rises above threshold and is currently not operating
         else if (currHealth >= functionalityThreshold && !isFunctioning)
@@ -86,10 +84,15 @@ public class DegradingPart : MonoBehaviour
             // update functionality to be true
             isFunctioning = true;
             updateFunctionalityEvent.Invoke(myPart, true);
-
-            // swap sprite to functioning variant
-            mySpriteRenderer.sprite = functioningSprite;
         }
+
+        // swap sprite according to reflect current state
+        if (playerIsColliding && interactInput != 0)
+            mySpriteRenderer.sprite = underRepairSprite;
+        else if (isFunctioning)
+            mySpriteRenderer.sprite = functioningSprite;
+        else
+            mySpriteRenderer.sprite = damagedSprite;
     }
 
     // Called on first frame part is in collision with another
