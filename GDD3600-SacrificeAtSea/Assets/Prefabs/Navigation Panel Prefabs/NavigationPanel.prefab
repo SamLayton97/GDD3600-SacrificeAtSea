@@ -364,6 +364,7 @@ GameObject:
   - component: {fileID: 8313662992267599000}
   - component: {fileID: 9062546149539353526}
   - component: {fileID: 8700138864079754746}
+  - component: {fileID: 5965564547883341996}
   m_Layer: 11
   m_Name: NavigationPanel
   m_TagString: Untagged
@@ -506,3 +507,18 @@ EdgeCollider2D:
   m_Points:
   - {x: -3.250229, y: -2.500363}
   - {x: -3.2480555, y: 2.5027304}
+--- !u!114 &5965564547883341996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839450827696830022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2bcb03ffeb0864892e33e2d0696139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cavernWall: {fileID: 9017619449168280444, guid: 0227680c8f3c85242bdc0afe969843ab,
+    type: 3}
+  xSpawnOffset: 2.9

@@ -29,9 +29,6 @@ public class SubmarineMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // DEBUGGING: log input vector
-        //Debug.Log(inputVector);
-
         // calculate force vector to move submarine towards
         forceVector = inputVector;
         forceVector.Scale(forceScale);
