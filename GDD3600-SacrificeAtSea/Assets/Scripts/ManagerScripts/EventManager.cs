@@ -75,4 +75,34 @@ public static class EventManager
 
     #endregion
 
+    #region Submarine Collision
+
+    // declare lists to hold invokers and listeners to submarine collision event
+    static List<SubmarineCollisions> submarineCollisionInvokers = new List<SubmarineCollisions>();
+    static List<UnityAction> submarineCollisionListeners = new List<UnityAction>();
+
+    // Adds given submarine collisions script as invoker of event
+    public static void AddSubmarineCollisionInvoker(SubmarineCollisions invoker)
+    {
+        // add invoker to list of invokers and add all listeners to invoker
+        submarineCollisionInvokers.Add(invoker);
+        foreach (UnityAction listener in submarineCollisionListeners)
+        {
+            invoker.AddCollisionListener(listener);
+        }
+    }
+
+    // Adds given method as Submarine Collision listener
+    public static void AddSubmarineCollisionListener(UnityAction listener)
+    {
+        // adds listener to list and to all invokers
+        submarineCollisionListeners.Add(listener);
+        foreach (SubmarineCollisions invoker in submarineCollisionInvokers)
+        {
+            invoker.AddCollisionListener(listener);
+        }
+    }
+
+    #endregion
+
 }
