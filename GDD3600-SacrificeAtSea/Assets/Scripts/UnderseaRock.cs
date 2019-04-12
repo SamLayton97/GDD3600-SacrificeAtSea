@@ -17,6 +17,9 @@ public class UnderseaRock : MonoBehaviour
     [SerializeField] float forceAngleArc = 35f;
     Transform target;
 
+    // rotation support
+    [SerializeField] float maxRotationSpeed = 1f;
+
     /// <summary>
     /// Property with write access containing target's transform info.
     /// </summary>
@@ -49,6 +52,10 @@ public class UnderseaRock : MonoBehaviour
         // apply impulse force towards offset angle to target
         Vector2 forceDirection = new Vector2(Mathf.Cos(angleToTarget), Mathf.Sin(angleToTarget));
         myRigidbody2D.AddForce(forceDirection * impulseForceScale, ForceMode2D.Impulse);
+
+        // apply rotation in random direction
+        float randRotationSpeed = Random.Range(-maxRotationSpeed, maxRotationSpeed);
+        myRigidbody2D.AddTorque(randRotationSpeed);
         
     }
 
