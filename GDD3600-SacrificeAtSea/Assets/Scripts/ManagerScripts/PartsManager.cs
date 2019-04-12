@@ -46,8 +46,5 @@ public class PartsManager : MonoBehaviour
     {
         // update part's functionality flag
         partFunctionalities[partName] = isFunctioning;
-
-        // DEBUGGING: log name and functionality of updated submarine part
-        Debug.Log(partName + " " + isFunctioning);
     }
 }
