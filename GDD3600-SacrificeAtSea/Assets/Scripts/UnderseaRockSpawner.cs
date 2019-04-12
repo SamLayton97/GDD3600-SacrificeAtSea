@@ -18,7 +18,7 @@ public class UnderseaRockSpawner : MonoBehaviour
     {
         // DEBUGGING: spawn undersea rock to test force functionality
         GameObject newRock = Instantiate(underseaRockPrefab,
-            new Vector2(16, 0.5f), Quaternion.identity);
+            new Vector2(16.5f, 0.5f), Quaternion.identity);
         newRock.GetComponent<UnderseaRock>().Target = target;
     }
 

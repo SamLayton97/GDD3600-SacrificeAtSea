@@ -39,14 +39,16 @@ public class UnderseaRock : MonoBehaviour
         // find angle to target
         float deltaX = target.position.x - transform.position.x;
         float deltaY = target.position.y - transform.position.y;
-        float angleToTarget = Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg;
+        float angleToTarget = Mathf.Atan2(deltaY, deltaX);
 
         // apply randomized offset to angle within specified arc
-        float halfArc = forceAngleArc / 2;
+        float halfArc = (forceAngleArc * Mathf.Deg2Rad) / 2;
         float randOffset = Random.Range(-halfArc, halfArc);
         angleToTarget += randOffset;
 
-        // TODO: apply impulse force in general direction of player's submarine
+        // apply impulse force towards offset angle to target
+        Vector2 forceDirection = new Vector2(Mathf.Cos(angleToTarget), Mathf.Sin(angleToTarget));
+        myRigidbody2D.AddForce(forceDirection * impulseForceScale, ForceMode2D.Impulse);
         
     }
 

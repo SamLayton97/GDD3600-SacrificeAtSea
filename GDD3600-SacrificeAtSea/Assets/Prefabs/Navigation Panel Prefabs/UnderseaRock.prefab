@@ -118,6 +118,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e94934ba9360b624391a2a9000260483, type: 3}
   - {fileID: 21300000, guid: 950382831d97e674199450d094515898, type: 3}
   - {fileID: 21300000, guid: 42a534664554e624892cfd83ed20ef89, type: 3}
-  target: {fileID: 1201747363315050182, guid: df89ac69596c1f54ca3f56717140ad73, type: 3}
-  impulseForceScale: 1
-  forceAngleArc: 45
+  impulseForceScale: 0.5
+  forceAngleArc: 35
