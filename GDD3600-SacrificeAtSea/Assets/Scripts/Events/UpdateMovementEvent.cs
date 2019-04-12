@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Event used to swap what object camera is to follow
+/// Event to update force-based movement of submarine icon
 /// </summary>
-public class SwapCameraTargetEvent : UnityEvent<Transform>
+public class UpdateMovementEvent : UnityEvent<SubmarineParts, int>
 {
 }

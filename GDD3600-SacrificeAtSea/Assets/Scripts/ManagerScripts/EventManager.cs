@@ -45,39 +45,34 @@ public static class EventManager
 
     #endregion
 
-    #region Swapping Camera's Target
+    #region Updating Submarine Movement Input
 
-    // declare lists holding invokers and listeners of event
-    static List<CameraTargetSwapper> cameraSwapInvokers = new List<CameraTargetSwapper>();
-    static List<UnityAction<Transform>> cameraSwapListeners = new List<UnityAction<Transform>>();
+    // declare lists holding invokers and listeners of update movement input event
+    static List<SubmarineControls> updateMovementInvokers = new List<SubmarineControls>();
+    static List<UnityAction<SubmarineParts, int>> updateMovementListeners = new List<UnityAction<SubmarineParts, int>>();
 
-    /// <summary>
-    /// Adds given target-swapper as invoker of this event
-    /// </summary>
-    /// <param name="invoker">a camera target swapper</param>
-    public static void AddCameraSwapInvoker(CameraTargetSwapper invoker)
+    // Adds given submarine controls as update movement invoker
+    public static void AddUpdateMovementInvoker(SubmarineControls invoker)
     {
         // add invoker to list of invokers and add all listeners to invoker
-        cameraSwapInvokers.Add(invoker);
-        foreach (UnityAction<Transform> listener in cameraSwapListeners)
+        updateMovementInvokers.Add(invoker);
+        foreach (UnityAction<SubmarineParts, int> listener in updateMovementListeners)
         {
-            invoker.AddSwapCameraTargetListener(listener);
+            invoker.AddUpdateMovementListener(listener);
         }
     }
 
-    /// <summary>
-    /// Adds given method as listener for swap camera event
-    /// </summary>
-    /// <param name="listener"></param>
-    public static void AddCameraSwapListener(UnityAction<Transform> listener)
+    // Adds given method as update movement listener
+    public static void AddUpdateMovementListener(UnityAction<SubmarineParts, int> listener)
     {
         // add listener to list and to all invokers
-        cameraSwapListeners.Add(listener);
-        foreach (CameraTargetSwapper invoker in cameraSwapInvokers)
+        updateMovementListeners.Add(listener);
+        foreach (SubmarineControls invoker in updateMovementInvokers)
         {
-            invoker.AddSwapCameraTargetListener(listener);
+            invoker.AddUpdateMovementListener(listener);
         }
     }
 
     #endregion
+
 }
