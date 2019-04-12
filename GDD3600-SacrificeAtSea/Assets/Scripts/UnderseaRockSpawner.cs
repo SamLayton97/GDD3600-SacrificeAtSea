@@ -40,8 +40,6 @@ public class UnderseaRockSpawner : MonoBehaviour
         // if spawn counter exceeds delay time
         if (nextSpawnCounter > randSpawnDelay)
         {
-            Debug.Log("spawn");
-
             // reset spawn counter and generate new delay time
             nextSpawnCounter = 0;
             randSpawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
