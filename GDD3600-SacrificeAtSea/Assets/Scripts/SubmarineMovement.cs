@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class SubmarineMovement : MonoBehaviour
 {
     // movement variables
-    Vector2 movementForce = new Vector2();
+    Vector2 inputVector = new Vector2();
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,8 @@ public class SubmarineMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(movementForce);
+        // DEBUGGING: log input vector
+        //Debug.Log(inputVector);
     }
 
     /// <summary>
@@ -33,8 +34,8 @@ public class SubmarineMovement : MonoBehaviour
     {
         // updates x or y force component depending on received movement type
         if (moveType == SubmarineParts.propellors)
-            movementForce.x = inputAxis;
+            inputVector.x = inputAxis;
         else if (moveType == SubmarineParts.ballastTanks)
-            movementForce.y = inputAxis;
+            inputVector.y = inputAxis;
     }
 }

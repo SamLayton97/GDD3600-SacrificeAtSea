@@ -103,7 +103,6 @@ public class SubmarineControls : MonoBehaviour
     public void AddUpdateMovementListener(UnityAction<SubmarineParts, int> listener)
     {
         updateMovementEvent.AddListener(listener);
-        Debug.Log(myCorrespondingPart);
     }
 
     #endregion
