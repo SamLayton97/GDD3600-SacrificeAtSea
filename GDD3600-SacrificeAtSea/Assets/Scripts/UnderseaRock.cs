@@ -53,15 +53,16 @@ public class UnderseaRock : MonoBehaviour
         Vector2 forceDirection = new Vector2(Mathf.Cos(angleToTarget), Mathf.Sin(angleToTarget));
         myRigidbody2D.AddForce(forceDirection * impulseForceScale, ForceMode2D.Impulse);
 
-        // apply rotation in random direction
+        // apply random rotation to rock
         float randRotationSpeed = Random.Range(-maxRotationSpeed, maxRotationSpeed);
         myRigidbody2D.AddTorque(randRotationSpeed);
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // Called when object collides with another
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        // destroy self
+        Destroy(gameObject);
     }
 }
