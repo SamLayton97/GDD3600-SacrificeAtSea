@@ -35,7 +35,8 @@ public class SubmarineMovement : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        
+        // add force in direction of input vector
+        rigidbody2D.AddForce(inputVector);
     }
 
     /// <summary>

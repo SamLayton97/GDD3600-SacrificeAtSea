@@ -50,6 +50,9 @@ TagManager:
   - name: NavigationPanel
     uniqueID: 2685006829
     locked: 0
+  - name: NavigationPanelIcons
+    uniqueID: 3220962701
+    locked: 0
   - name: NavigationPanelBorder
     uniqueID: 1739693283
     locked: 0
