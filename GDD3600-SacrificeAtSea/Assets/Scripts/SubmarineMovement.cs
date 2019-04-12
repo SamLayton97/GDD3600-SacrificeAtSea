@@ -10,7 +10,11 @@ public class SubmarineMovement : MonoBehaviour
 {
     // movement variables
     Vector2 inputVector = new Vector2();
+    Vector2 forceVector = new Vector2();
     Rigidbody2D rigidbody2D;
+
+    // force scaling variables
+    [SerializeField] Vector2 forceScale;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,10 @@ public class SubmarineMovement : MonoBehaviour
     {
         // DEBUGGING: log input vector
         //Debug.Log(inputVector);
+
+        // calculate force vector to move submarine towards
+        forceVector = inputVector;
+        forceVector.Scale(forceScale);
     }
 
     /// <summary>
@@ -36,7 +44,7 @@ public class SubmarineMovement : MonoBehaviour
     void FixedUpdate()
     {
         // add force in direction of input vector
-        rigidbody2D.AddForce(inputVector);
+        rigidbody2D.AddForce(forceVector);
     }
 
     /// <summary>
