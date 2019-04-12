@@ -16,10 +16,7 @@ public class UnderseaRockSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // DEBUGGING: spawn undersea rock to test force functionality
-        GameObject newRock = Instantiate(underseaRockPrefab,
-            new Vector2(16.5f, 0.5f), Quaternion.identity);
-        newRock.GetComponent<UnderseaRock>().Target = target;
+        
     }
 
     // Update is called once per frame
