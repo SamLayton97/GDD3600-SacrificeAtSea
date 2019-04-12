@@ -723,7 +723,7 @@ PrefabInstance:
     - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
       propertyPath: degredationRate
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ea2393288806994e824a886ad425e65, type: 3}
@@ -1027,6 +1027,11 @@ PrefabInstance:
       propertyPath: partsManager
       value: 
       objectReference: {fileID: 207542381}
+    - target: {fileID: 5677215906299952212, guid: 906559f1339377148917aed5ef82c455,
+        type: 3}
+      propertyPath: myCorrespondingPart
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906559f1339377148917aed5ef82c455, type: 3}
 --- !u!1001 &8386561565935827485
