@@ -521,4 +521,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cavernWall: {fileID: 9017619449168280444, guid: 0227680c8f3c85242bdc0afe969843ab,
     type: 3}
+  spawnRate: 2
   xSpawnOffset: 2.9
+  ySpawnOffset: 1.5

@@ -37,7 +37,7 @@ public class CavernWall : MonoBehaviour
     // Called when object collides with another
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // destroy self
+        Debug.Log(collision.gameObject.tag);
         Destroy(gameObject);
     }
 }

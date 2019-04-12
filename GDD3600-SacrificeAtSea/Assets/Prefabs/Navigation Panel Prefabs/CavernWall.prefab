@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 9017619449168280321}
   - component: {fileID: 4997738727203680692}
   - component: {fileID: 8950913695167782685}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: CavernWall
-  m_TagString: Untagged
+  m_TagString: CavernObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
