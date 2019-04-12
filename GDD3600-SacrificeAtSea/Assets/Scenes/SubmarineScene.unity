@@ -1004,6 +1004,16 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1809914735}
+    - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
+        type: 3}
+      propertyPath: minSpawnDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
+        type: 3}
+      propertyPath: maxSpawnDelay
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6b9f068ff646846aee5a350a2ff67c, type: 3}
 --- !u!1001 &6483683504620199947
