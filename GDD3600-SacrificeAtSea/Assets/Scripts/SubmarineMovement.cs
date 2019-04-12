@@ -10,10 +10,14 @@ public class SubmarineMovement : MonoBehaviour
 {
     // movement variables
     Vector2 inputVector = new Vector2();
+    Rigidbody2D rigidbody2D;
 
     // Start is called before the first frame update
     void Start()
     {
+        // retrieve rigidbody component from game object
+        rigidbody2D = GetComponent<Rigidbody2D>();
+
         // add self as listener to Update Movement Event
         EventManager.AddUpdateMovementListener(UpdateForceVector);
     }
@@ -23,6 +27,15 @@ public class SubmarineMovement : MonoBehaviour
     {
         // DEBUGGING: log input vector
         //Debug.Log(inputVector);
+    }
+
+    /// <summary>
+    /// Called fixed number of times per second. Used for applying
+    /// forces to submarine navigation icon.
+    /// </summary>
+    void FixedUpdate()
+    {
+        
     }
 
     /// <summary>
