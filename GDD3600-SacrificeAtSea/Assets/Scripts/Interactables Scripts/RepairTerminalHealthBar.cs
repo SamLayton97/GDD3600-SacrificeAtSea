@@ -16,9 +16,9 @@ public class RepairTerminalHealthBar : MonoBehaviour
     float prevHealth = 100;     // health value of previous frame; used to determine whether part is under repair or not
 
     // health bar color support fields
-    [SerializeField] Color functioningColor;
-    [SerializeField] Color brokenColor;
-    [SerializeField] Color repairColor;
+    Color functioningColor = Color.cyan;
+    Color brokenColor = Color.red;
+    Color repairColor = Color.yellow;
     float functionalityThreshold = 0;
     
     // Start is called before the first frame update
@@ -38,19 +38,16 @@ public class RepairTerminalHealthBar : MonoBehaviour
         // if health value has grown (player is repairing it), set color to repair color
         if (currHealth > prevHealth)
         {
-            Debug.Log("Repair");
             healthBarFill.color = Color.yellow;
         }
         // if health value is over threshold, set color to functioning
         else if (currHealth >= functionalityThreshold)
         {
-            Debug.Log("Functioning");
             healthBarFill.color = functioningColor;
         }
         // otherwise (broken part and not being repaired), set color to broken color
         else
         {
-            Debug.Log("Broken");
             healthBarFill.color = Color.red;
         }
 

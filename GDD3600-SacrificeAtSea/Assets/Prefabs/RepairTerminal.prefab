@@ -329,7 +329,7 @@ MonoBehaviour:
   degradingPart: {fileID: 5646829382093465101}
   functioningColor: {r: 0, g: 301.23138, b: 454.52072, a: 1}
   brokenColor: {r: 1, g: 0, b: 0, a: 0}
-  repairColor: {r: 1, g: 0.4669811, b: 0, a: 0}
+  repairColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8628919454638777437
 GameObject:
   m_ObjectHideFlags: 0
