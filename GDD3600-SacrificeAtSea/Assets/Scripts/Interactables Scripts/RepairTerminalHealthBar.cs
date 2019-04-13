@@ -38,7 +38,7 @@ public class RepairTerminalHealthBar : MonoBehaviour
         // if health value has grown (player is repairing it), set color to repair color
         if (currHealth > prevHealth)
         {
-            healthBarFill.color = Color.yellow;
+            healthBarFill.color = repairColor;
         }
         // if health value is over threshold, set color to functioning
         else if (currHealth >= functionalityThreshold)
@@ -48,7 +48,7 @@ public class RepairTerminalHealthBar : MonoBehaviour
         // otherwise (broken part and not being repaired), set color to broken color
         else
         {
-            healthBarFill.color = Color.red;
+            healthBarFill.color = brokenColor;
         }
 
         // update previous health value
