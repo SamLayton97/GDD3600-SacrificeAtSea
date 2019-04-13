@@ -12,7 +12,7 @@ public class SubmarineHealthManager : MonoBehaviour
     int currHealth = 100;
 
     // damage variables
-    [SerializeField] int obstacleCollisionDamage = 15;
+    [SerializeField] int damagePerCollision = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +31,12 @@ public class SubmarineHealthManager : MonoBehaviour
     void HandleSubmarineCollision()
     {
         // decrement health
-        currHealth -= obstacleCollisionDamage;
+        currHealth -= damagePerCollision;
 
         // TODO: if health drops below 0, Game Over
         if (currHealth <= 0)
         {
             Debug.Log("GAME OVER");
         }
-
-        // TODO: increase flood level
     }
 }
