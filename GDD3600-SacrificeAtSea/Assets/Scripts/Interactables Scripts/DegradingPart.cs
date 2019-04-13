@@ -46,6 +46,12 @@ public class DegradingPart : MonoBehaviour
         get { return currHealth; }
     }
 
+    // Read-access to functionality threshold of degrading part
+    public float FunctionalityThreshold
+    {
+        get { return functionalityThreshold; }
+    }
+
     #endregion
 
     #region Unity Methods
