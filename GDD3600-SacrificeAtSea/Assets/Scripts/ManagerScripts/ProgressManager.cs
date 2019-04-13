@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Script managing player's progress towards level's end
@@ -42,6 +43,13 @@ public class ProgressManager : MonoBehaviour
             // increment progress percentage (locked to 100%)
             currentProgressPercent = Mathf.Min(100, currentProgressPercent + 1);
             incrementProgressEvent.Invoke();
+
+            // if player reaches 100% level progress, they win!
+            if (currentProgressPercent >= 100)
+            {
+                // go to level complete scene
+                SceneManager.LoadScene("LevelCompleteScene");
+            }
         }
 
         // increment counter
