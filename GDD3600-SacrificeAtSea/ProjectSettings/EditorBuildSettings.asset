@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelCompleteScene.unity
     guid: a8e975c9c1f2ba946b77f10d6402483b
+  - enabled: 1
+    path: Assets/Scenes/LevelFailedScene.unity
+    guid: d1767464d5ba4044c8ba4ec4fea0669c
   m_configObjects: {}
