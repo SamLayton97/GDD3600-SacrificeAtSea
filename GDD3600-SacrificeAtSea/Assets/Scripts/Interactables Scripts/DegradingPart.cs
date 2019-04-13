@@ -38,6 +38,16 @@ public class DegradingPart : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    // Read-access to current health of degrading part
+    public float CurrentHealth
+    {
+        get { return currHealth; }
+    }
+
+    #endregion
+
     #region Unity Methods
 
     // Start is called before the first frame update
