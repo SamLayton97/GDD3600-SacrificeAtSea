@@ -32,8 +32,8 @@ public class SubmarineHealthManager : MonoBehaviour
     // Handles manager-side consequences of a submarine collision
     void HandleSubmarineCollision()
     {
-        // decrement health and send out updated hull integrity
-        currHealth -= damagePerCollision;
+        // decrement health and send out updated hull integrity (locked to 0 or greater)
+        currHealth = Mathf.Max(currHealth - damagePerCollision, 0);
         updateHullIntegrityEvent.Invoke(currHealth);
 
         // TODO: if health drops below 0, Game Over
