@@ -1159,12 +1159,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 760969022752120912, guid: e78444febd4b1954d938a32a7d581588,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 14b910f190697da468b4c5e69bcc5137,
-        type: 3}
     - target: {fileID: 2489950543918726671, guid: e78444febd4b1954d938a32a7d581588,
         type: 3}
       propertyPath: myCorrespondingPart
@@ -1174,13 +1168,19 @@ PrefabInstance:
         type: 3}
       propertyPath: enabledSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 14b910f190697da468b4c5e69bcc5137,
+      objectReference: {fileID: 21300000, guid: 4075cc351d145fd44aba11ca16e5a796,
         type: 3}
     - target: {fileID: 2489950543918726671, guid: e78444febd4b1954d938a32a7d581588,
         type: 3}
       propertyPath: disabledSprite
       value: 
-      objectReference: {fileID: 21300000, guid: f96d7341adddd4544b8fcf08ebe96151,
+      objectReference: {fileID: 21300000, guid: be9611d7c85a6ee44909750e8a6cfcd8,
+        type: 3}
+    - target: {fileID: 760969022752120912, guid: e78444febd4b1954d938a32a7d581588,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4075cc351d145fd44aba11ca16e5a796,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78444febd4b1954d938a32a7d581588, type: 3}
@@ -1792,12 +1792,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 760969022752120912, guid: e78444febd4b1954d938a32a7d581588,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3574ba6e61316ba4b8fa81336aee4286,
-        type: 3}
     - target: {fileID: 2489950543918726671, guid: e78444febd4b1954d938a32a7d581588,
         type: 3}
       propertyPath: enabledSprite
@@ -1809,6 +1803,12 @@ PrefabInstance:
       propertyPath: disabledSprite
       value: 
       objectReference: {fileID: 21300000, guid: cf99d3878b404064eaf2368fe1161561,
+        type: 3}
+    - target: {fileID: 760969022752120912, guid: e78444febd4b1954d938a32a7d581588,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3574ba6e61316ba4b8fa81336aee4286,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78444febd4b1954d938a32a7d581588, type: 3}
@@ -1960,12 +1960,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 760969022752120912, guid: e78444febd4b1954d938a32a7d581588,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fee618ff24c90794e838cc499a4a7e37,
-        type: 3}
     - target: {fileID: 2489950543918726671, guid: e78444febd4b1954d938a32a7d581588,
         type: 3}
       propertyPath: myCorrespondingPart
@@ -1975,13 +1969,19 @@ PrefabInstance:
         type: 3}
       propertyPath: enabledSprite
       value: 
-      objectReference: {fileID: 21300000, guid: fee618ff24c90794e838cc499a4a7e37,
+      objectReference: {fileID: 21300000, guid: 0eda0b2148e1e3c42b324a544a10c283,
         type: 3}
     - target: {fileID: 2489950543918726671, guid: e78444febd4b1954d938a32a7d581588,
         type: 3}
       propertyPath: disabledSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4db52e914e31aa448b5c794e4457ec03,
+      objectReference: {fileID: 21300000, guid: 4722ec777f06c48469b7e0573bf0b143,
+        type: 3}
+    - target: {fileID: 760969022752120912, guid: e78444febd4b1954d938a32a7d581588,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0eda0b2148e1e3c42b324a544a10c283,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78444febd4b1954d938a32a7d581588, type: 3}
