@@ -105,4 +105,34 @@ public static class EventManager
 
     #endregion
 
+    #region Update Hull Integrity
+
+    // declare lists holding invokers and listeners to update hull event
+    static List<SubmarineHealthManager> updateHullInvokers = new List<SubmarineHealthManager>();
+    static List<UnityAction<int>> updateHullListeners = new List<UnityAction<int>>();
+
+    // Adds given health manager as invoker of update hull event
+    public static void AddHullIntegrityInvoker(SubmarineHealthManager invoker)
+    {
+        // add invoker to list of invokers and add all listeners to invoker
+        updateHullInvokers.Add(invoker);
+        foreach (UnityAction<int> listener in updateHullListeners)
+        {
+            invoker.AddUpdateHullIntegrityListener(listener);
+        }
+    }
+
+    // Add given method as listener to update hull event
+    public static void AddHullIntegrityListener(UnityAction<int> listener)
+    {
+        // add listener to list and to all invokers
+        updateHullListeners.Add(listener);
+        foreach (SubmarineHealthManager invoker in updateHullInvokers)
+        {
+            invoker.AddUpdateHullIntegrityListener(listener);
+        }
+    }
+
+    #endregion
+
 }

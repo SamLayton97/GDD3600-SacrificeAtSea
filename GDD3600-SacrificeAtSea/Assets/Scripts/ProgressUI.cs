@@ -13,24 +13,34 @@ public class ProgressUI : MonoBehaviour
     // hull integrity support
     [SerializeField] Text hullIntegrityText;
     const string HullIntegrityTextPrefix = "HULL: ";
-    int hullIntegrity = 100;
+    int startingHullIntegrity = 100;
 
     // level progress support
     [SerializeField] Text goalProgressText;
     const string GoalProgressTextPrefix = "PROGRESS: ";
-    int goalProgress = 0;
+    int startingGoalProgress = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         // initialize UI text
-        hullIntegrityText.text = HullIntegrityTextPrefix + hullIntegrity;
-        goalProgressText.text = GoalProgressTextPrefix + goalProgress;
+        hullIntegrityText.text = HullIntegrityTextPrefix + startingHullIntegrity;
+        goalProgressText.text = GoalProgressTextPrefix + startingGoalProgress;
+
+        // add self as listener to respective events
+        EventManager.AddHullIntegrityListener(UpdateHullIntegrity);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    // Updates UI components related to hull integrity
+    void UpdateHullIntegrity(int newIntegrity)
+    {
+        // update hull integrity text
+        hullIntegrityText.text = HullIntegrityTextPrefix + newIntegrity;
     }
 }
