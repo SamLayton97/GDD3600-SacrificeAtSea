@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Script managing submarine's overall health/hull integrity
@@ -36,10 +37,11 @@ public class SubmarineHealthManager : MonoBehaviour
         currHealth = Mathf.Max(currHealth - damagePerCollision, 0);
         updateHullIntegrityEvent.Invoke(currHealth);
 
-        // TODO: if health drops below 0, Game Over
+        // if health drops below 0, Game Over
         if (currHealth <= 0)
         {
-            Debug.Log("GAME OVER");
+            // go to game over scene
+            SceneManager.LoadScene("LevelFailedScene");
         }
     }
 
