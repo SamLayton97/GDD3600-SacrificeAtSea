@@ -187,12 +187,17 @@ PrefabInstance:
     - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
       propertyPath: degredationRate
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
       propertyPath: functionalityThreshold
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: repairRate
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4144909785473166018, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
@@ -282,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec88062d0fabef9409218d9ee2804fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLength: 60
+  levelLength: 90
 --- !u!1001 &627387765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -358,7 +363,17 @@ PrefabInstance:
     - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
       propertyPath: degredationRate
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: functionalityThreshold
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: repairRate
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4144909785473166018, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
@@ -473,7 +488,12 @@ PrefabInstance:
     - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
       propertyPath: degredationRate
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: repairRate
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4144909785473166018, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
@@ -578,7 +598,12 @@ PrefabInstance:
     - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
       propertyPath: degredationRate
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: repairRate
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4144909785473166018, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
@@ -1295,7 +1320,7 @@ PrefabInstance:
     - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
       propertyPath: minSpawnDelay
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
