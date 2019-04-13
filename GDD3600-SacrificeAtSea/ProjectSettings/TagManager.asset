@@ -63,11 +63,11 @@ TagManager:
   - name: Interactables
     uniqueID: 314606731
     locked: 0
-  - name: InteractablesForeground
-    uniqueID: 3079379393
-    locked: 0
   - name: Player
     uniqueID: 471631313
+    locked: 0
+  - name: InteractablesForeground
+    uniqueID: 3079379393
     locked: 0
   - name: SubmarineExteriorWalls
     uniqueID: 1970564297
