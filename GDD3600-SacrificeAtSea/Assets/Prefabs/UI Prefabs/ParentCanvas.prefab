@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 1914241936}
   - component: {fileID: 1914241935}
   m_Layer: 5
-  m_Name: TempProgress
+  m_Name: TempGoalProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,3 +395,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf3250392c7ab6439919b2071a6ec4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hullIntegrityText: {fileID: 326520128}
+  goalProgressText: {fileID: 1914241935}
