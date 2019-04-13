@@ -31,6 +31,13 @@ public class LeverDirectionIndicator : MonoBehaviour
     // Updates sprite to reflect whether its corresponding part is enabled
     void UpdateFunctionality(SubmarineParts updatedPart, bool isEnabled)
     {
-
+        // if updated part matches part indicator represents
+        if (updatedPart == myCorrespondingPart)
+        {
+            // set indicator sprite to match updated functionality
+            mySpriteRenderer.sprite = enabledSprite;
+            if (!isEnabled)
+                mySpriteRenderer.sprite = disabledSprite;
+        }
     }
 }
