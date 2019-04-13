@@ -135,4 +135,34 @@ public static class EventManager
 
     #endregion
 
+    #region Increment Level Progress
+
+    // declare lists to hold invokers and listeners to increment level progress event
+    static List<ProgressManager> incrementProgressInvokers = new List<ProgressManager>();
+    static List<UnityAction> incrementProgressListeners = new List<UnityAction>();
+
+    // Adds given progress manager as invoker of increment progress event
+    public static void AddIncrementProgressInvoker(ProgressManager invoker)
+    {
+        // adds invoker to list and adds all listeners to this event
+        incrementProgressInvokers.Add(invoker);
+        foreach (UnityAction listener in incrementProgressListeners)
+        {
+            invoker.AddIncrementProgressListener(listener);
+        }
+    }
+
+    // Adds given method as listener to increment progress event
+    public static void AddIncrementProgressListener(UnityAction listener)
+    {
+        // adds listener to list and to all invokers of event
+        incrementProgressListeners.Add(listener);
+        foreach (ProgressManager invoker in incrementProgressInvokers)
+        {
+            invoker.AddIncrementProgressListener(listener);
+        }
+    }
+
+    #endregion
+
 }
