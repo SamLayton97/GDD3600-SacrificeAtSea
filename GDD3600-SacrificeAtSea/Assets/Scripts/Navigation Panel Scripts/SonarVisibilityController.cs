@@ -48,24 +48,32 @@ public class SonarVisibilityController : MonoBehaviour
         EventManager.AddUpdateFunctionalityListeners(UpdateSonarFunctionality);
 
         // initialize starting max/min alpha and calculate alpha change per frame
-        //maxAlpha = maxFunctioningOpacity;
-        //minAlpha = minFunctioningOpacity;
+        maxAlpha = maxFunctioningOpacity;
+        minAlpha = minFunctioningOpacity;
         alphaChangePerFrame = pulseRate * (maxAlpha - minAlpha);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // calculate current visibility of obstacles
+        // calculate new alpha of obstacles on screen
         currAlpha += pulseDirection * Time.deltaTime * alphaChangePerFrame;
 
-        // if current visibility exceeds max/min bounds, reverse pulse direction
-        if (currAlpha >= maxAlpha || currAlpha <= minAlpha)
+        // if current visibility exceeds max/min bounds, clamp alpha and reverse pulse direction
+        if (currAlpha > maxAlpha)
+        {
             pulseDirection *= -1;
+            currAlpha = maxAlpha;
+        }
+        else if (currAlpha < minAlpha)
+        {
+            pulseDirection *= -1;
+            currAlpha = minAlpha;
+        }
 
         // invoke update visibility event with current alpha
+        Debug.Log(currAlpha);
         updateVisibilityEvent.Invoke(currAlpha);
-        //Debug.Log(currAlpha);
     }
 
     /// <summary>
@@ -76,26 +84,26 @@ public class SonarVisibilityController : MonoBehaviour
     void UpdateSonarFunctionality(SubmarineParts updatedPart, bool isNowFunctioning)
     {
         // if updated part was the ship's sonar (otherwise, disregard event)
-        //if (updatedPart == SubmarineParts.sonar)
-        //{
-        //    // if sonar is now functioning
-        //    if (isNowFunctioning)
-        //    {
-        //        // set max/min alpha to their normal values
-        //        maxAlpha = maxFunctioningOpacity;
-        //        minAlpha = minFunctioningOpacity;
-        //    }
-        //    // otherwise (sonar has now malfunctioned)
-        //    else
-        //    {
-        //        // set max/min alpha to their reduced values
-        //        maxAlpha = maxMalfunctioningOpacity;
-        //        minAlpha = minMalfuctioningOpacity;
-        //    }
+        if (updatedPart == SubmarineParts.sonar)
+        {
+            // if sonar is now functioning
+            if (isNowFunctioning)
+            {
+                // set max/min alpha to their normal values
+                maxAlpha = maxFunctioningOpacity;
+                minAlpha = minFunctioningOpacity;
+            }
+            // otherwise (sonar has now malfunctioned)
+            else
+            {
+                // set max/min alpha to their reduced values
+                maxAlpha = maxMalfunctioningOpacity;
+                minAlpha = minMalfuctioningOpacity;
+            }
 
-        //    // update alpha change per frame
-        //    alphaChangePerFrame = pulseRate * (maxAlpha - minAlpha);
-        //}
+            // update alpha change per frame
+            alphaChangePerFrame = pulseRate * (maxAlpha - minAlpha);
+        }
     }
 
     /// <summary>

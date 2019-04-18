@@ -28,8 +28,6 @@ public class SonarVisibilityResponder : MonoBehaviour
     /// <param name="newAlpha"></param>
     void UpdateObstacleVisibility(float newAlpha)
     {
-        Debug.Log("updated");
-
         // set alpha value of this object's sprite to sonar controller's value
         Color tempColor = mySpriteRenderer.color;
         tempColor.a = newAlpha;
