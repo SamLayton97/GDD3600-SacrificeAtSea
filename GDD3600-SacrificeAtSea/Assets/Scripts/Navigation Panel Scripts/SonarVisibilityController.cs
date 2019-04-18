@@ -72,7 +72,6 @@ public class SonarVisibilityController : MonoBehaviour
         }
 
         // invoke update visibility event with current alpha
-        Debug.Log(currAlpha);
         updateVisibilityEvent.Invoke(currAlpha);
     }
 
