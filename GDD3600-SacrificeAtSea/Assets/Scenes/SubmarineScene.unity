@@ -628,6 +628,11 @@ PrefabInstance:
       propertyPath: repairRate
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5646829382093465101, guid: 2ea2393288806994e824a886ad425e65,
+        type: 3}
+      propertyPath: functionalityThreshold
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4144909785473166018, guid: 2ea2393288806994e824a886ad425e65,
         type: 3}
       propertyPath: m_AnchorMax.x

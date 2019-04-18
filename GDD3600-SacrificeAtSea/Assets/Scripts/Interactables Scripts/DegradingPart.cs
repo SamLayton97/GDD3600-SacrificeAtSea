@@ -39,6 +39,7 @@ public class DegradingPart : MonoBehaviour
     // audio-visual feedback variables
     [SerializeField] RepairTerminalParticles myParticleController;
     [SerializeField] AudioSource repairAudioSource;
+    [SerializeField] AudioSource repairCompleteAudioSource;
 
     #endregion
 
@@ -117,6 +118,9 @@ public class DegradingPart : MonoBehaviour
             // update functionality to be true
             isFunctioning = true;
             updateFunctionalityEvent.Invoke(myPart, true);
+
+            // TODO: give audio-visual feedback to reflect new status
+            repairCompleteAudioSource.Play();
         }
 
         // swap sprite according to reflect current state
