@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Environmental sign that indicates both direction lever moves
-/// submarine in and whether its corresponding nav capabilities
-/// are working.
+/// Environmental sign that indicates whether its corresponding 
+/// nav capabilities are working.
 /// </summary>
-public class LeverDirectionIndicator : MonoBehaviour
+public class NavSystemIndicator : MonoBehaviour
 {
     // functionality support
     [SerializeField] SubmarineParts myCorrespondingPart = SubmarineParts.ballastTanks;
