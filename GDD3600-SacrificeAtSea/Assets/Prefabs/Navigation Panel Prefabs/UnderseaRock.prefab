@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3323217846868612948}
   - component: {fileID: 3697261282151706634}
   - component: {fileID: 5144970719186358427}
+  - component: {fileID: 2266146242006359646}
   m_Layer: 12
   m_Name: UnderseaRock
   m_TagString: Untagged
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1074004595
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e94934ba9360b624391a2a9000260483, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -148,3 +149,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96, y: 0.96}
   m_EdgeRadius: 0
+--- !u!114 &2266146242006359646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323217846868612947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ad76a4372d6a04e9f9e380e4038fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
