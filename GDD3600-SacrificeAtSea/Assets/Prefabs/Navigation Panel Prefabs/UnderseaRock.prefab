@@ -161,3 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ad76a4372d6a04e9f9e380e4038fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxFunctioningOpacity: 0.95
+  minFunctioningOpacity: 0
+  maxMalfunctioningOpacity: 0.45
+  minMalfuctioningOpacity: 0.2
+  pulseRate: 1
