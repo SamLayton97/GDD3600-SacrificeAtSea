@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3323217846868612948}
   - component: {fileID: 3697261282151706634}
   - component: {fileID: 5144970719186358427}
+  - component: {fileID: 7467410849812875774}
   m_Layer: 12
   m_Name: UnderseaRock
   m_TagString: CavernObstacle
@@ -148,3 +149,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96, y: 0.96}
   m_EdgeRadius: 0
+--- !u!114 &7467410849812875774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323217846868612947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0cd4dc7b87d0d4b8f6ec29d1194b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

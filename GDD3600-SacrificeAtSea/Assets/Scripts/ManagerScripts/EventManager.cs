@@ -165,4 +165,35 @@ public static class EventManager
 
     #endregion
 
+    #region Update Sonar Visibility
+
+    // declare lists to hold invokers and listener to update visibility event
+    static List<SonarVisibilityController> updateVisibilityInvokers = new List<SonarVisibilityController>();
+    static List<UnityAction<float>> updateVisibilityListeners = new List<UnityAction<float>>();
+
+    // Adds given visibility controller as invoker of update visibility event
+    public static void AddUpdateVisibilityInvokers(SonarVisibilityController invoker)
+    {
+        // adds invoker to list and adds all listeners to this event
+        updateVisibilityInvokers.Add(invoker);
+        foreach (UnityAction<float> listener in updateVisibilityListeners)
+        {
+            invoker.AddUpdateVisibilityListener(listener);
+        }
+    }
+
+    // Adds given method as listener to update visibility event
+    public static void AddUpdateVisibilityListener(UnityAction<float> listener)
+    {
+        Debug.Log("added listener");
+        // adds listener to list and to all invokers of event
+        updateVisibilityListeners.Add(listener);
+        foreach (SonarVisibilityController invoker in updateVisibilityInvokers)
+        {
+            invoker.AddUpdateVisibilityListener(listener);
+        }
+    }
+
+    #endregion
+
 }

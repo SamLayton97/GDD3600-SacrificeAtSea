@@ -7,7 +7,7 @@ using UnityEngine.Events;
 /// Controls opacity of all obstacles on the navigation panel,
 /// reducing their visibility if the sonar is not functioning.
 /// </summary>
-public class SonarPingResponse : MonoBehaviour
+public class SonarVisibilityController : MonoBehaviour
 {
     // define visibility variables
     [SerializeField] float maxFunctioningOpacity;
@@ -27,10 +27,24 @@ public class SonarPingResponse : MonoBehaviour
     GameObject[] navPanelObstacles;
     bool isSonarFunctioning = true;
 
+    // event support variables
+    UpdateVisibilityEvent updateVisibilityEvent;
+
+    /// <summary>
+    /// Returns current alpha value of obstacles on the
+    /// navigation panel
+    /// </summary>
+    public float CurrentAlpha
+    {
+        get { return currAlpha; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        // add self as listener to update functionality event
+        // add self as invoker/listener to respective events
+        updateVisibilityEvent = new UpdateVisibilityEvent();
+        EventManager.AddUpdateVisibilityInvokers(this);
         EventManager.AddUpdateFunctionalityListeners(UpdateSonarFunctionality);
 
         // initialize starting max/min alpha and calculate alpha change per frame
@@ -49,20 +63,9 @@ public class SonarPingResponse : MonoBehaviour
         if (currAlpha >= maxAlpha || currAlpha <= minAlpha)
             pulseDirection *= -1;
 
-        // retrieve all obstacles on the navigation panel
-        navPanelObstacles = GameObject.FindGameObjectsWithTag("CavernObstacle");
-
-        // for each obstacle
-        for (int i = 0; i < navPanelObstacles.Length; i++)
-        {
-            // appply current visibility to current obstacle
-            SpriteRenderer currSpriteRenderer = navPanelObstacles[i].GetComponent<SpriteRenderer>();
-            Color tempColor = currSpriteRenderer.color;
-            tempColor.a = currAlpha;
-            currSpriteRenderer.color = tempColor;
-        }
-
-        Debug.Log(currAlpha);
+        // invoke update visibility event with current alpha
+        updateVisibilityEvent.Invoke(currAlpha);
+        //Debug.Log(currAlpha);
     }
 
     /// <summary>
@@ -73,25 +76,34 @@ public class SonarPingResponse : MonoBehaviour
     void UpdateSonarFunctionality(SubmarineParts updatedPart, bool isNowFunctioning)
     {
         // if updated part was the ship's sonar (otherwise, disregard event)
-        if (updatedPart == SubmarineParts.sonar)
-        {
-            // if sonar is now functioning
-            if (isNowFunctioning)
-            {
-                // set max/min alpha to their normal values
-                maxAlpha = maxFunctioningOpacity;
-                minAlpha = minFunctioningOpacity;
-            }
-            // otherwise (sonar has now malfunctioned)
-            else
-            {
-                // set max/min alpha to their reduced values
-                maxAlpha = maxMalfunctioningOpacity;
-                minAlpha = minMalfuctioningOpacity;
-            }
+        //if (updatedPart == SubmarineParts.sonar)
+        //{
+        //    // if sonar is now functioning
+        //    if (isNowFunctioning)
+        //    {
+        //        // set max/min alpha to their normal values
+        //        maxAlpha = maxFunctioningOpacity;
+        //        minAlpha = minFunctioningOpacity;
+        //    }
+        //    // otherwise (sonar has now malfunctioned)
+        //    else
+        //    {
+        //        // set max/min alpha to their reduced values
+        //        maxAlpha = maxMalfunctioningOpacity;
+        //        minAlpha = minMalfuctioningOpacity;
+        //    }
 
-            // update alpha change per frame
-            alphaChangePerFrame = pulseRate * (maxAlpha - minAlpha);
-        }
+        //    // update alpha change per frame
+        //    alphaChangePerFrame = pulseRate * (maxAlpha - minAlpha);
+        //}
+    }
+
+    /// <summary>
+    /// Adds given method as listener to update visibility event
+    /// </summary>
+    /// <param name="newListener"></param>
+    public void AddUpdateVisibilityListener(UnityAction<float> newListener)
+    {
+        updateVisibilityEvent.AddListener(newListener);
     }
 }
