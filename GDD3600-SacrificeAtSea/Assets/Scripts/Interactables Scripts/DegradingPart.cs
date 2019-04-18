@@ -36,8 +36,9 @@ public class DegradingPart : MonoBehaviour
     // update part-functionality event support
     UpdateFunctionalityEvent updateFunctionalityEvent;
 
-    // particle system controlling variables
+    // audio-visual feedback variables
     [SerializeField] RepairTerminalParticles myParticleController;
+    [SerializeField] AudioSource repairAudioSource;
 
     #endregion
 
@@ -86,8 +87,10 @@ public class DegradingPart : MonoBehaviour
             // increment health
             currHealth = Mathf.Min(MaxHealth, currHealth + (Time.deltaTime * repairRate));
 
-            // toggle repair particle system on
+            // toggle repairing audio-visual feedback on
             myParticleController.ToggleInProgressParticles(true);
+            if (!repairAudioSource.isPlaying)
+                repairAudioSource.Play();
         }
         // otherwise
         else
@@ -95,8 +98,10 @@ public class DegradingPart : MonoBehaviour
             // decrement health
             currHealth = Mathf.Max(0, currHealth - (Time.deltaTime * degredationRate));
 
-            // turn repair particle system off
+            // toggle repairing audio-visual feedback off
             myParticleController.ToggleInProgressParticles(false);
+            if (repairAudioSource.isPlaying)
+                repairAudioSource.Stop();
         }
 
         // if part health sinks below threshold and is currently operating
