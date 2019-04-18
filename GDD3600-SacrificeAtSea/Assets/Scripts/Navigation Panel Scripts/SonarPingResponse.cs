@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Causes nav panel object to pulsate and appear difficult to see
-/// when submarine's sonar is malfunctioning.
+/// Controls opacity of all obstacles on the navigation panel,
+/// reducing their visibility if the sonar is not functioning.
 /// </summary>
 public class SonarPingResponse : MonoBehaviour
 {
@@ -16,22 +16,20 @@ public class SonarPingResponse : MonoBehaviour
     [SerializeField] float minMalfuctioningOpacity;
 
     // pulse control
-    [SerializeField] float pulseRate;
+    [SerializeField] float pulseRate = 1;
     int pulseDirection = -1;
     float maxAlpha = 1;
-    float minAlpha = 0;
+    float minAlpha = 0f;
+    float currAlpha = 1;
     float alphaChangePerFrame;
 
     // visibility support variables
-    SpriteRenderer mySpriteRenderer;
+    GameObject[] navPanelObstacles;
     bool isSonarFunctioning = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        // retrieve object's sprite renderer
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
-
         // add self as listener to update functionality event
         EventManager.AddUpdateFunctionalityListeners(UpdateSonarFunctionality);
 
@@ -44,18 +42,27 @@ public class SonarPingResponse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // increment/decrement object's sprite alpha by pulse rate
-        Color tempColor = mySpriteRenderer.color;
-        tempColor.a += pulseDirection * Time.deltaTime * alphaChangePerFrame;
+        // calculate current visibility of obstacles
+        currAlpha += pulseDirection * Time.deltaTime * alphaChangePerFrame;
 
-        // if alpha value exceeds max or min bounds, reverse its change direction
-        if (tempColor.a <= minAlpha || tempColor.a >= maxAlpha)
+        // if current visibility exceeds max/min bounds, reverse pulse direction
+        if (currAlpha >= maxAlpha || currAlpha <= minAlpha)
             pulseDirection *= -1;
 
-        Debug.Log(tempColor.a);
+        // retrieve all obstacles on the navigation panel
+        navPanelObstacles = GameObject.FindGameObjectsWithTag("CavernObstacle");
 
-        // apply new alpha value to sprite
-        mySpriteRenderer.color = tempColor;
+        // for each obstacle
+        for (int i = 0; i < navPanelObstacles.Length; i++)
+        {
+            // appply current visibility to current obstacle
+            SpriteRenderer currSpriteRenderer = navPanelObstacles[i].GetComponent<SpriteRenderer>();
+            Color tempColor = currSpriteRenderer.color;
+            tempColor.a = currAlpha;
+            currSpriteRenderer.color = tempColor;
+        }
+
+        Debug.Log(currAlpha);
     }
 
     /// <summary>
@@ -65,26 +72,26 @@ public class SonarPingResponse : MonoBehaviour
     /// <param name="isNowFunctioning">whether updated part functions or not</param>
     void UpdateSonarFunctionality(SubmarineParts updatedPart, bool isNowFunctioning)
     {
-        //// if updated part was the ship's sonar (otherwise, disregard event)
-        //if (updatedPart == SubmarineParts.sonar)
-        //{
-        //    // if sonar is now functioning
-        //    if (isNowFunctioning)
-        //    {
-        //        // set max/min alpha to their normal values
-        //        maxAlpha = maxFunctioningOpacity;
-        //        minAlpha = minFunctioningOpacity;
-        //    }
-        //    // otherwise (sonar has now malfunctioned)
-        //    else
-        //    {
-        //        // set max/min alpha to their reduced values
-        //        maxAlpha = maxMalfunctioningOpacity;
-        //        minAlpha = minMalfuctioningOpacity;
-        //    }
+        // if updated part was the ship's sonar (otherwise, disregard event)
+        if (updatedPart == SubmarineParts.sonar)
+        {
+            // if sonar is now functioning
+            if (isNowFunctioning)
+            {
+                // set max/min alpha to their normal values
+                maxAlpha = maxFunctioningOpacity;
+                minAlpha = minFunctioningOpacity;
+            }
+            // otherwise (sonar has now malfunctioned)
+            else
+            {
+                // set max/min alpha to their reduced values
+                maxAlpha = maxMalfunctioningOpacity;
+                minAlpha = minMalfuctioningOpacity;
+            }
 
-        //    // update alpha change per frame
-        //    alphaChangePerFrame = pulseRate * (maxAlpha - minAlpha);
-        //}
+            // update alpha change per frame
+            alphaChangePerFrame = pulseRate * (maxAlpha - minAlpha);
+        }
     }
 }
