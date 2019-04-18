@@ -16,6 +16,12 @@ public class SubmarineMovement : MonoBehaviour
     // force scaling variables
     [SerializeField] Vector2 forceScale;
 
+    // "sway" variables
+    Vector2 swayForceVector = new Vector2();
+    [SerializeField] PartsManager partsManager;
+    [SerializeField] Vector2 swayForceScale;
+    [SerializeField] float maxSwayRotation = 5f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +38,20 @@ public class SubmarineMovement : MonoBehaviour
         // calculate force vector to move submarine towards
         forceVector = inputVector;
         forceVector.Scale(forceScale);
+
+        // if submarine's stabalizer has malfunctioned, calculate sway
+        if (!partsManager.GetPartFunctionality(SubmarineParts.stabalizer))
+        {
+            // calculate current direction of sub's velocity
+            float currRotation = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x);
+
+            // calculate "sway" velocity with high probablitiy of being similar in direction to current
+            float newRotation = currRotation + (Random.Range(-maxSwayRotation, maxSwayRotation) * Mathf.Deg2Rad);
+            swayForceVector.x = Mathf.Cos(newRotation);
+            swayForceVector.y = Mathf.Sin(newRotation);
+            swayForceVector.Normalize();
+            swayForceVector.Scale(swayForceScale);
+        }
     }
 
     /// <summary>
@@ -42,6 +62,9 @@ public class SubmarineMovement : MonoBehaviour
     {
         // add force in direction of input vector
         rigidbody2D.AddForce(forceVector);
+
+        // apply "sway" force
+        rigidbody2D.AddForce(swayForceVector);
     }
 
     /// <summary>

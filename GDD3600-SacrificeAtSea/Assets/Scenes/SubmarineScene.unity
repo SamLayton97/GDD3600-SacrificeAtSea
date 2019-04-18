@@ -1031,6 +1031,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761345466997622016, guid: df89ac69596c1f54ca3f56717140ad73,
+        type: 3}
+      propertyPath: partsManager
+      value: 
+      objectReference: {fileID: 207542381}
+    - target: {fileID: 761345466997622016, guid: df89ac69596c1f54ca3f56717140ad73,
+        type: 3}
+      propertyPath: swayForceScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 761345466997622016, guid: df89ac69596c1f54ca3f56717140ad73,
+        type: 3}
+      propertyPath: swayForceScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 761345466997622016, guid: df89ac69596c1f54ca3f56717140ad73,
+        type: 3}
+      propertyPath: maxSwayRotation
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df89ac69596c1f54ca3f56717140ad73, type: 3}
 --- !u!1001 &1355960931126831384
