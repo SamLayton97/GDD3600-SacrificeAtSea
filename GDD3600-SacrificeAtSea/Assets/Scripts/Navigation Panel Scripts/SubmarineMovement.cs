@@ -39,7 +39,7 @@ public class SubmarineMovement : MonoBehaviour
         forceVector = inputVector;
         forceVector.Scale(forceScale);
 
-        // if submarine's stabalizer has malfunctioned, calculate sway
+        // if submarine's stabilizer has malfunctioned, calculate sway
         if (!partsManager.GetPartFunctionality(SubmarineParts.stabalizer))
         {
             // calculate current direction of sub's velocity
@@ -52,6 +52,11 @@ public class SubmarineMovement : MonoBehaviour
             swayForceVector.Normalize();
             swayForceVector.Scale(swayForceScale);
         }
+        // otherwise (stabilizer is working)
+        else
+            // set sway force to zero vector
+            swayForceVector = Vector2.zero;
+        
     }
 
     /// <summary>
