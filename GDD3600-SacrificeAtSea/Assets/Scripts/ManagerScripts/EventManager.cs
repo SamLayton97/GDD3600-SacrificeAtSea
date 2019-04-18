@@ -185,7 +185,6 @@ public static class EventManager
     // Adds given method as listener to update visibility event
     public static void AddUpdateVisibilityListener(UnityAction<float> listener)
     {
-        Debug.Log("added listener");
         // adds listener to list and to all invokers of event
         updateVisibilityListeners.Add(listener);
         foreach (SonarVisibilityController invoker in updateVisibilityInvokers)

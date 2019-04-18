@@ -36,6 +36,9 @@ public class DegradingPart : MonoBehaviour
     // update part-functionality event support
     UpdateFunctionalityEvent updateFunctionalityEvent;
 
+    // particle system controlling variables
+    [SerializeField] RepairTerminalParticles myParticleController;
+
     #endregion
 
     #region Properties
@@ -59,8 +62,9 @@ public class DegradingPart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // retrieve reference to part terminal's sprite renderer
+        // retrieve references to relevant components
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        myParticleController = GetComponent<RepairTerminalParticles>();
 
         // calculate time to degrade
         degredationTimer = 1 / degredationRate;
@@ -76,15 +80,23 @@ public class DegradingPart : MonoBehaviour
         // retrieve interact input
         float interactInput = Input.GetAxisRaw("Interact");
 
-        // if player is colliding with part and interacting with it, increment health
+        // if player is colliding with part and interacting with it
         if (playerIsColliding && interactInput != 0)
         {
-            currHealth = Mathf.Min(MaxHealth, currHealth + (Time.deltaTime * repairRate)); 
+            // increment health
+            currHealth = Mathf.Min(MaxHealth, currHealth + (Time.deltaTime * repairRate));
+
+            // toggle repair particle system on
+            myParticleController.ToggleInProgressParticles(true);
         }
-        // otherwise, decrement health
+        // otherwise
         else
         {
+            // decrement health
             currHealth = Mathf.Max(0, currHealth - (Time.deltaTime * degredationRate));
+
+            // turn repair particle system off
+            myParticleController.ToggleInProgressParticles(false);
         }
 
         // if part health sinks below threshold and is currently operating

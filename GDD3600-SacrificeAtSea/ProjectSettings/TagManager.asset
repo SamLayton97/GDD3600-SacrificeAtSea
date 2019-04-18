@@ -45,9 +45,6 @@ TagManager:
   - name: SubmarineInteriorBack
     uniqueID: 3619849497
     locked: 0
-  - name: SubmarineInteriorWalls
-    uniqueID: 3729993697
-    locked: 0
   - name: InteriorEnvironmentalObjects
     uniqueID: 3169798939
     locked: 0
@@ -60,8 +57,14 @@ TagManager:
   - name: NavigationPanelBorder
     uniqueID: 1739693283
     locked: 0
+  - name: InteriorParticles
+    uniqueID: 3690681425
+    locked: 0
   - name: Interactables
     uniqueID: 314606731
+    locked: 0
+  - name: SubmarineInteriorWalls
+    uniqueID: 3729993697
     locked: 0
   - name: Player
     uniqueID: 471631313
