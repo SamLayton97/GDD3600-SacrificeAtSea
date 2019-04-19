@@ -28,7 +28,7 @@ public class ProgressManager : MonoBehaviour
 
     // difficulty scaling variables
     [SerializeField] int routineFluidityThreshold = 50;         // threshold player must reach in 'routine fluidity' to be rewarded with less dense clusters of rocks
-    [SerializeField] float passThresholdSpawnScale = 0.9f;      // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
+    [SerializeField] float passThresholdSpawnScale = 0.9f;     // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
     [SerializeField] float failThresholdSpawnScale = 0.75f;     // amount to scale obstacle spawn times should player miss threshold (denser obstacles)
 
     // intermediary eval feedback variables
@@ -89,7 +89,7 @@ public class ProgressManager : MonoBehaviour
             if (currentProgressPercent >= 100)
             {
                 // go to level complete scene
-                //SceneManager.LoadScene("LevelCompleteScene");
+                SceneManager.LoadScene("LevelCompleteScene");
             }
         }
 
