@@ -27,6 +27,7 @@ public class ProgressManager : MonoBehaviour
 
     // event support
     IncrementProgressEvent incrementProgressEvent;
+    SpawnTreasureEvent spawnTreasureEvent;
 
     #endregion
 
@@ -38,9 +39,13 @@ public class ProgressManager : MonoBehaviour
         // calculate time to between progress percent increments
         timeToIncrementPercentage = levelLength / 100;
 
-        // adds self as invoker/listener to respective events
+        // adds self as invoker of respective events
         incrementProgressEvent = new IncrementProgressEvent();
         EventManager.AddIncrementProgressInvoker(this);
+        spawnTreasureEvent = new SpawnTreasureEvent();
+        EventManager.AddSpawnTreasureInvoker(this);
+
+        // adds self as listener to respective event(s)
         EventManager.AddSubmarineCollisionListener(HandleSubmarineCollision);
 
         // find evaluation points in level
@@ -114,8 +119,15 @@ public class ProgressManager : MonoBehaviour
     /// </summary>
     void RunIntermediaryEvaluation()
     {
-        // DEBUGGING: print that evaluation is running
-        Debug.Log("run evaluation");
+        // if player made it through portion of level unscathed
+        if (isUnscathed)
+        {
+            // invoke "Spawn Treasure" event
+            spawnTreasureEvent.Invoke();
+        }
+
+        // reset performance tracking variables
+        isUnscathed = true;
     }
 
     /// <summary>
@@ -132,10 +144,22 @@ public class ProgressManager : MonoBehaviour
 
     #region Public Methods
 
-    // Adds given listener to object's increment progress event
+    /// <summary>
+    /// Adds given listener to object's increment progress event
+    /// </summary>
+    /// <param name="newListener"></param>
     public void AddIncrementProgressListener(UnityAction newListener)
     {
         incrementProgressEvent.AddListener(newListener);
+    }
+
+    /// <summary>
+    /// Adds given listener to object's spawn treasure event
+    /// </summary>
+    /// <param name="newListener"></param>
+    public void AddSpawnTreasureListener(UnityAction newListener)
+    {
+        spawnTreasureEvent.AddListener(newListener);
     }
 
     #endregion

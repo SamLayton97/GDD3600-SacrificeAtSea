@@ -195,4 +195,34 @@ public static class EventManager
 
     #endregion
 
+    #region Spawn Treasure
+
+    // declare lists to hold invokers and listeners to spawn treasure event
+    static List<ProgressManager> spawnTreasureInvokers = new List<ProgressManager>();
+    static List<UnityAction> spawnTreasureListeners = new List<UnityAction>();
+
+    // Adds given progress manager as invoker of spawn treasure event
+    public static void AddSpawnTreasureInvoker(ProgressManager invoker)
+    {
+        // adds invoker to list and adds all listeners to this event
+        spawnTreasureInvokers.Add(invoker);
+        foreach (UnityAction listener in spawnTreasureListeners)
+        {
+            invoker.AddSpawnTreasureListener(listener);
+        }
+    }
+
+    // Adds given method as listner to spawn treasure event
+    public static void AddSpawnTreasureListener(UnityAction listener)
+    {
+        // adds listener to list and to all invokers of event
+        spawnTreasureListeners.Add(listener);
+        foreach (ProgressManager invoker in spawnTreasureInvokers)
+        {
+            invoker.AddSpawnTreasureListener(listener);
+        }
+    }
+
+    #endregion
+
 }
