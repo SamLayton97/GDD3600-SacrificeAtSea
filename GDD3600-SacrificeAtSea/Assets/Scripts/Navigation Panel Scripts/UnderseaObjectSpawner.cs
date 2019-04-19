@@ -40,8 +40,9 @@ public class UnderseaObjectSpawner : MonoBehaviour
         // generate random delay for first rock spawn
         randSpawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
 
-        // add self as listener to "Spawn Treasure" event
+        // add self as listener to respective events
         EventManager.AddSpawnTreasureListener(SpawnTreasure);
+        EventManager.AddScaleObstacleRateListener(ScaleObstacleSpawnRate);
     }
 
     // Update is called once per frame
@@ -113,6 +114,17 @@ public class UnderseaObjectSpawner : MonoBehaviour
     {
         // spawn treasure onto nav panel
         SpawnObjectAtPanelSide(underseaTreasurePrefab);
+    }
+
+    /// <summary>
+    /// Listens for "Scale Obstacle Rate" event and scales time between
+    /// obstacle spawns.
+    /// </summary>
+    /// <param name="spawnRateScale"></param>
+    void ScaleObstacleSpawnRate(float spawnRateScale)
+    {
+        // DEBUGGING: print that this method has been called
+        Debug.Log("Scale spawn rate: " + spawnRateScale);
     }
 
     #endregion

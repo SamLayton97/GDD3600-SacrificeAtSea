@@ -357,6 +357,9 @@ MonoBehaviour:
   - {fileID: 634112917}
   - {fileID: 144335932}
   - {fileID: 725548678}
+  routineFluidityThreshold: 50
+  passThresholdSpawnScale: 0.85
+  failThresholdSpawnScale: 0.75
 --- !u!82 &207542384
 AudioSource:
   m_ObjectHideFlags: 0

@@ -284,4 +284,34 @@ public static class EventManager
     }
 
     #endregion
+
+    #region Scale Obstacle Spawn Rate
+
+    // declare lists to hold invokers and listeners to scale obstacle rate event
+    static List<ProgressManager> scaleObstacleRateInvokers = new List<ProgressManager>();
+    static List<UnityAction<float>> scaleObstacleRateListeners = new List<UnityAction<float>>();
+
+    // Adds given progress manager as invoker of scale obstacle rate event
+    public static void AddScaleObstacleRateInvoker(ProgressManager invoker)
+    {
+        // adds invoker to list and adds all listeners to this event
+        scaleObstacleRateInvokers.Add(invoker);
+        foreach (UnityAction<float> listener in scaleObstacleRateListeners)
+        {
+            invoker.AddScaleObstaclesRateListener(listener);
+        }
+    }
+
+    // Adds given method as listener to scale obstacle rate event
+    public static void AddScaleObstacleRateListener(UnityAction<float> listener)
+    {
+        // adds listener to list and to all invokers of event
+        scaleObstacleRateListeners.Add(listener);
+        foreach (ProgressManager invoker in scaleObstacleRateInvokers)
+        {
+            invoker.AddScaleObstaclesRateListener(listener);
+        }
+    }
+
+    #endregion
 }

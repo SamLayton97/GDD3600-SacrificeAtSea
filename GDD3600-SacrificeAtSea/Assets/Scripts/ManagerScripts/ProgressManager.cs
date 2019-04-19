@@ -27,13 +27,14 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] DegradingPart[] degradingParts;
 
     // difficulty scaling variables
-    [SerializeField] int difficultyIncreaseThreshold = 50;  // threshold player must reach in 'routine fluidity' to be rewarded with less dense clusters of rocks
-    [SerializeField] float passThresholdSpawnScale = 0.85f;  // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
-    [SerializeField] float failThresholdSpawnScale = 0.75f; // amount to scale obstacle spawn times should player miss threshold (denser obstacles)
+    [SerializeField] int routineFluidityThreshold = 50;         // threshold player must reach in 'routine fluidity' to be rewarded with less dense clusters of rocks
+    [SerializeField] float passThresholdSpawnScale = 0.9f;     // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
+    [SerializeField] float failThresholdSpawnScale = 0.75f;     // amount to scale obstacle spawn times should player miss threshold (denser obstacles)
 
     // event support
     IncrementProgressEvent incrementProgressEvent;
     SpawnTreasureEvent spawnTreasureEvent;
+    ScaleObstacleRateEvent scaleObstacleRateEvent;
 
     #endregion
 
@@ -47,9 +48,11 @@ public class ProgressManager : MonoBehaviour
 
         // adds self as invoker of respective events
         incrementProgressEvent = new IncrementProgressEvent();
-        EventManager.AddIncrementProgressInvoker(this);
         spawnTreasureEvent = new SpawnTreasureEvent();
+        scaleObstacleRateEvent = new ScaleObstacleRateEvent();
+        EventManager.AddIncrementProgressInvoker(this);
         EventManager.AddSpawnTreasureInvoker(this);
+        EventManager.AddScaleObstacleRateInvoker(this);
 
         // adds self as listener to respective event(s)
         EventManager.AddSubmarineCollisionListener(HandleSubmarineCollision);
@@ -159,18 +162,21 @@ public class ProgressManager : MonoBehaviour
         Debug.Log(averageDegradingPartHealth);
         Debug.Log(currRoutineFluidity);
 
+        // if player's routine fluidity grade meets threshold
+        if (currRoutineFluidity >= routineFluidityThreshold)
+        {
+            // scale obstacle spawn rate gradually
+            scaleObstacleRateEvent.Invoke(passThresholdSpawnScale);
+        }
+        // otherwise (failed to meet threshold)
+        else
+        {
+            // scale obstacle spawn rate sharply
+            scaleObstacleRateEvent.Invoke(failThresholdSpawnScale);
+        }
+
         // reset performance tracking variables
         isUnscathed = true;
-    }
-
-    /// <summary>
-    /// Listens for submarine collision event, setting unscathed flag to
-    /// false if triggered.
-    /// </summary>
-    void HandleSubmarineCollision()
-    {
-        // set 'unscathed' flag to false for this section of level
-        isUnscathed = false;
     }
 
     /// <summary>
@@ -190,6 +196,16 @@ public class ProgressManager : MonoBehaviour
 
         // otherwise (all parts have health of 0), return 0
         return 0;
+    }
+
+    /// <summary>
+    /// Listens for submarine collision event, setting unscathed flag to
+    /// false if triggered.
+    /// </summary>
+    void HandleSubmarineCollision()
+    {
+        // set 'unscathed' flag to false for this section of level
+        isUnscathed = false;
     }
 
     #endregion
@@ -212,6 +228,15 @@ public class ProgressManager : MonoBehaviour
     public void AddSpawnTreasureListener(UnityAction newListener)
     {
         spawnTreasureEvent.AddListener(newListener);
+    }
+
+    /// <summary>
+    /// Adds given listener to object's scale obstacle rate event
+    /// </summary>
+    /// <param name="newListener"></param>
+    public void AddScaleObstaclesRateListener (UnityAction<float> newListener)
+    {
+        scaleObstacleRateEvent.AddListener(newListener);
     }
 
     #endregion
