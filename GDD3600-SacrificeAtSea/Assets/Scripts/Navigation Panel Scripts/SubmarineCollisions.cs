@@ -20,19 +20,28 @@ public class SubmarineCollisions : MonoBehaviour
         submarineCollisionEvent = new SubmarineCollisionEvent();
         EventManager.AddSubmarineCollisionInvoker(this);
 
-        // TODO: add self as invoker of Collect Treasure event
+        // add self as invoker of Collect Treasure event
         collectTreasureEvent = new CollectTreasureEvent();
-
+        EventManager.AddCollectTreasureInvoker(this);
     }
 
     // Called first frame object enters collision with another
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // retrieve tag of other object in collision
+        string collisionTag = collision.gameObject.tag;
+
         // if collision object was tagged as an obstacle
-        if (collision.gameObject.CompareTag("CavernObstacle"))
+        if (collisionTag == "CavernObstacle")
         {
             // invoke submarine collision event
             submarineCollisionEvent.Invoke();
+        }
+        // if collision object was tagged as treasure
+        else if (collisionTag == "CavernTreasure")
+        {
+            // invoke collect treasure event
+            collectTreasureEvent.Invoke();
         }
     }
 
