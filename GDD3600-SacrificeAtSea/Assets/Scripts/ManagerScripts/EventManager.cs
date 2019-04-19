@@ -224,4 +224,34 @@ public static class EventManager
     }
 
     #endregion
+
+    #region Collect Treasure
+
+    // declare lists to hold invokers and listeners to collect treasure event
+    static List<SubmarineCollisions> collectTreasureInvokers = new List<SubmarineCollisions>();
+    static List<UnityAction> collectTreasureListeners = new List<UnityAction>();
+
+    // Adds given submarine collisions script as invoker of collect treasure event
+    public static void AddCollectTreasureInvoker(SubmarineCollisions invoker)
+    {
+        // adds invoker to list and adds all listeners to this event
+        collectTreasureInvokers.Add(invoker);
+        foreach (UnityAction listener in collectTreasureListeners)
+        {
+            invoker.AddCollectTreasureListener(listener);
+        }
+    }
+
+    // Adds given method as listener to collect treasure event
+    public static void AddCollectTreasureListener(UnityAction listener)
+    {
+        // adds listener to list and to all invokers of event
+        collectTreasureListeners.Add(listener);
+        foreach (SubmarineCollisions invoker in collectTreasureInvokers)
+        {
+            invoker.AddCollectTreasureListener(listener);
+        }
+    }
+
+    #endregion
 }
