@@ -25,6 +25,5 @@ public class TreasureCollectionManager : MonoBehaviour
     {
         // add gold value
         currGold += goldValue;
-        Debug.Log(currGold);
     }
 }
