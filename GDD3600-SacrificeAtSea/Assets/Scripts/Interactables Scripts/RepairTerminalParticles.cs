@@ -44,7 +44,15 @@ public class RepairTerminalParticles : MonoBehaviour
             inProgressParticleSystem.Clear();
             inProgressParticleSystem.Pause();
         }
+    }
 
+    /// <summary>
+    /// Facilitates emission of 'repair complete' effects
+    /// </summary>
+    public void SpawnRepairCompleteParticles()
+    {
+        // create instance of repair complete effect at object's position
+        Instantiate(repairCompleteEffect, transform);
     }
 
 }

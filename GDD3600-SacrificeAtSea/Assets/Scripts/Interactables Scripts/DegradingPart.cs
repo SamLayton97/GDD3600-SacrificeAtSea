@@ -119,7 +119,8 @@ public class DegradingPart : MonoBehaviour
             isFunctioning = true;
             updateFunctionalityEvent.Invoke(myPart, true);
 
-            // TODO: give audio-visual feedback to reflect new status
+            // give audio-visual feedback to reflect new status
+            myParticleController.SpawnRepairCompleteParticles();
             repairCompleteAudioSource.Play();
         }
 
