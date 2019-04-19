@@ -26,6 +26,9 @@ public class SubmarineHealthManager : MonoBehaviour
     [SerializeField] float shakeFadeInTime = .1f;
     [SerializeField] float shakeFadeOutTime = 1f;
 
+    // sound effect support variables
+    [SerializeField] AudioSource subCollisionsAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,9 @@ public class SubmarineHealthManager : MonoBehaviour
 
         // shake screen
         CameraShaker.Instance.ShakeOnce(shakeMagnitude, shakeRoughness, shakeFadeInTime, shakeFadeOutTime);
+
+        // play submarine collision sound effect
+        subCollisionsAudioSource.Play();
 
         // if health drops below 0, Game Over
         if (currHealth <= 0)
