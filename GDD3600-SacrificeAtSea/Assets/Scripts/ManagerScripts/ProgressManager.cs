@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class ProgressManager : MonoBehaviour
 {
+    #region Fields
+
     // level time fields
     [SerializeField] float levelLength = 60;    // time it takes to complete level in seconds
 
@@ -24,6 +27,10 @@ public class ProgressManager : MonoBehaviour
 
     // event support
     IncrementProgressEvent incrementProgressEvent;
+
+    #endregion
+
+    #region Unity Methods
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +60,13 @@ public class ProgressManager : MonoBehaviour
             currentProgressPercent = Mathf.Min(100, currentProgressPercent + 1);
             incrementProgressEvent.Invoke();
 
+            // if current progress corresponds to one of intermediary evaluation points
+            if (Array.Exists(evaluationPoints, element => element == currentProgressPercent))
+            {
+                // run intermediary evaluation
+                RunIntermediaryEvaluation();
+            }
+
             // if player reaches 100% level progress, they win!
             if (currentProgressPercent >= 100)
             {
@@ -64,6 +78,10 @@ public class ProgressManager : MonoBehaviour
         // increment counter
         percentIncrementCounter += Time.deltaTime;
     }
+
+    #endregion
+
+    #region Private Methods
 
     /// <summary>
     /// Finds progress percentages to run intermediary evaluation
@@ -91,6 +109,16 @@ public class ProgressManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Runs intermediary assesment of player's performance, spawning rewards
+    /// and adjusting in-game variables as appropriate.
+    /// </summary>
+    void RunIntermediaryEvaluation()
+    {
+        // DEBUGGING: print that evaluation is running
+        Debug.Log("run evaluation");
+    }
+
+    /// <summary>
     /// Listens for submarine collision event, setting unscathed flag to
     /// false if triggered.
     /// </summary>
@@ -100,9 +128,15 @@ public class ProgressManager : MonoBehaviour
         isUnscathed = false;
     }
 
+    #endregion
+
+    #region Public Methods
+
     // Adds given listener to object's increment progress event
     public void AddIncrementProgressListener(UnityAction newListener)
     {
         incrementProgressEvent.AddListener(newListener);
     }
+
+    #endregion
 }
