@@ -20,12 +20,18 @@ public class ProgressUI : MonoBehaviour
     const string GoalProgressTextPrefix = "PROGRESS: ";
     int currGoalProgress = 0;
 
+    // gold/treasure support
+    [SerializeField] Text goldText;
+    const string GoldTextPrefix = "GOLD: ";
+    int currGold = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         // initialize UI text
         hullIntegrityText.text = HullIntegrityTextPrefix + startingHullIntegrity;
         goalProgressText.text = GoalProgressTextPrefix + currGoalProgress;
+        goldText.text = GoldTextPrefix + currGold;
 
         // add self as listener to respective events
         EventManager.AddHullIntegrityListener(UpdateHullIntegrity);
@@ -45,5 +51,12 @@ public class ProgressUI : MonoBehaviour
         // update level progress text
         currGoalProgress++;
         goalProgressText.text = GoalProgressTextPrefix + Mathf.Min(100, currGoalProgress);
+    }
+
+    // Updates UI components related to gold collected
+    void UpdateGold(int totalGoldCollected)
+    {
+        // update gold-collected text
+        goldText.text = GoldTextPrefix + totalGoldCollected;
     }
 }

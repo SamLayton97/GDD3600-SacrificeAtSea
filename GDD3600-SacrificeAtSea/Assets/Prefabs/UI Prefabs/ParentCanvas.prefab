@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hullIntegrityText: {fileID: 326520128}
   goalProgressText: {fileID: 1914241935}
+  goldText: {fileID: 3791090821060440310}
 --- !u!1 &8593918988082358847
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +411,7 @@ GameObject:
   - component: {fileID: 6980642813725869142}
   - component: {fileID: 3791090821060440310}
   m_Layer: 5
-  m_Name: TempTreasure
+  m_Name: TempGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
