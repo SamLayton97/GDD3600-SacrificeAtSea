@@ -15,6 +15,9 @@ public class TreasureCollectionManager : MonoBehaviour
     // event support variables
     AddGoldCollectedEvent addGoldCollectedEvent;
 
+    // audio feedback support variables
+    [SerializeField] AudioSource treasureCollectAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,9 @@ public class TreasureCollectionManager : MonoBehaviour
     {
         // add gold value
         currGold += goldValue;
+
+        // play 'treasure collected' sound effect
+        treasureCollectAudioSource.Play();
 
         // update gold-collected UI
         addGoldCollectedEvent.Invoke(currGold);
