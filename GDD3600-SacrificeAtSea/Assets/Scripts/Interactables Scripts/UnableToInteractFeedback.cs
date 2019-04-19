@@ -11,17 +11,22 @@ public class UnableToInteractFeedback : MonoBehaviour
     [SerializeField] AudioSource errorAudioSource;
 
     // particle feedback
-    [SerializeField] GameObject electricBurstParticles;
+    [SerializeField] GameObject malfunctioningControlsEffect;
 
     /// <summary>
     /// Plays audio-visual feedback for when player interacts with un-interactable object
     /// </summary>
     public void PlayInteractErrorFeedback()
     {
-        // if not already playing, play error sound effect
+        // if sound effect is not already playing (prevents spamming)
         if (!errorAudioSource.isPlaying)
+        {
+            // play error sound
             errorAudioSource.Play();
 
+            // create particle effect at object's location
+            Instantiate(malfunctioningControlsEffect, transform);
+        }
 
     }
 }

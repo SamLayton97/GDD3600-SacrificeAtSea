@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorAudioSource: {fileID: 1371234141226481482}
+  malfunctioningControlsEffect: {fileID: 1000011396044746, guid: a3790d19eb5c9bc4882ae6332db194df,
+    type: 3}
 --- !u!82 &1371234141226481482
 AudioSource:
   m_ObjectHideFlags: 0
