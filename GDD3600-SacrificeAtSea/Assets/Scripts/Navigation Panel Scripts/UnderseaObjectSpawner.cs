@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Spawns rocks at random points just outside navigation panel
 /// </summary>
-public class UnderseaRockSpawner : MonoBehaviour
+public class UnderseaObjectSpawner : MonoBehaviour
 {
     // spawn support
     [SerializeField] GameObject underseaRockPrefab;

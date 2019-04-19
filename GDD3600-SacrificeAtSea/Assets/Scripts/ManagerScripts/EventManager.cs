@@ -224,5 +224,4 @@ public static class EventManager
     }
 
     #endregion
-
 }
