@@ -158,10 +158,6 @@ public class ProgressManager : MonoBehaviour
         averageDegradingPartHealth = totalDegradingPartsHealth / (float)degradingParts.Length;
         float currRoutineFluidity = AssessRoutineFluidity(averageDegradingPartHealth, maxDegradingPartHealth);
 
-        // DEBUGGING: log average health and current routine fluidity
-        Debug.Log(averageDegradingPartHealth);
-        Debug.Log(currRoutineFluidity);
-
         // if player's routine fluidity grade meets threshold
         if (currRoutineFluidity >= routineFluidityThreshold)
         {
