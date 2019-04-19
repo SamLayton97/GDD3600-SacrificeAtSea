@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class UnderseaObjectSpawner : MonoBehaviour
 {
+    #region Fields
+
     // object spawn support
     [SerializeField] GameObject underseaRockPrefab;
     [SerializeField] GameObject underseaTreasurePrefab;
@@ -22,6 +24,8 @@ public class UnderseaObjectSpawner : MonoBehaviour
 
     // targeting support
     [SerializeField] Transform target;
+
+    #endregion
 
     #region Unity Methods
 
