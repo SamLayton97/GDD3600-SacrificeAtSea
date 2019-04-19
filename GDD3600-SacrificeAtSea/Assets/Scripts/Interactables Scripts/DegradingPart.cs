@@ -40,6 +40,7 @@ public class DegradingPart : MonoBehaviour
     [SerializeField] RepairTerminalParticles myParticleController;
     [SerializeField] AudioSource repairAudioSource;
     [SerializeField] AudioSource repairCompleteAudioSource;
+    [SerializeField] AudioSource malfunctionAudioSource;
 
     #endregion
 
@@ -111,6 +112,9 @@ public class DegradingPart : MonoBehaviour
             // update functionality to be false
             isFunctioning = false;
             updateFunctionalityEvent.Invoke(myPart, false);
+
+            // give audio feedback to reflect new status
+            malfunctionAudioSource.Play();
         }
         // if part health rises above threshold and is currently not operating
         else if (currHealth >= functionalityThreshold && !isFunctioning)
