@@ -7,13 +7,14 @@ using UnityEngine;
 /// </summary>
 public class UnderseaObjectSpawner : MonoBehaviour
 {
-    // spawn support
+    // object spawn support
     [SerializeField] GameObject underseaRockPrefab;
+    [SerializeField] GameObject underseaTreasurePrefab;
     Vector2 panelSize;
     float halfPanelWidth = 0;
     float halfPanelHeight = 0;
 
-    // spawn delay support
+    // obstacle spawn delay support
     [SerializeField] float minSpawnDelay = 5f;
     [SerializeField] float maxSpawnDelay = 10f;
     float nextSpawnCounter = 0;
@@ -21,6 +22,8 @@ public class UnderseaObjectSpawner : MonoBehaviour
 
     // targeting support
     [SerializeField] Transform target;
+
+    #region Unity Methods
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,9 @@ public class UnderseaObjectSpawner : MonoBehaviour
 
         // generate random delay for first rock spawn
         randSpawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+
+        // add self as listener to "Spawn Treasure" event
+        EventManager.AddSpawnTreasureListener(SpawnTreasure);
     }
 
     // Update is called once per frame
@@ -44,38 +50,67 @@ public class UnderseaObjectSpawner : MonoBehaviour
             nextSpawnCounter = 0;
             randSpawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
 
-            // generate random spawn position
-            float randSpawnX = Random.Range(-halfPanelWidth, halfPanelWidth);
-            float randSpawnY = Random.Range(-halfPanelHeight, halfPanelHeight);
-
-            // clamp spawn position to one of panel sides
-            PanelSides randSide = (PanelSides)Random.Range((int)0, (int)4);
-            switch (randSide)
-            {
-                case PanelSides.Left:
-                    randSpawnX = -halfPanelWidth;
-                    break;
-                case PanelSides.Right:
-                    randSpawnX = halfPanelWidth;
-                    break;
-                case PanelSides.Bottom:
-                    randSpawnY = -halfPanelHeight;
-                    break;
-                case PanelSides.Top:
-                    randSpawnY = halfPanelHeight;
-                    break;
-                default:
-                    break;
-            }
-            Vector3 spawnPosition = new Vector3(randSpawnX, randSpawnY);
-
-            // spawn rock at clamped position and initialize its target
-            GameObject newRock = Instantiate(underseaRockPrefab, 
-                transform.position + spawnPosition, Quaternion.identity);
-            newRock.GetComponent<MovingNavPanelIcon>().Target = target;
+            // spawn a new undersea rock
+            SpawnObjectAtPanelSide(underseaRockPrefab);
         }
 
         // increment counter by time passed between frames
         nextSpawnCounter += Time.deltaTime;
     }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Spawns new object on random edge of the navigation panel.
+    /// Note: Spawned object must have MovingNavPanel component
+    /// to access its "Target" property.
+    /// </summary>
+    /// <param name="objectToSpawn">object to spawn onto nav panel</param>
+    void SpawnObjectAtPanelSide(GameObject objectToSpawn)
+    {
+        // generate random spawn position
+        float randSpawnX = Random.Range(-halfPanelWidth, halfPanelWidth);
+        float randSpawnY = Random.Range(-halfPanelHeight, halfPanelHeight);
+
+        // clamp spawn position to one of panel sides
+        PanelSides randSide = (PanelSides)Random.Range((int)0, (int)4);
+        switch (randSide)
+        {
+            case PanelSides.Left:
+                randSpawnX = -halfPanelWidth;
+                break;
+            case PanelSides.Right:
+                randSpawnX = halfPanelWidth;
+                break;
+            case PanelSides.Bottom:
+                randSpawnY = -halfPanelHeight;
+                break;
+            case PanelSides.Top:
+                randSpawnY = halfPanelHeight;
+                break;
+            default:
+                break;
+        }
+        Vector3 spawnPosition = new Vector3(randSpawnX, randSpawnY);
+
+        // spawn object at clamped position and initialize its target
+        GameObject objectInstance = Instantiate(objectToSpawn,
+            transform.position + spawnPosition, Quaternion.identity);
+        objectInstance.GetComponent<MovingNavPanelIcon>().Target = target;
+    }
+
+    /// <summary>
+    /// Listens for "Spawn Treasure" event and spawns new treasure
+    /// object onto the navigation panel.
+    /// </summary>
+    void SpawnTreasure()
+    {
+        // spawn treasure onto nav panel
+        SpawnObjectAtPanelSide(underseaTreasurePrefab);
+    }
+
+    #endregion
+
 }

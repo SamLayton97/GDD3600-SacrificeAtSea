@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5264858891619902371}
   - component: {fileID: 4444465068239527664}
   - component: {fileID: 7227712427515428859}
+  - component: {fileID: 9216036169156885803}
   m_Layer: 12
   m_Name: UnderseaTreasure
   m_TagString: CavernTreasure
@@ -111,3 +112,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.48
+--- !u!50 &9216036169156885803
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264858891619902370}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

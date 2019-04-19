@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLength: 90
-  numberOfEvaluationsPerLevel: 2
+  numberOfEvaluationsPerLevel: 9
 --- !u!82 &207542384
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1498,6 +1498,12 @@ PrefabInstance:
       propertyPath: maxSpawnDelay
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
+        type: 3}
+      propertyPath: underseaTreasurePrefab
+      value: 
+      objectReference: {fileID: 5264858891619902370, guid: 9b300e4de0550de4a9318f18b20a1e79,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6b9f068ff646846aee5a350a2ff67c, type: 3}
 --- !u!1001 &6483683504620199947
