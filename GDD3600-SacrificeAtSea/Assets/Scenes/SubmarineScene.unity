@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 207542381}
   - component: {fileID: 207542382}
   - component: {fileID: 207542383}
+  - component: {fileID: 207542385}
   - component: {fileID: 207542384}
   m_Layer: 0
   m_Name: GameManager
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLength: 90
-  numberOfEvaluationsPerLevel: 2
+  numberOfEvaluationsPerLevel: 9
 --- !u!82 &207542384
 AudioSource:
   m_ObjectHideFlags: 0
@@ -434,6 +435,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &207542385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207542379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728238d213a6079458c3dfd6fd4a37b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldValue: 100
 --- !u!1001 &627387765
 PrefabInstance:
   m_ObjectHideFlags: 0
