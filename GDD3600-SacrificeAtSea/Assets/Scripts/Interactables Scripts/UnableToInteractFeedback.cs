@@ -10,6 +10,9 @@ public class UnableToInteractFeedback : MonoBehaviour
     // audio feedback variables
     [SerializeField] AudioSource errorAudioSource;
 
+    // particle feedback
+    [SerializeField] GameObject electricBurstParticles;
+
     /// <summary>
     /// Plays audio-visual feedback for when player interacts with un-interactable object
     /// </summary>
@@ -18,5 +21,7 @@ public class UnableToInteractFeedback : MonoBehaviour
         // if not already playing, play error sound effect
         if (!errorAudioSource.isPlaying)
             errorAudioSource.Play();
+
+
     }
 }
