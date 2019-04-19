@@ -31,6 +31,10 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] float passThresholdSpawnScale = 0.9f;     // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
     [SerializeField] float failThresholdSpawnScale = 0.75f;     // amount to scale obstacle spawn times should player miss threshold (denser obstacles)
 
+    // intermediary eval feedback variables
+    [SerializeField] AudioSource passEvalAudioSource;
+    [SerializeField] AudioSource failEvalAudioSource;
+
     // event support
     IncrementProgressEvent incrementProgressEvent;
     SpawnTreasureEvent spawnTreasureEvent;
@@ -163,12 +167,18 @@ public class ProgressManager : MonoBehaviour
         {
             // scale obstacle spawn rate gradually
             scaleObstacleRateEvent.Invoke(passThresholdSpawnScale);
+
+            // play 'sparser obstacles' sound effect
+            passEvalAudioSource.Play();
         }
         // otherwise (failed to meet threshold)
         else
         {
             // scale obstacle spawn rate sharply
             scaleObstacleRateEvent.Invoke(failThresholdSpawnScale);
+
+            // play 'denser obstacles' sound effect
+            failEvalAudioSource.Play();
         }
 
         // reset performance tracking variables
