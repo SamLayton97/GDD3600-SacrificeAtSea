@@ -72,7 +72,7 @@ public class UnderseaRockSpawner : MonoBehaviour
             // spawn rock at clamped position and initialize its target
             GameObject newRock = Instantiate(underseaRockPrefab, 
                 transform.position + spawnPosition, Quaternion.identity);
-            newRock.GetComponent<UnderseaRock>().Target = target;
+            newRock.GetComponent<MovingNavPanelIcon>().Target = target;
         }
 
         // increment counter by time passed between frames
