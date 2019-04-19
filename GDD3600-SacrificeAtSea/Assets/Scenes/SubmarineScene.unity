@@ -1473,53 +1473,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906559f1339377148917aed5ef82c455, type: 3}
---- !u!224 &1804313718 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1355960930213399943, guid: d836bdb220f88d94cb73badca2429b06,
-    type: 3}
-  m_PrefabInstance: {fileID: 1355960931126831384}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1809914735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1201747363315050180, guid: df89ac69596c1f54ca3f56717140ad73,
     type: 3}
   m_PrefabInstance: {fileID: 1201747364961482938}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2075880079
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2075880080}
-  m_Layer: 5
-  m_Name: EndOfLevelPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2075880080
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075880079}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1804313718}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1201747364961482938
 PrefabInstance:
   m_ObjectHideFlags: 0
