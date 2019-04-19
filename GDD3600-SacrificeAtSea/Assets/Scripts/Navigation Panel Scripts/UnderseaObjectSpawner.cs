@@ -123,8 +123,9 @@ public class UnderseaObjectSpawner : MonoBehaviour
     /// <param name="spawnRateScale"></param>
     void ScaleObstacleSpawnRate(float spawnRateScale)
     {
-        // DEBUGGING: print that this method has been called
-        Debug.Log("Scale spawn rate: " + spawnRateScale);
+        // scale max and min spawn delay by given rate
+        minSpawnDelay *= spawnRateScale;
+        maxSpawnDelay *= spawnRateScale;
     }
 
     #endregion
