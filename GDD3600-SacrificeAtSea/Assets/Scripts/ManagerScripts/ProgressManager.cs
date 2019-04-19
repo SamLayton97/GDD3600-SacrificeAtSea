@@ -120,12 +120,37 @@ public class ProgressManager : MonoBehaviour
     /// </summary>
     void RunIntermediaryEvaluation()
     {
+        // initialize average and max component health variables
+        float totalDegradingPartsHealth = 0;
+        float averageDegradingPartHealth = 0;
+        float maxDegradingPartHealth = 0;
+
         // if player made it through portion of level unscathed
         if (isUnscathed)
         {
             // invoke "Spawn Treasure" event
             spawnTreasureEvent.Invoke();
         }
+
+        // find sum and highest health value of each degrading part
+        for (int i = 0; i < degradingParts.Length; i++)
+        {
+            // add health of current degrading part to total
+            float currentHealth = degradingParts[i].CurrentHealth;
+            totalDegradingPartsHealth += currentHealth;
+
+            // if part's health is greater than current max, update current max
+            if (currentHealth > maxDegradingPartHealth)
+            {
+                maxDegradingPartHealth = currentHealth;
+            }
+        }
+
+        // calculate average health and assess player's 'routine fluidity'
+        averageDegradingPartHealth = totalDegradingPartsHealth / (float)degradingParts.Length;
+        float currRoutineFluidity = AssessRoutineFluidity(averageDegradingPartHealth, maxDegradingPartHealth);
+        Debug.Log(averageDegradingPartHealth);
+        Debug.Log(currRoutineFluidity);
 
         // reset performance tracking variables
         isUnscathed = true;
@@ -139,6 +164,25 @@ public class ProgressManager : MonoBehaviour
     {
         // set 'unscathed' flag to false for this section of level
         isUnscathed = false;
+    }
+
+    /// <summary>
+    /// Returns a number (0-100) representing player's ability to shift tasks
+    /// according to new goals. Calculated from (1 - average health / greatest health)
+    /// * 100.
+    /// </summary>
+    /// <param name="averageHealth">average health of submarine components</param>
+    /// <param name="greatestHealth">greatest health of any component in level</param>
+    /// <returns></returns>
+    float AssessRoutineFluidity(float averageHealth, float greatestHealth)
+    {
+
+        // if greatest health is not 0, calculate and return measurement of routine fluidity
+        if (greatestHealth > 0)
+            return (1 - (averageHealth / greatestHealth)) * 100;
+
+        // otherwise (all parts have health of 0), return 0
+        return 0;
     }
 
     #endregion
