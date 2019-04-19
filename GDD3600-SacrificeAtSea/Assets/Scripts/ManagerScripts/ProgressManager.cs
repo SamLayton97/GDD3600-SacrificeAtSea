@@ -22,8 +22,9 @@ public class ProgressManager : MonoBehaviour
 
     // intermediary evaluation support
     [SerializeField] int numberOfEvaluationsPerLevel = 3;
-    bool isUnscathed = true;
     int[] evaluationPoints;
+    bool isUnscathed = true;
+    [SerializeField] DegradingPart[] degradingParts;
 
     // event support
     IncrementProgressEvent incrementProgressEvent;
