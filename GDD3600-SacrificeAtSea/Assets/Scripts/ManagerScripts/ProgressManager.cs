@@ -35,6 +35,10 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] AudioSource passEvalAudioSource;
     [SerializeField] AudioSource failEvalAudioSource;
 
+    // final evaluation variables
+    [SerializeField] GameObject levelCompleteUI;
+    GameObject endOfLevelUI;
+
     // event support
     IncrementProgressEvent incrementProgressEvent;
     SpawnTreasureEvent spawnTreasureEvent;
@@ -85,11 +89,11 @@ public class ProgressManager : MonoBehaviour
                 RunIntermediaryEvaluation();
             }
 
-            // if player reaches 100% level progress, they win!
-            if (currentProgressPercent >= 100)
+            // if player reaches 100% level progress and player has not already reached 100%, they win!
+            if (currentProgressPercent >= 100 && endOfLevelUI == null)
             {
-                // go to level complete scene
-                SceneManager.LoadScene("LevelCompleteScene");
+                // create instance of level complete UI
+                endOfLevelUI = Instantiate(levelCompleteUI);
             }
         }
 
