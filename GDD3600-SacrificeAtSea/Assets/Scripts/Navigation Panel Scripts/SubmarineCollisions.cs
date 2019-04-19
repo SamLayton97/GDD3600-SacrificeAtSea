@@ -23,8 +23,12 @@ public class SubmarineCollisions : MonoBehaviour
     // Called first frame object enters collision with another
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // invoke collision event
-        submarineCollisionEvent.Invoke();
+        // if collision object was tagged as an obstacle
+        if (collision.gameObject.CompareTag("CavernObstacle"))
+        {
+            // invoke submarine collision event
+            submarineCollisionEvent.Invoke();
+        }
     }
 
     // Adds listener to object's submarine collision event
