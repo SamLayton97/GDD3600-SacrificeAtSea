@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLength: 90
-  numberOfEvaluationsPerLevel: 9
+  numberOfEvaluationsPerLevel: 2
 --- !u!82 &207542384
 AudioSource:
   m_ObjectHideFlags: 0
