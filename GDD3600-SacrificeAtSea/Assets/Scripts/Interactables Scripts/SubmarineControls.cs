@@ -26,6 +26,9 @@ public class SubmarineControls : MonoBehaviour
     // event support
     UpdateMovementEvent updateMovementEvent;
 
+    // audio-visual feedback support
+    [SerializeField] UnableToInteractFeedback errorFeedback;
+
     #endregion
 
     #region Unity Methods
@@ -47,19 +50,29 @@ public class SubmarineControls : MonoBehaviour
         // retrieve interaction input
         float interactInput = Input.GetAxisRaw("Interact");
 
-        // if player is colliding with controls, interacts with them, and corresponding parts are not disabled
-        if (playerIsColliding && interactInput != 0 && partsManager.GetPartFunctionality(myCorrespondingPart))
+        // if player is colliding with controls and interacting with them
+        if (playerIsColliding && interactInput != 0)
         {
-            // adjust input axis and swap sprite accordingly
-            if (isOnRight)
+            // if corresponding part is functioning
+            if (partsManager.GetPartFunctionality(myCorrespondingPart))
             {
-                inputAxis = 1;
-                mySpriteRenderer.sprite = leverRightSprite;
+                // adjust input axis and swap sprite accordingly
+                if (isOnRight)
+                {
+                    inputAxis = 1;
+                    mySpriteRenderer.sprite = leverRightSprite;
+                }
+                else
+                {
+                    inputAxis = -1;
+                    mySpriteRenderer.sprite = leverLeftSprite;
+                }
             }
+            // otherwise (interacting with uninteractable part)
             else
             {
-                inputAxis = -1;
-                mySpriteRenderer.sprite = leverLeftSprite;
+                // play audio-visual feedback
+                errorFeedback.PlayInteractErrorFeedback();
             }
         }
         // otherwise, lock input axis to 0 and set lever to up-position
