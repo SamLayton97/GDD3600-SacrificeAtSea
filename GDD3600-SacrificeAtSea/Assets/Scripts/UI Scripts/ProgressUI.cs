@@ -36,6 +36,7 @@ public class ProgressUI : MonoBehaviour
         // add self as listener to respective events
         EventManager.AddHullIntegrityListener(UpdateHullIntegrity);
         EventManager.AddIncrementProgressListener(UpdateLevelProgress);
+        EventManager.AddGoldListener(UpdateGold);
     }
 
     // Updates UI components related to hull integrity

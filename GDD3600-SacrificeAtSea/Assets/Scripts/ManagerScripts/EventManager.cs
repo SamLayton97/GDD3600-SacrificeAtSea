@@ -254,4 +254,34 @@ public static class EventManager
     }
 
     #endregion
+
+    #region Add Gold Collected
+
+    // declare lists to hold invokers and listeners to add gold event
+    static List<TreasureCollectionManager> addGoldInvokers = new List<TreasureCollectionManager>();
+    static List<UnityAction<int>> addGoldListeners = new List<UnityAction<int>>();
+
+    // Adds given treasure collection manager as invoker of add gold event
+    public static void AddGoldInvoker(TreasureCollectionManager invoker)
+    {
+        // adds invoker to list and adds all listeners to this event
+        addGoldInvokers.Add(invoker);
+        foreach (UnityAction<int> listener in addGoldListeners)
+        {
+            invoker.AddGoldCollectedListener(listener);
+        }
+    }
+
+    // Adds given method as listener to add gold event
+    public static void AddGoldListener(UnityAction<int> listener)
+    {
+        // adds listener to list and to all invokers of event
+        addGoldListeners.Add(listener);
+        foreach (TreasureCollectionManager invoker in addGoldInvokers)
+        {
+            invoker.AddGoldCollectedListener(listener);
+        }
+    }
+
+    #endregion
 }
