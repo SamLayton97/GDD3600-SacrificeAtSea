@@ -17,6 +17,11 @@ public class ProgressManager : MonoBehaviour
     float timeToIncrementPercentage;
     float percentIncrementCounter = 0;
 
+    // intermediary evaluation support
+    [SerializeField] int numberOfEvaluationsPerLevel = 3;
+    bool isUnscathed = true;
+    int[] evaluationPoints;
+
     // event support
     IncrementProgressEvent incrementProgressEvent;
 
@@ -26,9 +31,13 @@ public class ProgressManager : MonoBehaviour
         // calculate time to between progress percent increments
         timeToIncrementPercentage = levelLength / 100;
 
-        // adds self as invoker to increment progress event
+        // adds self as invoker/listener to respective events
         incrementProgressEvent = new IncrementProgressEvent();
         EventManager.AddIncrementProgressInvoker(this);
+        EventManager.AddSubmarineCollisionListener(HandleSubmarineCollision);
+
+        // find evaluation points in level
+        evaluationPoints = FindEvaluationPoints(numberOfEvaluationsPerLevel);
     }
 
     // Update is called once per frame
@@ -54,6 +63,41 @@ public class ProgressManager : MonoBehaviour
 
         // increment counter
         percentIncrementCounter += Time.deltaTime;
+    }
+
+    /// <summary>
+    /// Finds progress percentages to run intermediary evaluation
+    /// </summary>
+    /// <param name="evalCount">number of intermediary evaluations to run</param>
+    /// <returns>array of percentages corresponding to points in level
+    /// to run intermediary evaluation</returns>
+    int[] FindEvaluationPoints(int evalCount)
+    {
+        // create empty list to store eval points
+        int[] evalPoints = new int[evalCount];
+
+        // calculate spacing between evaluation points
+        int evalSpacing = 100 / (evalCount + 1);
+
+        // for as many eval points as there ought to be in level
+        for (int i = 0; i < evalCount; i++)
+        {
+            // add evaluation point spaced evenly through level
+            evalPoints[i] = evalSpacing * (i + 1);
+        }
+
+        // return array of eval points
+        return evalPoints;
+    }
+
+    /// <summary>
+    /// Listens for submarine collision event, setting unscathed flag to
+    /// false if triggered.
+    /// </summary>
+    void HandleSubmarineCollision()
+    {
+        // set 'unscathed' flag to false for this section of level
+        isUnscathed = false;
     }
 
     // Adds given listener to object's increment progress event
