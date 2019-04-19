@@ -15,16 +15,21 @@ public class ProgressManager : MonoBehaviour
     // level time fields
     [SerializeField] float levelLength = 60;    // time it takes to complete level in seconds
 
-    // progress incrementation support variables
+    // progress incrementation variables
     int currentProgressPercent = 0;
     float timeToIncrementPercentage;
     float percentIncrementCounter = 0;
 
-    // intermediary evaluation support
+    // intermediary evaluation variables
     [SerializeField] int numberOfEvaluationsPerLevel = 3;
     int[] evaluationPoints;
     bool isUnscathed = true;
     [SerializeField] DegradingPart[] degradingParts;
+
+    // difficulty scaling variables
+    [SerializeField] int difficultyIncreaseThreshold = 50;  // threshold player must reach in 'routine fluidity' to be rewarded with less dense clusters of rocks
+    [SerializeField] float passThresholdSpawnScale = 0.85f;  // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
+    [SerializeField] float failThresholdSpawnScale = 0.75f; // amount to scale obstacle spawn times should player miss threshold (denser obstacles)
 
     // event support
     IncrementProgressEvent incrementProgressEvent;
@@ -149,6 +154,8 @@ public class ProgressManager : MonoBehaviour
         // calculate average health and assess player's 'routine fluidity'
         averageDegradingPartHealth = totalDegradingPartsHealth / (float)degradingParts.Length;
         float currRoutineFluidity = AssessRoutineFluidity(averageDegradingPartHealth, maxDegradingPartHealth);
+
+        // DEBUGGING: log average health and current routine fluidity
         Debug.Log(averageDegradingPartHealth);
         Debug.Log(currRoutineFluidity);
 

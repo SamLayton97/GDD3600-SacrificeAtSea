@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLength: 100
-  numberOfEvaluationsPerLevel: 2
+  numberOfEvaluationsPerLevel: 9
   degradingParts:
   - {fileID: 627387767}
   - {fileID: 634112917}
