@@ -15,6 +15,10 @@ public class EndLevelPanelEvaluator : MonoBehaviour
     [SerializeField] Sprite darkenedStarSprite;
     [SerializeField] Sprite brightStarSprite;
 
+    // rating threshold variables
+    [SerializeField] float adaptabilityStarThreshold = 0;
+    [SerializeField] float treasureCollectedStarThreshold = 0;
+
     // scoring display reference variables
     [SerializeField] Text damageTakenText;
     [SerializeField] Text treasureCollectedText;
@@ -56,11 +60,35 @@ public class EndLevelPanelEvaluator : MonoBehaviour
     /// Sets overall judgement of player's performance (measured from 0 to 3 stars)
     /// </summary>
     /// <param name="damageTaken">damage sustained over course of level</param>
-    /// <param name="treasureCollectedRation">amount of collected vs uncollected treasure</param>
+    /// <param name="treasureCollectedRatio">amount of collected vs uncollected treasure</param>
     /// <param name="adaptabilityRating">metric representing player's ability to adapt to new routine</param>
-    void SetStarRating(int damageTaken, float treasureCollectedRation, float adaptabilityRating)
+    void SetStarRating(int damageTaken, float treasureCollectedRatio, float adaptabilityRating)
     {
+        // initialize number of starts to award player
+        int starsEarned = 0;
 
+        // if player received less that 100 damage (i.e., they actually beat level)
+        if (damageTaken < 100)
+        {
+            // award 1 star for just beating level
+            starsEarned++;
+
+            // if player's treasure collected exceeded threshold, award another
+            if (treasureCollectedRatio >= treasureCollectedStarThreshold)
+                starsEarned++;
+
+            // if player's adaptability rating exceeded threshold, award yet another star
+            if (adaptabilityRating >= adaptabilityStarThreshold)
+                starsEarned++;
+
+        }
+
+        // for each star earned, set panel to reflect that
+        for (int i = 0; i < starsEarned; i++)
+        {
+            // set sprite of image to bright variant
+            starImages[i].sprite = brightStarSprite;
+        }
     }
 
     /// <summary>
