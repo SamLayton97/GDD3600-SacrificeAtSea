@@ -31,6 +31,8 @@ public class EndLevelPanelEvaluator : MonoBehaviour
     const string AdaptabilityRatingPrefix = "Adaptability: ";
     const string HintPrefix = "Tip: ";
 
+    #region Evaluation Methods
+
     /// <summary>
     /// Sets metrics to display on the end-of-level panel
     /// </summary>
@@ -191,4 +193,6 @@ public class EndLevelPanelEvaluator : MonoBehaviour
         // return error string if method broke from decision tree without generating a hint
         return "null";
     }
+
+    #endregion
 }

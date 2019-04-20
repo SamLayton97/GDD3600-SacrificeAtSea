@@ -12,6 +12,13 @@ public class EndLevelPanelSceneControl : MonoBehaviour
     [SerializeField] string titleMenuSceneName;
     [SerializeField] string nextLevelSceneName;
 
+    // Used for initialization
+    private void Start()
+    {
+        // freeze gameplay
+        Time.timeScale = 0;
+    }
+
     /// <summary>
     /// Handles when player clicks on next level button
     /// </summary>
@@ -19,6 +26,9 @@ public class EndLevelPanelSceneControl : MonoBehaviour
     {
         // go to next level in game
         SceneManager.LoadScene(nextLevelSceneName);
+
+        // reset time scale
+        Time.timeScale = 1;
     }
 
     /// <summary>
@@ -29,6 +39,9 @@ public class EndLevelPanelSceneControl : MonoBehaviour
         // reload current scene
         Scene currScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currScene.name);
+
+        // reset time scale
+        Time.timeScale = 1;
     }
 
     /// <summary>
@@ -38,5 +51,8 @@ public class EndLevelPanelSceneControl : MonoBehaviour
     {
         // go to title menu
         SceneManager.LoadScene(titleMenuSceneName);
+
+        // reset time scale
+        Time.timeScale = 1;
     }
 }
