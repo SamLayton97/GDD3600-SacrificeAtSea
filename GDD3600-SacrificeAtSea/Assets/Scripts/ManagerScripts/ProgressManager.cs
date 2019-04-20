@@ -28,16 +28,19 @@ public class ProgressManager : MonoBehaviour
 
     // difficulty scaling variables
     [SerializeField] int routineFluidityThreshold = 50;         // threshold player must reach in 'routine fluidity' to be rewarded with less dense clusters of rocks
-    [SerializeField] float passThresholdSpawnScale = 0.9f;     // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
+    [SerializeField] float passThresholdSpawnScale = 0.9f;      // amount to scale obstacle spawn times should player meet threshold (sparser obstacles)
     [SerializeField] float failThresholdSpawnScale = 0.75f;     // amount to scale obstacle spawn times should player miss threshold (denser obstacles)
 
     // intermediary eval feedback variables
     [SerializeField] AudioSource passEvalAudioSource;
     [SerializeField] AudioSource failEvalAudioSource;
 
-    // final evaluation variables
+    // final evaluation support variables
     [SerializeField] GameObject levelCompleteUI;
     GameObject endOfLevelUI;
+    SubmarineHealthManager subHealthManager;
+    TreasureCollectionManager treasureCollectionManager;
+    float summedAdaptabilityRatings = 0;            // used to assess final adaptability score
 
     // event support
     IncrementProgressEvent incrementProgressEvent;
@@ -53,6 +56,10 @@ public class ProgressManager : MonoBehaviour
     {
         // calculate time to between progress percent increments
         timeToIncrementPercentage = levelLength / 100;
+
+        // get references to various manager components
+        subHealthManager = GetComponent<SubmarineHealthManager>();
+        treasureCollectionManager = GetComponent<TreasureCollectionManager>();
 
         // adds self as invoker of respective events
         incrementProgressEvent = new IncrementProgressEvent();
@@ -92,8 +99,10 @@ public class ProgressManager : MonoBehaviour
             // if player reaches 100% level progress and player has not already reached 100%, they win!
             if (currentProgressPercent >= 100 && endOfLevelUI == null)
             {
-                // create instance of level complete UI
+                // create instance of level complete UI and set its metrics
                 endOfLevelUI = Instantiate(levelCompleteUI);
+                endOfLevelUI.GetComponentInChildren<EndLevelPanelEvaluator>().SetMetrics(subHealthManager.DamageTaken, treasureCollectionManager.TreasureCollected,
+                    numberOfEvaluationsPerLevel, summedAdaptabilityRatings / numberOfEvaluationsPerLevel);
             }
         }
 
@@ -166,6 +175,9 @@ public class ProgressManager : MonoBehaviour
         averageDegradingPartHealth = totalDegradingPartsHealth / (float)degradingParts.Length;
         float currRoutineFluidity = AssessRoutineFluidity(averageDegradingPartHealth, maxDegradingPartHealth);
 
+        // add calculated routine fluidity to summed total
+        summedAdaptabilityRatings += currRoutineFluidity;
+
         // if player's routine fluidity grade meets threshold
         if (currRoutineFluidity >= routineFluidityThreshold)
         {
@@ -199,7 +211,6 @@ public class ProgressManager : MonoBehaviour
     /// <returns></returns>
     float AssessRoutineFluidity(float averageHealth, float greatestHealth)
     {
-
         // if greatest health is not 0, calculate and return measurement of routine fluidity
         if (greatestHealth > 0)
             return (1 - (averageHealth / greatestHealth)) * 100;

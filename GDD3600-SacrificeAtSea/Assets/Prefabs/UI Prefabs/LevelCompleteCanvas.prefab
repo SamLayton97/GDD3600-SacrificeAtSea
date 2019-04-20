@@ -553,7 +553,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Adaptability: 100
+  m_Text: 'Adaptability: X
 
 '
 --- !u!1 &3799049072964136378
@@ -1134,7 +1134,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Damage Taken: 0'
+  m_Text: 'Damage Taken: X'
 --- !u!1 &6890362313659442599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,6 +1612,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Treasure Collected: 0 / 3
+  m_Text: 'Treasure Collected: X / Y
 
 '

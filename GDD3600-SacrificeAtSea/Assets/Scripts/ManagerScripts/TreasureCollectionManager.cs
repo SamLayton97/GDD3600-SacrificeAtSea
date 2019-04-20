@@ -18,6 +18,14 @@ public class TreasureCollectionManager : MonoBehaviour
     // audio feedback support variables
     [SerializeField] AudioSource treasureCollectAudioSource;
 
+    /// <summary>
+    /// Returns amount of treasure collected by player
+    /// </summary>
+    public int TreasureCollected
+    {
+        get { return currGold / goldValue; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

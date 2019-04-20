@@ -29,6 +29,14 @@ public class SubmarineHealthManager : MonoBehaviour
     // sound effect support variables
     [SerializeField] AudioSource subCollisionsAudioSource;
 
+    /// <summary>
+    /// Property returning amount of damage taken by obstacle collisions
+    /// </summary>
+    public int DamageTaken
+    {
+        get { return 100 - currHealth; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
