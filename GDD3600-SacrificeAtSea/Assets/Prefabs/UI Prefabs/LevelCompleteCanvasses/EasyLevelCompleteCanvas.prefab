@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 5145286688946258046}
   - component: {fileID: 5145286688946258041}
   m_Layer: 5
-  m_Name: LevelCompleteCanvas
+  m_Name: EasyLevelCompleteCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,7 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleMenuSceneName: TitleScene
-  nextLevelSceneName: 
+  nextLevelSceneName: MediumSubmarineScene
 --- !u!114 &6717847381247397811
 MonoBehaviour:
   m_ObjectHideFlags: 0

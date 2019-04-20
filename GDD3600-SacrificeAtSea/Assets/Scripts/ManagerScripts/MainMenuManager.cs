@@ -12,8 +12,8 @@ public class MainMenuManager : MonoBehaviour
     // Handles when player clicks 'play' button
     public void HandlePlayButtonClickEvent()
     {
-        // goes to submarine/gameplay scene
-        SceneManager.LoadScene("SubmarineScene");
+        // goes to first submarine/gameplay scene
+        SceneManager.LoadScene("EasySubmarineScene");
     }
 
     // Handles when player clicks 'quit' button

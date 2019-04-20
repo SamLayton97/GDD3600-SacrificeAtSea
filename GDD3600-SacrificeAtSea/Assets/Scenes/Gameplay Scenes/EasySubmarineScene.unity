@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec88062d0fabef9409218d9ee2804fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLength: 10
+  levelLength: 100
   numberOfEvaluationsPerLevel: 2
   degradingParts:
   - {fileID: 627387767}
