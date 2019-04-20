@@ -100,7 +100,11 @@ public class ProgressManager : MonoBehaviour
             // if player reaches 100% level progress and player has not already reached 100%, they win!
             if (currentProgressPercent >= 100)
             {
+                // create level-complete UI
                 CompleteLevel(true);
+
+                // play positive audio feedback
+                passEvalAudioSource.Play();
             }
         }
 
