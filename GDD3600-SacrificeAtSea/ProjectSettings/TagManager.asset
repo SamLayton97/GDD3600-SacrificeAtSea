@@ -64,6 +64,12 @@ TagManager:
   - name: Interactables
     uniqueID: 314606731
     locked: 0
+  - name: InaccessibleAreaDarkness
+    uniqueID: 1808736059
+    locked: 0
+  - name: InaccessibleAreaWalls
+    uniqueID: 1000373299
+    locked: 0
   - name: SubmarineInteriorWalls
     uniqueID: 3729993697
     locked: 0
