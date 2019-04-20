@@ -37,6 +37,7 @@ public class ProgressManager : MonoBehaviour
 
     // final evaluation support variables
     [SerializeField] GameObject levelCompleteUI;
+    [SerializeField] GameObject gameOverUI;
     GameObject endOfLevelUI;
     SubmarineHealthManager subHealthManager;
     TreasureCollectionManager treasureCollectionManager;
@@ -97,12 +98,9 @@ public class ProgressManager : MonoBehaviour
             }
 
             // if player reaches 100% level progress and player has not already reached 100%, they win!
-            if (currentProgressPercent >= 100 && endOfLevelUI == null)
+            if (currentProgressPercent >= 100)
             {
-                // create instance of level complete UI and set its metrics
-                endOfLevelUI = Instantiate(levelCompleteUI);
-                endOfLevelUI.GetComponentInChildren<EndLevelPanelEvaluator>().SetMetrics(subHealthManager.DamageTaken, treasureCollectionManager.TreasureCollected,
-                    numberOfEvaluationsPerLevel, summedAdaptabilityRatings / numberOfEvaluationsPerLevel);
+                CompleteLevel(true);
             }
         }
 
@@ -232,6 +230,33 @@ public class ProgressManager : MonoBehaviour
     #endregion
 
     #region Public Methods
+
+    /// <summary>
+    /// Creates instance of end-of-level UI and sets its metrics
+    /// </summary>
+    public void CompleteLevel(bool isPlayerAlive)
+    {
+        // if end-of-level UI doesn't already exist
+        if (endOfLevelUI == null)
+        {
+            // if player successfully beat level
+            if (isPlayerAlive)
+            {
+                // create instance of level complete UI
+                endOfLevelUI = Instantiate(levelCompleteUI);
+            }
+            // otherwise (player died)
+            else
+            {
+                // create instance of game over UI
+                endOfLevelUI = Instantiate(gameOverUI);
+            }
+
+            // set metrics of end-of-level UI
+            endOfLevelUI.GetComponentInChildren<EndLevelPanelEvaluator>().SetMetrics(subHealthManager.DamageTaken, treasureCollectionManager.TreasureCollected,
+                    numberOfEvaluationsPerLevel, summedAdaptabilityRatings / numberOfEvaluationsPerLevel);
+        }
+    }
 
     /// <summary>
     /// Adds given listener to object's increment progress event

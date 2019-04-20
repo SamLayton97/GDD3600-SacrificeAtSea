@@ -29,6 +29,9 @@ public class SubmarineHealthManager : MonoBehaviour
     // sound effect support variables
     [SerializeField] AudioSource subCollisionsAudioSource;
 
+    // Game Over support variables
+    ProgressManager progressManager;
+
     /// <summary>
     /// Property returning amount of damage taken by obstacle collisions
     /// </summary>
@@ -46,6 +49,9 @@ public class SubmarineHealthManager : MonoBehaviour
 
         // add self as listener to sub collision event
         EventManager.AddSubmarineCollisionListener(HandleSubmarineCollision);
+
+        // retrieve reference to GM's progress manager component
+        progressManager = GetComponent<ProgressManager>();
     }
 
     // Handles manager-side consequences of a submarine collision
@@ -64,8 +70,8 @@ public class SubmarineHealthManager : MonoBehaviour
         // if health drops below 0, Game Over
         if (currHealth <= 0)
         {
-            // go to game over scene
-            SceneManager.LoadScene("LevelFailedScene");
+            // create instance of game over screen
+            progressManager.CompleteLevel(false);
         }
     }
 

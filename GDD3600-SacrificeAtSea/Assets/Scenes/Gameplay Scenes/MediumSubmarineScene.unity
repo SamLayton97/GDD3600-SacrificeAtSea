@@ -364,7 +364,9 @@ MonoBehaviour:
   failThresholdSpawnScale: 0.75
   passEvalAudioSource: {fileID: 207542388}
   failEvalAudioSource: {fileID: 207542387}
-  levelCompleteUI: {fileID: 5145286688946258040, guid: 032dc5f226eb1334e8021ad2644e13eb,
+  levelCompleteUI: {fileID: 5145286688946258040, guid: 7c4c95f02fa70d544aaad85e1ea12409,
+    type: 3}
+  gameOverUI: {fileID: 5145286688946258040, guid: 33ee73baccbcdb54aa6f8d76f2d1100a,
     type: 3}
 --- !u!82 &207542384
 AudioSource:
