@@ -308,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &207542381
 MonoBehaviour:
@@ -1264,7 +1264,7 @@ PrefabInstance:
     - target: {fileID: 347856045983713520, guid: 17122a9e5e03a864f9c21f8a473566e3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 347856045983713520, guid: 17122a9e5e03a864f9c21f8a473566e3,
         type: 3}
@@ -1446,7 +1446,7 @@ Transform:
   - {fileID: 144335931}
   - {fileID: 725548677}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1795114102
 PrefabInstance:
@@ -1913,7 +1913,7 @@ PrefabInstance:
     - target: {fileID: 3839450827696830020, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3839450827696830020, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
@@ -1929,10 +1929,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 617346206, guid: dd6b9f068ff646846aee5a350a2ff67c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8313662992267599000, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
@@ -1975,6 +1971,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5264858891619902370, guid: 9b300e4de0550de4a9318f18b20a1e79,
         type: 3}
+    - target: {fileID: 617346206, guid: dd6b9f068ff646846aee5a350a2ff67c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6b9f068ff646846aee5a350a2ff67c, type: 3}
 --- !u!1001 &6483683504620199947
