@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairInProgressEffect: {fileID: 411158027649523095}
-  repairCompleteEffect: {fileID: 1000011945391522, guid: 79ddfa04bd70fb14992ac957fe523632,
+  repairCompleteEffect: {fileID: 1000011396044746, guid: 6679db10f71dd8442bd90b67130f1e9a,
     type: 3}
 --- !u!82 &4896645371645639412
 AudioSource:
