@@ -18,4 +18,13 @@ public class PlayerSounds : MonoBehaviour
         // set up audio references
         myAudioSource = GetComponent<AudioSource>();
     }
+
+    /// <summary>
+    /// Plays random jump sound effect from array of 
+    /// "jump" audio clips.
+    /// </summary>
+    public void PlayJumpSound()
+    {
+        myAudioSource.PlayOneShot(jumpingAudioClips[Random.Range((int)0, (int)jumpingAudioClips.Length)]);
+    }
 }
