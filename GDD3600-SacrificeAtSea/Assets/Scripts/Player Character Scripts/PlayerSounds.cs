@@ -8,17 +8,12 @@ using UnityEngine;
 public class PlayerSounds : MonoBehaviour
 {
     // Audio source support
-    AudioSource myAudioSource;
+    [SerializeField] AudioSource myJumpingAudioSource;
+    [SerializeField] AudioSource myLandingAudioSource;
 
     // Player-character audio clips
     [SerializeField] AudioClip[] jumpingAudioClips;
     [SerializeField] AudioClip[] landingAudioClips;
-
-    void Awake()
-    {
-        // set up audio references
-        myAudioSource = GetComponent<AudioSource>();
-    }
 
     /// <summary>
     /// Plays random jump sound effect from array of 
@@ -26,7 +21,7 @@ public class PlayerSounds : MonoBehaviour
     /// </summary>
     public void PlayJumpSound()
     {
-        myAudioSource.PlayOneShot(jumpingAudioClips[Random.Range((int)0, (int)jumpingAudioClips.Length)]);
+        myJumpingAudioSource.PlayOneShot(jumpingAudioClips[Random.Range((int)0, (int)jumpingAudioClips.Length)]);
     }
 
     /// <summary>
@@ -35,6 +30,8 @@ public class PlayerSounds : MonoBehaviour
     /// </summary>
     public void PlayLandingSound()
     {
-        myAudioSource.PlayOneShot(landingAudioClips[Random.Range((int)0, (int)landingAudioClips.Length)]);
+        // if no sounds are already playing from audio source, play random sound
+        if (!myLandingAudioSource.isPlaying)
+            myLandingAudioSource.PlayOneShot(landingAudioClips[Random.Range((int)0, (int)landingAudioClips.Length)]);
     }
 }

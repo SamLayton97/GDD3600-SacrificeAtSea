@@ -21,6 +21,7 @@ namespace UnityStandardAssets._2D
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
         PlayerSounds playerSounds;          // Custom script for playing sounds specific to player-character
+        private bool m_Falling;
 
         private void Awake()
         {
@@ -43,12 +44,25 @@ namespace UnityStandardAssets._2D
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
+                {
                     m_Grounded = true;
+
+                    // if play is falling (i.e., they have just landed on the ground), play landed sound effect
+                    if (m_Falling)
+                        playerSounds.PlayLandingSound();
+                }
             }
             m_Anim.SetBool("Ground", m_Grounded);
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+
+            // If player's y-velocity is negative by notable margin, determine that they are falling
+            if (m_Rigidbody2D.velocity.y < -1.5f)
+                m_Falling = true;
+            else
+                m_Falling = false;
+
         }
 
 
