@@ -344,6 +344,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 79ca9d9d37d70e64c83670384f858b4d, type: 3}
   - {fileID: 8300000, guid: fd59b22bae600714a8b5378575fcbc97, type: 3}
   - {fileID: 8300000, guid: c3b6da1d5ba0d10429ac41590198047f, type: 3}
+  landingAudioClips:
+  - {fileID: 8300000, guid: a57864916d885b044b227a80b37d3c40, type: 3}
+  - {fileID: 8300000, guid: 884ad8863c34ca148b27297bb75c78cf, type: 3}
+  - {fileID: 8300000, guid: ca27954014d36254e81f6eba269740ab, type: 3}
 --- !u!1 &8802844126206588725
 GameObject:
   m_ObjectHideFlags: 0

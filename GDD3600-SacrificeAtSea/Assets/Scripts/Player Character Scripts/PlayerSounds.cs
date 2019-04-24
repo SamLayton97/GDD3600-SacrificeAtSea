@@ -12,6 +12,7 @@ public class PlayerSounds : MonoBehaviour
 
     // Player-character audio clips
     [SerializeField] AudioClip[] jumpingAudioClips;
+    [SerializeField] AudioClip[] landingAudioClips;
 
     void Awake()
     {
