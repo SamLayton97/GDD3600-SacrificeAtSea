@@ -20,6 +20,8 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
+        PlayerSounds playerSounds;          // Custom script for playing sounds specific to player-character
+
         private void Awake()
         {
             // Setting up references.
@@ -27,6 +29,7 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            playerSounds = GetComponent<PlayerSounds>();
         }
 
 
@@ -92,8 +95,9 @@ namespace UnityStandardAssets._2D
             // If the player should jump...
             if (m_Grounded && jump && m_Anim.GetBool("Ground"))
             {
-                Debug.Log("I'm jumping!");
-
+                if (playerSounds != null)
+                    Debug.Log("I'm jumping!");
+                
                 // Add a vertical force to the player.
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
