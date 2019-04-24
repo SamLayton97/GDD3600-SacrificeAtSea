@@ -28,4 +28,13 @@ public class PlayerSounds : MonoBehaviour
     {
         myAudioSource.PlayOneShot(jumpingAudioClips[Random.Range((int)0, (int)jumpingAudioClips.Length)]);
     }
+
+    /// <summary>
+    /// Plays random landing sound effect from array
+    /// of "landing" audio clips.
+    /// </summary>
+    public void PlayLandingSound()
+    {
+        myAudioSource.PlayOneShot(landingAudioClips[Random.Range((int)0, (int)landingAudioClips.Length)]);
+    }
 }
