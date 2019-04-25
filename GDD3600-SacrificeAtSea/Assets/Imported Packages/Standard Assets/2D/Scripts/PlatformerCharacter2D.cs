@@ -17,11 +17,11 @@ namespace UnityStandardAssets._2D
         private Transform m_CeilingCheck;   // A position marking where to check for ceilings
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
-        private Rigidbody2D m_Rigidbody2D;
+        private Rigidbody2D m_Rigidbody2D;  // Reference to the player's rigidbody 2D component.
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
-        PlayerSounds playerSounds;          // Custom script for playing sounds specific to player-character
-        private bool m_Falling;
+        PlayerSounds playerSounds;          // Custom script for playing sounds specific to player-character.
+        private bool m_Falling;             // Whether player is falling.
 
         private void Awake()
         {
@@ -62,6 +62,13 @@ namespace UnityStandardAssets._2D
                 m_Falling = true;
             else
                 m_Falling = false;
+
+            // if player-character has horizontal velocity and is grounded, determine that they are walking
+            if (m_Rigidbody2D.velocity.x != 0 && m_Grounded)
+                playerSounds.IsWalking = true;
+            // otherwise, determine that they aren't walking
+            else
+                playerSounds.IsWalking = false;
 
         }
 

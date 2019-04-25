@@ -257,13 +257,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a57864916d885b044b227a80b37d3c40, type: 3}
   - {fileID: 8300000, guid: 884ad8863c34ca148b27297bb75c78cf, type: 3}
   - {fileID: 8300000, guid: ca27954014d36254e81f6eba269740ab, type: 3}
-  footstepSounds:
+  footstepAudioClips:
   - {fileID: 8300000, guid: 56016e2e3c4cd80458d7a79fafd20e74, type: 3}
   - {fileID: 8300000, guid: d99ad0a0ecd014b4f98bca2027c333ec, type: 3}
   - {fileID: 8300000, guid: d89f3819a81500c458ff0f22e73f1630, type: 3}
   - {fileID: 8300000, guid: f6e3610174692314b8b52db93134cca1, type: 3}
   - {fileID: 8300000, guid: 588771fbb6ba8234d97e07823005a4c0, type: 3}
   - {fileID: 8300000, guid: a0be8fb2582065040aeef9e284536cd8, type: 3}
+  timeBetweenFootsteps: 0.33
 --- !u!82 &1402406579098171079
 AudioSource:
   m_ObjectHideFlags: 0
@@ -468,7 +469,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
