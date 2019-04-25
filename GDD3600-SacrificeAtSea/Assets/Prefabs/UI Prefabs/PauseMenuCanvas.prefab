@@ -116,7 +116,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 9059034074422057869}
         m_MethodName: HandleReturnToMenuButton
         m_Mode: 1
         m_Arguments:
@@ -403,8 +403,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: HandleReturnToMenuButton
+      - m_Target: {fileID: 9059034074422057869}
+        m_MethodName: HandleRestartLevelButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -532,8 +532,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: HandleReturnToMenuButton
+      - m_Target: {fileID: 9059034074422057869}
+        m_MethodName: HandleResumeGameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -636,6 +636,7 @@ GameObject:
   - component: {fileID: 6788883910553760312}
   - component: {fileID: 6788883910553760313}
   - component: {fileID: 6788883910553760326}
+  - component: {fileID: 9059034074422057869}
   m_Layer: 5
   m_Name: PauseMenuCanvas
   m_TagString: Untagged
@@ -724,6 +725,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &9059034074422057869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788883910553760327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b061428515fe64b43a10c8146cf8d882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuSceneName: TitleScene
 --- !u!1 &6788883911141517811
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +969,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MENU
+  m_Text: 'QUIT
 
 '
