@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 185907578969184790}
   - component: {fileID: 185907578969184791}
   - component: {fileID: 185907578969184777}
+  - component: {fileID: 247452661917079818}
   - component: {fileID: 185907578969184776}
   - component: {fileID: 185907578969184778}
   - component: {fileID: 185907578969184780}
@@ -110,6 +111,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldValue: 100
   treasureCollectAudioSource: {fileID: 185907578969184778}
+--- !u!114 &247452661917079818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185907578969184787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198a23fbd3f25a949a8bd652f1704363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 6788883910553760327, guid: ce76a47c9ead3a749a5abb7fdbabe7bf,
+    type: 3}
 --- !u!82 &185907578969184776
 AudioSource:
   m_ObjectHideFlags: 0

@@ -38,8 +38,8 @@ public class PauseManager : MonoBehaviour
         // if user enters pause input and game is not already paused
         if (Input.GetAxisRaw("Pause") != 0 && !IsGamePaused)
         {
-            // TODO: create instance of pause menu
-
+            // create instance of pause menu
+            Instantiate(pauseMenu);
         }
     }
 }
