@@ -10,10 +10,12 @@ public class PlayerSounds : MonoBehaviour
     // Audio source support
     [SerializeField] AudioSource myJumpingAudioSource;
     [SerializeField] AudioSource myLandingAudioSource;
+    [SerializeField] AudioSource myFootstepsAudioSource;
 
     // Player-character audio clips
     [SerializeField] AudioClip[] jumpingAudioClips;
     [SerializeField] AudioClip[] landingAudioClips;
+    [SerializeField] AudioClip[] footstepSounds;
 
     /// <summary>
     /// Plays random jump sound effect from array of 
