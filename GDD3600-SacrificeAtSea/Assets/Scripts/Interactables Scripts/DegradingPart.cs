@@ -23,8 +23,9 @@ public class DegradingPart : MonoBehaviour
     [SerializeField] Sprite underRepairSprite;
 
     // health variables
+    [SerializeField] float startingHealth = 100;
     const float MaxHealth = 100;
-    float currHealth = MaxHealth;
+    float currHealth;
     bool isFunctioning = true;
 
     // degredation support variables
@@ -65,6 +66,9 @@ public class DegradingPart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // initialize current health to starting health
+        currHealth = Mathf.Min(MaxHealth, startingHealth);
+
         // retrieve references to relevant components
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         myParticleController = GetComponent<RepairTerminalParticles>();
