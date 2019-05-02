@@ -49,6 +49,9 @@ TagManager:
   - name: InteriorEnvironmentalObjects
     uniqueID: 3169798939
     locked: 0
+  - name: InteriorEnvironmentalObjectsFront
+    uniqueID: 3255705139
+    locked: 0
   - name: NavigationPanel
     uniqueID: 2685006829
     locked: 0
