@@ -11,16 +11,22 @@ public class UnderseaObjectSpawner : MonoBehaviour
 
     // object spawn support
     [SerializeField] GameObject underseaRockPrefab;
+    [SerializeField] GameObject[] cavernWallPrefabs;
     [SerializeField] GameObject underseaTreasurePrefab;
     Vector2 panelSize;
     float halfPanelWidth = 0;
     float halfPanelHeight = 0;
 
-    // obstacle spawn delay support
-    [SerializeField] float minSpawnDelay = 5f;
-    [SerializeField] float maxSpawnDelay = 10f;
+    // seamine spawn delay support
+    [SerializeField] float mineMinSpawnDelay = 5f;
+    [SerializeField] float minMaxSpawnDelay = 10f;
     float nextSpawnCounter = 0;
     float randSpawnDelay = 0;
+
+    // cavern wall spawn support
+    [SerializeField] float cavernSpeed = .25f;
+    [SerializeField] Vector3 onScreenSpawnOffset;
+    float wallTileWidth = 0.5f;
 
     // targeting support
     [SerializeField] Transform target;
@@ -37,8 +43,8 @@ public class UnderseaObjectSpawner : MonoBehaviour
         halfPanelWidth = (panelSize.x / 2) - .1f;
         halfPanelHeight = (panelSize.y / 2) - .1f;
 
-        // generate random delay for first rock spawn
-        randSpawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+        // generate random delay for first mine spawn
+        randSpawnDelay = Random.Range(mineMinSpawnDelay, minMaxSpawnDelay);
 
         // add self as listener to respective events
         EventManager.AddSpawnTreasureListener(SpawnTreasure);
@@ -53,7 +59,7 @@ public class UnderseaObjectSpawner : MonoBehaviour
         {
             // reset spawn counter and generate new delay time
             nextSpawnCounter = 0;
-            randSpawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+            randSpawnDelay = Random.Range(mineMinSpawnDelay, minMaxSpawnDelay);
 
             // spawn a new undersea rock
             SpawnObjectAtPanelSide(underseaRockPrefab);
@@ -124,8 +130,8 @@ public class UnderseaObjectSpawner : MonoBehaviour
     void ScaleObstacleSpawnRate(float spawnRateScale)
     {
         // scale max and min spawn delay by given rate
-        minSpawnDelay *= spawnRateScale;
-        maxSpawnDelay *= spawnRateScale;
+        mineMinSpawnDelay *= spawnRateScale;
+        minMaxSpawnDelay *= spawnRateScale;
     }
 
     #endregion

@@ -521,6 +521,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   underseaRockPrefab: {fileID: 3323217846868612947, guid: ea158df1c9f536044b2fb7dcb2e287fa,
     type: 3}
-  minSpawnDelay: 7
-  maxSpawnDelay: 12
+  cavernWallPrefabs:
+  - {fileID: 7720437775748682562, guid: 4e7a36970b547d2478e89c8500b0d887, type: 3}
+  - {fileID: 7720437775748682562, guid: ad9c4ed2352140640a6aff62695aa97b, type: 3}
+  - {fileID: 7720437775748682562, guid: 4a8295a1573df9842b97d5b816e8da03, type: 3}
+  - {fileID: 7720437775748682562, guid: 0fcf64c89c9418e48996ba3dcea31087, type: 3}
+  underseaTreasurePrefab: {fileID: 5264858891619902370, guid: 9b300e4de0550de4a9318f18b20a1e79,
+    type: 3}
+  mineMinSpawnDelay: 5
+  minMaxSpawnDelay: 10
+  cavernSpeed: 0.25
+  onScreenSpawnOffset: {x: 1, y: -1.63, z: 0}
   target: {fileID: 0}
