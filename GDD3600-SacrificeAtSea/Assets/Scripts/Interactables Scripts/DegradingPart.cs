@@ -47,6 +47,12 @@ public class DegradingPart : MonoBehaviour
 
     #region Properties
 
+    // Read-access to submarine part this terminal corresponds to
+    public SubmarineParts MyPart
+    {
+        get { return myPart; }
+    }
+
     // Read-access to current health of degrading part
     public float CurrentHealth
     {
