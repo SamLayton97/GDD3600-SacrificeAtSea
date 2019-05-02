@@ -4,15 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Manager that facilitates scene movement within main menu
+/// Facilitates scene movement within main menu
 /// </summary>
 public class MainMenuManager : MonoBehaviour
 {
+    // scene transition support variables
+    [SerializeField] string fromPlaySceneName = "";
+    [SerializeField] string fromHelpSceneName = "";
+
     // Handles when player clicks 'play' button
     public void HandlePlayButtonClickEvent()
     {
         // goes to first submarine/gameplay scene
-        SceneManager.LoadScene("EasySubmarineScene");
+        SceneManager.LoadScene(fromPlaySceneName);
+    }
+
+    // Handles when player clicks "help" button
+    public void HandleHelpButtonClickEvent()
+    {
+        // goes to controls page
+        SceneManager.LoadScene(fromHelpSceneName);
     }
 
     // Handles when player clicks 'quit' button
