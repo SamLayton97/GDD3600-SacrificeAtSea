@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7720437775748682560}
   - component: {fileID: 6422661844811888600}
   - component: {fileID: 6736091783381391619}
-  - component: {fileID: 8708955304268131915}
+  - component: {fileID: 6675850240294163658}
   m_Layer: 12
-  m_Name: CavernWallValley
+  m_Name: CaverWallPeak
   m_TagString: CavernObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1074004595
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e70ef9c203538564a8e80afd8a55f0ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f21b533a3612a384799b3c18912f7a00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,18 +95,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.75}
+    oldSize: {x: 0.5, y: 1.25}
     newSize: {x: 0.5, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.75}
+  m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &6736091783381391619
 MonoBehaviour:
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1c4b96fd7cf134088cd5666186e3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &8708955304268131915
+--- !u!50 &6675850240294163658
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
