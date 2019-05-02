@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Script controlling collision detection undersea rock (seamine).
+/// Script controlling collision detection undersea obstacle (seamine or wall).
 /// </summary>
 public class UnderseaRock : MonoBehaviour
 {
