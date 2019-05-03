@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb5ec7cc8c55d14ab386bdab171a67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fromPlaySceneName: EasySubmarineScene
+  fromPlaySceneName: TutorialSubmarineScene
   fromBackSceneName: TitleScene
 --- !u!1 &769574212
 GameObject:

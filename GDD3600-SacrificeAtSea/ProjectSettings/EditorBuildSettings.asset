@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Scenes/ThematicPrimerScene.unity
     guid: b5017828596fb8f48867f3fa7c5c37c0
   - enabled: 1
+    path: Assets/Scenes/Gameplay Scenes/TutorialSubmarineScene.unity
+    guid: 661989d8b39a52b47b258e7d21dee676
+  - enabled: 1
     path: Assets/Scenes/Gameplay Scenes/EasySubmarineScene.unity
     guid: fb9f2b24b57b92343821f4b9438a4d32
   - enabled: 1
