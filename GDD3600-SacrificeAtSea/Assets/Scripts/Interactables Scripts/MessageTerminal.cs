@@ -11,6 +11,9 @@ public class MessageTerminal : MonoBehaviour
     [SerializeField] TutorialStages terminalTriggers = TutorialStages.InitialSteps;
     bool messageHeard = false;
 
+    // audio support
+    [SerializeField] AudioSource messageReceivedAudioSource;
+
     // blinking light support
     [SerializeField] SpriteRenderer blinkingLight;
     [SerializeField] float blinkRate = 2f;
@@ -50,12 +53,19 @@ public class MessageTerminal : MonoBehaviour
     /// <param name="collision">collision info</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // set message as heard
-        messageHeard = true;
+        // if message hasn't already been heard
+        if (!messageHeard)
+        {
+            // set message as heard
+            messageHeard = true;
 
-        // stop light from flashing
-        Color endColor = blinkingLight.color;
-        endColor.a = 0;
-        blinkingLight.color = endColor;
+            // stop light from flashing
+            Color endColor = blinkingLight.color;
+            endColor.a = 0;
+            blinkingLight.color = endColor;
+
+            // play message received sound effect
+            messageReceivedAudioSource.Play();
+        }
     }
 }
