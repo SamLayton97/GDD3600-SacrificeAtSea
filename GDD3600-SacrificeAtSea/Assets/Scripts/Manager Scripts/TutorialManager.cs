@@ -15,6 +15,7 @@ public class TutorialManager : MonoBehaviour
 
     // audio feedback support
     [SerializeField] AudioSource volleyDodgedAudioSource;
+    [SerializeField] AudioSource endOfTutorialAudioSource;
 
     // "Return to repair" phase support variables
     [SerializeField] DegradingPart[] degradingNavigationParts;
@@ -23,7 +24,7 @@ public class TutorialManager : MonoBehaviour
     PartsManager myPartsManager;
 
     // End of tutorial support variables
-    
+    [SerializeField] GameObject endOfTutorialPanel;
 
     // event support
     SpawnMineVolleyEvent spawnMineVolleyEvent;
@@ -223,7 +224,11 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void EnterTutorialEnd()
     {
-        
+        // create instance of end of tutorial panel
+        Instantiate(endOfTutorialPanel);
+
+        // play positive feedback sound
+        endOfTutorialAudioSource.Play();
     }
 
     #endregion
