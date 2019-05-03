@@ -15,8 +15,9 @@ public class DodgedTutorialMine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // TODO: set self as invoker of Dodged Volley event
+        // set self as invoker of Dodged Volley event
         dodgedVolleyEvent = new DodgedVolleyEvent();
+        EventManager.AddDodgedVolleyInvoker(this);
     }
 
     /// <summary>

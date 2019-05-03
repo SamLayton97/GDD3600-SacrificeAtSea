@@ -24,6 +24,7 @@ public class TutorialManager : MonoBehaviour
         // add self as listener to respective events
         EventManager.AddTriggerNextStageListener(TriggerNextStage);
         EventManager.AddSubmarineCollisionListener(RetryVolley);
+        EventManager.AddDodgedVolleyListener(EndVolley);
     }
 
     /// <summary>
@@ -84,6 +85,21 @@ public class TutorialManager : MonoBehaviour
     }
 
     #region Tutorial Stage Transitions
+
+    /// <summary>
+    /// Ends current volley of mines when player succeeds in dodging them,
+    /// thus transitioning to the next tutorial stage.
+    /// </summary>
+    void EndVolley()
+    {
+        // clear nav panel of remaining tutorial mines
+        GameObject[] remainingMines = GameObject.FindGameObjectsWithTag("CavernObstacle");
+        for (int i = 0; i < remainingMines.Length; i++)
+            Destroy(remainingMines[i]);
+
+        // transition to next tutorial stage
+        TriggerNextStage(currentStage + 1);
+    }
 
     /// <summary>
     /// Restarts current volley of mines when player collidies with
