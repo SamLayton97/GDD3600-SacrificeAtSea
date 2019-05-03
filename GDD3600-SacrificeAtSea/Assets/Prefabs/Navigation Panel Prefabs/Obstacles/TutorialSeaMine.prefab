@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3789e3d86af2044913c176664fbb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impulseForceScale: 0.2
+  impulseForceScale: 0.4
   forceAngleArc: 5
 --- !u!58 &7928758755586192667
 CircleCollider2D:
