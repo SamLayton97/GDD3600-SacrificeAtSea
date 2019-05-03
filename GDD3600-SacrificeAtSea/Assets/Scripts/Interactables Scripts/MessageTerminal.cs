@@ -93,7 +93,7 @@ public class MessageTerminal : MonoBehaviour
 
     public void AddTriggerNextStageListener(UnityAction<TutorialStages> newListener)
     {
-
+        triggerNextStageEvent.AddListener(newListener);
     }
 
 }
