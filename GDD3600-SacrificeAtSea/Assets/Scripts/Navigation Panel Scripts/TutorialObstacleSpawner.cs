@@ -72,31 +72,35 @@ public class TutorialObstacleSpawner : MonoBehaviour
     /// <param name="sideToSpawn"></param>
     void SpawnMineAtPanelSide(PanelSides sideToSpawn)
     {
-        // initialize spawn position to match submarine
-        Vector3 spawnPosition = target.position;
+        Debug.Log("spawn: " + sideToSpawn);
+
+        // generate random spawn position
+        float randSpawnX = Random.Range(-halfPanelWidth, halfPanelWidth);
+        float randSpawnY = Random.Range(-halfPanelHeight, halfPanelHeight);
 
         // clamp position to one of panel sides
         switch (sideToSpawn)
         {
             case PanelSides.Bottom:
-                spawnPosition.y = -halfPanelHeight;
+                randSpawnY = -halfPanelHeight;
                 break;
             case PanelSides.Left:
-                spawnPosition.x = -halfPanelWidth;
+                randSpawnX = -halfPanelWidth;
                 break;
             case PanelSides.Right:
-                spawnPosition.x = halfPanelWidth;
+                randSpawnX = halfPanelWidth;
                 break;
             case PanelSides.Top:
-                spawnPosition.y = halfPanelHeight;
+                randSpawnY = halfPanelHeight;
                 break;
             default:
                 break;
         }
 
         // spawn mine at clamped position and initialize its target
+        Vector3 spawnPosition = new Vector3(randSpawnX, randSpawnY);
         GameObject spawnedMine = Instantiate(seaMinePrefab,
-            transform.position + spawnPosition, Quaternion.identity);
+            target.position + spawnPosition, Quaternion.identity);
         spawnedMine.GetComponent<MovingNavPanelIcon>().Target = target;
     }
 }
