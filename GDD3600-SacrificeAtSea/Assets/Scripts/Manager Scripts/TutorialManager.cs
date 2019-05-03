@@ -91,8 +91,6 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void RetryVolley()
     {
-        Debug.Log("retry volley");
-
         // clear nav panel of remaining tutorial mines
         GameObject[] remainingMines = GameObject.FindGameObjectsWithTag("CavernObstacle");
         for (int i = 0; i < remainingMines.Length; i++)

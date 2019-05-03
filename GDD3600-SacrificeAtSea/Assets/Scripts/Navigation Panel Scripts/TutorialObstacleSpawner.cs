@@ -72,8 +72,6 @@ public class TutorialObstacleSpawner : MonoBehaviour
     /// <param name="sideToSpawn"></param>
     void SpawnMineAtPanelSide(PanelSides sideToSpawn)
     {
-        Debug.Log("spawn: " + sideToSpawn);
-
         // generate random spawn position
         float randSpawnX = Random.Range(-halfPanelWidth, halfPanelWidth);
         float randSpawnY = Random.Range(-halfPanelHeight, halfPanelHeight);
