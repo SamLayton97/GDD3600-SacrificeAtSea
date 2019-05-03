@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
     // scene transition support variables
     [SerializeField] string fromPlaySceneName = "";
     [SerializeField] string fromHelpSceneName = "";
+    [SerializeField] string fromCreditsSceneName = "";
 
     // Handles when player clicks 'play' button
     public void HandlePlayButtonClickEvent()
@@ -24,6 +25,13 @@ public class MainMenuManager : MonoBehaviour
     {
         // goes to controls page
         SceneManager.LoadScene(fromHelpSceneName);
+    }
+
+    // Handles when player clicks "credits" button
+    public void HandleCreditsButtonClickEvent()
+    {
+        // goes to credits page
+        SceneManager.LoadScene(fromCreditsSceneName);
     }
 
     // Handles when player clicks 'quit' button
