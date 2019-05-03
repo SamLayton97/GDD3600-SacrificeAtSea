@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Displays message and advances tutorial upon collision
@@ -10,6 +11,7 @@ public class MessageTerminal : MonoBehaviour
     // tutorial sequencing support
     [SerializeField] TutorialStages terminalTriggers;   // tutorial stage that terminal triggers on initial collision with player
     bool messageHeard = false;
+    TriggerNextStageEvent triggerNextStageEvent;
 
     // audio support
     [SerializeField] AudioSource messageReceivedAudioSource;
@@ -19,10 +21,14 @@ public class MessageTerminal : MonoBehaviour
     [SerializeField] float blinkRate = 2f;
     float blinkCounter = 0;
 
+    #region Unity Methods
+
     // Start is called before the first frame update
     void Start()
     {
-
+        // add self as invoker of trigger next stage event
+        triggerNextStageEvent = new TriggerNextStageEvent();
+        EventManager.AddTriggerNextStageInvoker(this);
     }
 
     // Update is called once per frame
@@ -65,6 +71,9 @@ public class MessageTerminal : MonoBehaviour
             blinkingLight.color = endColor;
         }
 
+        // invoke trigger next tutorial stage event
+        triggerNextStageEvent.Invoke(terminalTriggers);
+
         // if not already playing, play message received sound effect
         if (!messageReceivedAudioSource.isPlaying)
             messageReceivedAudioSource.Play();
@@ -79,4 +88,12 @@ public class MessageTerminal : MonoBehaviour
     {
         
     }
+
+    #endregion
+
+    public void AddTriggerNextStageListener(UnityAction<TutorialStages> newListener)
+    {
+
+    }
+
 }

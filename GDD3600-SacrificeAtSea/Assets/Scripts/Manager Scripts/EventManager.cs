@@ -314,4 +314,34 @@ public static class EventManager
     }
 
     #endregion
+
+    #region Trigger Next Tutorial Stage
+
+    // declare lists to hold invokers and listeners to trigger next stage event
+    static List<MessageTerminal> triggerNextStageInvokers = new List<MessageTerminal>();
+    static List<UnityAction<TutorialStages>> triggerNextStageListeners = new List<UnityAction<TutorialStages>>();
+
+    // Adds given message terminal as invoker of trigger next stage event
+    public static void AddTriggerNextStageInvoker(MessageTerminal invoker)
+    {
+        // adds invoker to list and adds all listeners to this invoker
+        triggerNextStageInvokers.Add(invoker);
+        foreach (UnityAction<TutorialStages> listener in triggerNextStageListeners)
+        {
+            invoker.AddTriggerNextStageListener(listener);
+        }
+    }
+
+    // Adds given method as listener to trigger next stage event
+    public static void AddTriggerNextStageListener(UnityAction<TutorialStages> listener)
+    {
+        // adds listener to list and to all invokers of event
+        triggerNextStageListeners.Add(listener);
+        foreach (MessageTerminal invoker in triggerNextStageInvokers)
+        {
+            invoker.AddTriggerNextStageListener(listener);
+        }
+    }
+
+    #endregion
 }
