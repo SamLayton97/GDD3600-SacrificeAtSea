@@ -13,6 +13,10 @@ public class MessageTerminal : MonoBehaviour
     bool messageHeard = false;
     TriggerNextStageEvent triggerNextStageEvent;
 
+    // message display support
+    [SerializeField] GameObject messagePrefab;
+    GameObject spawnedMessage;
+
     // audio support
     [SerializeField] AudioSource messageReceivedAudioSource;
 
@@ -71,6 +75,14 @@ public class MessageTerminal : MonoBehaviour
             blinkingLight.color = endColor;
         }
 
+        // if no message exists
+        if (spawnedMessage == null)
+        {
+            // spawn and set text of message
+            spawnedMessage = Instantiate(messagePrefab);
+            spawnedMessage.GetComponent<InGameMessage>().SetTutorialMessage(terminalTriggers);
+        }
+
         // invoke trigger next tutorial stage event
         triggerNextStageEvent.Invoke(terminalTriggers);
 
@@ -86,11 +98,17 @@ public class MessageTerminal : MonoBehaviour
     /// <param name="collision">collision info</param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        // if message box exists, destroy it
+        if (spawnedMessage != null)
+            Destroy(spawnedMessage);
     }
 
     #endregion
 
+    /// <summary>
+    /// Adds listener to this object's trigger next stage event
+    /// </summary>
+    /// <param name="newListener"></param>
     public void AddTriggerNextStageListener(UnityAction<TutorialStages> newListener)
     {
         triggerNextStageEvent.AddListener(newListener);

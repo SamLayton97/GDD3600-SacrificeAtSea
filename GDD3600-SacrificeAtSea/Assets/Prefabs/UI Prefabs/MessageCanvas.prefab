@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 7745935704853516616}
   - component: {fileID: 7745935704853516623}
   - component: {fileID: 7745935704853516622}
+  - component: {fileID: 7459522751502543254}
   m_Layer: 5
   m_Name: MessageCanvas
   m_TagString: Untagged
@@ -255,3 +256,36 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7459522751502543254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7745935704853516621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476098a6c4e1d9148ab0fc5b33c1a817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageText: {fileID: 7745935703403609294}
+  introductionMessage: '[Familiar Voice]: Hello Robot Boy, this is Father. Welcome
+    aboard my submarine! As you know, I''ve tasked you with exploring the caverns
+    in search of treasure. I''ve left you more audio logs up ahead.'
+  firstRepairMessage: '[Father]: This vessel isn''t quite what it used to be. When
+    parts fall into disrepair, they won''t work. I''ve hooked the terminal to your
+    left to open the hatch above. Repair it and make your way upwards.'
+  repairRestMessage: '[Father]: In time, you''ll come to know this submarine like
+    the back of your hand. Repair the other terminals and make your way to the control
+    deck.'
+  submarineControlsMessage: '[Father]: These levers control the propellors and ballast
+    tanks of the submarine. Interacting with them will move the submarine in a certain
+    direction, helping you navigate around mines and collect my treasure. Practice
+    dodging some mines.'
+  returnToRepairMessage: '[Father]: By now, the submarine''s propellors and ballast
+    tanks should have malfunctioned. When this happens, you won''t be able to move
+    the submarine in a certain way. Find and repair their corresponding terminals
+    to restore the ship''s movement.'
+  defaultMessage: '[FATHER]: Hello Robot Boy. This is a test message. If you''re hearing
+    this, something has gone terribly wrong and the developers forgot to initialize
+    a message for this terminal.'

@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terminalTriggers: 0
+  messagePrefab: {fileID: 7745935704853516621, guid: a70de77731f89e14ba4087fd43784134,
+    type: 3}
   messageReceivedAudioSource: {fileID: 4786958141800181651}
   blinkingLight: {fileID: 58956713308144942}
   blinkRate: 2
