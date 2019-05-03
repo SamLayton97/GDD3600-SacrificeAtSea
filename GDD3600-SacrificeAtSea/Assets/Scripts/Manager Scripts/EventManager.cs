@@ -351,7 +351,7 @@ public static class EventManager
     static List<TutorialManager> mineVolleyInvokers = new List<TutorialManager>();
     static List<UnityAction<int>> mineVolleyListeners = new List<UnityAction<int>>();
 
-    // Adds givent tutorial manager as invoker of spawn mine volley event
+    // Adds given tutorial manager as invoker of spawn mine volley event
     public static void AddMineVolleyInvoker(TutorialManager invoker)
     {
         // adds invoker to list and adds all listeners to this invoker

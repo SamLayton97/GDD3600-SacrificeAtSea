@@ -21,8 +21,9 @@ public class TutorialManager : MonoBehaviour
         spawnMineVolleyEvent = new SpawnMineVolleyEvent();
         EventManager.AddMineVolleyInvoker(this);
 
-        // add self as listener to trigger next stage event
+        // add self as listener to respective events
         EventManager.AddTriggerNextStageListener(TriggerNextStage);
+        EventManager.AddSubmarineCollisionListener(RetryVolley);
     }
 
     /// <summary>
@@ -83,6 +84,37 @@ public class TutorialManager : MonoBehaviour
     }
 
     #region Tutorial Stage Transitions
+
+    /// <summary>
+    /// Restarts current volley of mines when player collidies with
+    /// a mine (thus failing to dodge the volley).
+    /// </summary>
+    void RetryVolley()
+    {
+        Debug.Log("retry volley");
+
+        // clear nav panel of remaining tutorial mines
+        GameObject[] remainingMines = GameObject.FindGameObjectsWithTag("CavernObstacle");
+        for (int i = 0; i < remainingMines.Length; i++)
+            Destroy(remainingMines[i]);
+
+        // retry volley corresponding to current tutorial stage
+        switch (currentStage)
+        {
+            case TutorialStages.FirstMineVolley:
+                EnterFirstMineVolley();
+                break;
+            case TutorialStages.SecondMineVolley:
+                EnterSecondMineVolley();
+                break;
+            case TutorialStages.ThirdMineVolley:
+                EnterThirdMineVolley();
+                break;
+            default:
+                Debug.Log("Error: Attempting to retry a volley from a non-volley tutorial stage.");
+                break;
+        }
+    }
 
     /// <summary>
     /// Enters first mine volley stage, telling nav panel to spawn single mine.

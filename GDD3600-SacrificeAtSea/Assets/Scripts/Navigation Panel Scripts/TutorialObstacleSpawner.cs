@@ -100,7 +100,7 @@ public class TutorialObstacleSpawner : MonoBehaviour
         // spawn mine at clamped position and initialize its target
         Vector3 spawnPosition = new Vector3(randSpawnX, randSpawnY);
         GameObject spawnedMine = Instantiate(seaMinePrefab,
-            target.position + spawnPosition, Quaternion.identity);
+            transform.position + spawnPosition, Quaternion.identity);
         spawnedMine.GetComponent<MovingNavPanelIcon>().Target = target;
     }
 }
