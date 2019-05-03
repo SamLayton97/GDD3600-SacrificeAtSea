@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CavernObstacle
   - CavernTreasure
+  - SubmarineIcon
   layers:
   - Default
   - TransparentFX

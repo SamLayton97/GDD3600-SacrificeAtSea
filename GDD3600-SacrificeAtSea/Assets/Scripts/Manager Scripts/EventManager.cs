@@ -374,4 +374,35 @@ public static class EventManager
     }
 
     #endregion
+
+    #region Dodged Mine Volley
+
+    // declare lists to hold invokers and listeners to dodged volley event
+    static List<DodgedTutorialMine> dodgedVolleyInvokers = new List<DodgedTutorialMine>();
+    static List<UnityAction> dodgedVolleyListeners = new List<UnityAction>();
+
+    // Adds given dodged mine handler as invoker of dodged volley event
+    public static void AddDodgedVolleyInvoker(DodgedTutorialMine invoker)
+    {
+        // adds invoker to list and adds all listeners to this invoker
+        dodgedVolleyInvokers.Add(invoker);
+        foreach (UnityAction listener in dodgedVolleyListeners)
+        {
+            invoker.AddDodgedVolleyListener(listener);
+        }
+    }
+
+    // Adds given method as listener to dodged volley event
+    public static void AddDodgedVolleyListener(UnityAction listener)
+    {
+        // adds listener to list and to all invokers of event
+        dodgedVolleyListeners.Add(listener);
+        foreach (DodgedTutorialMine invoker in dodgedVolleyInvokers)
+        {
+            invoker.AddDodgedVolleyListener(listener);
+        }
+    }
+
+    #endregion
+
 }
