@@ -778,8 +778,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0024567, y: -84.6}
-  m_SizeDelta: {x: 800, y: 575}
+  m_AnchoredPosition: {x: -0.0024567, y: -61}
+  m_SizeDelta: {x: 800, y: 527.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677760549
 MonoBehaviour:
@@ -818,7 +818,7 @@ MonoBehaviour:
     collect undersea riches.\r\n- Avoid treacherous cavern walls and undersea mines.\r\n-
     Repair pieces of your submarine to restore their functionality.\r\n\r\nControls:\r\n-
     'A'/'D' to move left and right.\r\n- 'Space' to jump\r.\n- 'E' to interact and
-    repair."
+    repair.\n- 'ESC' to pause the game."
 --- !u!222 &1677760550
 CanvasRenderer:
   m_ObjectHideFlags: 0
