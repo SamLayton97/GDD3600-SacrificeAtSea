@@ -14,6 +14,9 @@ public class TutorialManager : MonoBehaviour
     // audio feedback support
     [SerializeField] AudioSource volleyDodgedAudioSource;
 
+    // malfunctioning submarine parts
+    [SerializeField] DegradingPart[] degradingNavigationParts;
+
     // event support
     SpawnMineVolleyEvent spawnMineVolleyEvent;
 
@@ -71,6 +74,7 @@ public class TutorialManager : MonoBehaviour
                     break;
                 case TutorialStages.RepairAgain:
                     Debug.Log("Enter repair again");
+                    EnterRepairAgain();
                     break;
                 default:
                     break;
@@ -165,7 +169,9 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void EnterRepairAgain()
     {
-
+        // for each of the degrading parts, set their current health to 0
+        for (int i = 0; i < degradingNavigationParts.Length; i++)
+            degradingNavigationParts[i].CurrentHealth = 0;
     }
 
     #endregion

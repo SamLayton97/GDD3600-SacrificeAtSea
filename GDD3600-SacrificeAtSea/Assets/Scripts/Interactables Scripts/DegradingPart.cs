@@ -53,10 +53,11 @@ public class DegradingPart : MonoBehaviour
         get { return myPart; }
     }
 
-    // Read-access to current health of degrading part
+    // Read/write-access to current health of degrading part
     public float CurrentHealth
     {
         get { return currHealth; }
+        set { currHealth = value; }
     }
 
     // Read-access to functionality threshold of degrading part

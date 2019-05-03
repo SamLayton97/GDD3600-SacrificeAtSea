@@ -1270,6 +1270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volleyDodgedAudioSource: {fileID: 823075314}
+  degradingNavigationParts:
+  - {fileID: 1779198546}
+  - {fileID: 1472504519}
 --- !u!82 &823075314 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 185907578969184780, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
@@ -2258,6 +2261,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17122a9e5e03a864f9c21f8a473566e3, type: 3}
+--- !u!114 &1472504519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5646829382093465101, guid: 457bb94e620b4b143875321e9151dc85,
+    type: 3}
+  m_PrefabInstance: {fileID: 836140798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dbae9bbf0ecb948a81e10e941adf3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1488519144 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 883014548542338563, guid: 5ec48b4fc06c84a44a8e888530a72950,
