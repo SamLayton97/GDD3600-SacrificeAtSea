@@ -25,8 +25,8 @@ public class MessageTerminal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if blinking light counter exceeds rate
-        if (blinkCounter >= (1 / blinkRate))
+        // if terminal's message hasn't been heard and blinking light counter exceeds rate
+        if (!messageHeard && blinkCounter >= (1 / blinkRate))
         {
             // retrieve current color of blinking light
             Color newLightColor = blinkingLight.color;
@@ -41,5 +41,21 @@ public class MessageTerminal : MonoBehaviour
 
         // increment counter
         blinkCounter += Time.deltaTime;
+    }
+
+    /// <summary>
+    /// Called when another object collides with this object's
+    /// trigger collision box.
+    /// </summary>
+    /// <param name="collision">collision info</param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // set message as heard
+        messageHeard = true;
+
+        // stop light from flashing
+        Color endColor = blinkingLight.color;
+        endColor.a = 0;
+        blinkingLight.color = endColor;
     }
 }
