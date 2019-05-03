@@ -11,6 +11,9 @@ public class TutorialManager : MonoBehaviour
     // phase support variables
     TutorialStages currentStage = TutorialStages.InitialSteps;
 
+    // audio feedback support
+    [SerializeField] AudioSource volleyDodgedAudioSource;
+
     // event support
     SpawnMineVolleyEvent spawnMineVolleyEvent;
 
@@ -99,6 +102,9 @@ public class TutorialManager : MonoBehaviour
 
         // transition to next tutorial stage
         TriggerNextStage(currentStage + 1);
+
+        // play volley dodged sound effect
+        volleyDodgedAudioSource.Play();
     }
 
     /// <summary>
