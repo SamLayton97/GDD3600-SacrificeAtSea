@@ -63,9 +63,10 @@ public class MessageTerminal : MonoBehaviour
             Color endColor = blinkingLight.color;
             endColor.a = 0;
             blinkingLight.color = endColor;
-
-            // play message received sound effect
-            messageReceivedAudioSource.Play();
         }
+
+        // if not already playing, play message received sound effect
+        if (!messageReceivedAudioSource.isPlaying)
+            messageReceivedAudioSource.Play();
     }
 }
