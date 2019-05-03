@@ -18,6 +18,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] DegradingPart[] degradingNavigationParts;
     [SerializeField] GameObject messageTerminalToRemove;
     [SerializeField] GameObject messageTerminalToSpawn;
+    PartsManager myPartsManager;
 
     // event support
     SpawnMineVolleyEvent spawnMineVolleyEvent;
@@ -25,6 +26,9 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // get reference to object's parts manager
+        myPartsManager = GetComponent<PartsManager>();
+
         // add self as invoker to spawn mine volley event
         spawnMineVolleyEvent = new SpawnMineVolleyEvent();
         EventManager.AddMineVolleyInvoker(this);
@@ -33,6 +37,19 @@ public class TutorialManager : MonoBehaviour
         EventManager.AddTriggerNextStageListener(TriggerNextStage);
         EventManager.AddSubmarineCollisionListener(RetryVolley);
         EventManager.AddDodgedVolleyListener(EndVolley);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // if player has returned to repair both navigation terminals
+        if (currentStage == TutorialStages.RepairAgain 
+            && myPartsManager.GetPartFunctionality(SubmarineParts.ballastTanks)
+            && myPartsManager.GetPartFunctionality(SubmarineParts.propellors))
+        {
+            // transition to end of tutorial stage
+            TriggerNextStage(TutorialStages.End);
+        }
     }
 
     /// <summary>
@@ -88,6 +105,10 @@ public class TutorialManager : MonoBehaviour
                 case TutorialStages.RepairAgain:
                     Debug.Log("Enter repair again");
                     EnterRepairAgain();
+                    break;
+                case TutorialStages.End:
+                    Debug.Log("Enter end");
+                    EnterTutorialEnd();
                     break;
                 default:
                     break;
@@ -179,6 +200,15 @@ public class TutorialManager : MonoBehaviour
         Vector3 messageTerminalSpawnPosition = messageTerminalToRemove.transform.position;
         Destroy(messageTerminalToRemove);
         Instantiate(messageTerminalToSpawn, messageTerminalSpawnPosition, Quaternion.identity);
+    }
+
+    /// <summary>
+    /// Enters tutorial's final stage, spawning a menu that transitions 
+    /// player to main gameplay scenes
+    /// </summary>
+    void EnterTutorialEnd()
+    {
+        Debug.Log("Tutorial complete.");
     }
 
     #endregion

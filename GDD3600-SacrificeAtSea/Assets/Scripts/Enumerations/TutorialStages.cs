@@ -14,5 +14,6 @@ public enum TutorialStages
     FirstMineVolley,
     SecondMineVolley,
     ThirdMineVolley,
-    RepairAgain
+    RepairAgain,
+    End
 }
