@@ -22,6 +22,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject messageTerminalToRemove;
     [SerializeField] GameObject messageTerminalToSpawn;
     PartsManager myPartsManager;
+    float returnToRepairDelay = .5f;
+    float returnToRepairCounter = 0;
 
     // End of tutorial support variables
     [SerializeField] GameObject endOfTutorialPanel;
@@ -52,14 +54,21 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if player has returned to repair both navigation terminals
-        if (currentStage == TutorialStages.RepairAgain 
-            && myPartsManager.GetPartFunctionality(SubmarineParts.ballastTanks)
-            && myPartsManager.GetPartFunctionality(SubmarineParts.propellors))
+        // if player has reached "return to repair" phase
+        if (currentStage == TutorialStages.RepairAgain)
         {
-            // transition to end of tutorial stage
-            TriggerNextStage(TutorialStages.End);
-        }
+            // if player has returned to repair both navigation terminals
+            if (myPartsManager.GetPartFunctionality(SubmarineParts.ballastTanks)
+                && myPartsManager.GetPartFunctionality(SubmarineParts.propellors)
+                && returnToRepairCounter >= returnToRepairDelay)
+            {
+                // transition to end of tutorial stage
+                TriggerNextStage(TutorialStages.End);
+            }
+
+            // increment return to repair delay counter
+            returnToRepairCounter += Time.deltaTime;
+        }        
     }
 
     #endregion
@@ -144,7 +153,7 @@ public class TutorialManager : MonoBehaviour
             Destroy(remainingMines[i]);
 
         // transition to next tutorial stage
-        TriggerNextStage(currentStage + 1);
+        TriggerNextStage((TutorialStages)Mathf.Min((int)currentStage + 1, (int)TutorialStages.RepairAgain));
 
         // play volley dodged sound effect
         volleyDodgedAudioSource.Play();
