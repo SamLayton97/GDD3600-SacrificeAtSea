@@ -22,6 +22,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject messageTerminalToSpawn;
     PartsManager myPartsManager;
 
+    // End of tutorial support variables
+    
+
     // event support
     SpawnMineVolleyEvent spawnMineVolleyEvent;
 
