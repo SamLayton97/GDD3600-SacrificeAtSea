@@ -8,7 +8,7 @@ using UnityEngine;
 public class MessageTerminal : MonoBehaviour
 {
     // tutorial sequencing support
-    [SerializeField] TutorialStages terminalTriggers = TutorialStages.InitialSteps;
+    [SerializeField] TutorialStages terminalTriggers;   // tutorial stage that terminal triggers on initial collision with player
     bool messageHeard = false;
 
     // audio support
@@ -68,5 +68,15 @@ public class MessageTerminal : MonoBehaviour
         // if not already playing, play message received sound effect
         if (!messageReceivedAudioSource.isPlaying)
             messageReceivedAudioSource.Play();
+    }
+
+    /// <summary>
+    /// Called when another object exits collision with
+    /// this one's trigger collision box.
+    /// </summary>
+    /// <param name="collision">collision info</param>
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
     }
 }
