@@ -123,8 +123,9 @@ public class DegradingPart : MonoBehaviour
             isFunctioning = false;
             updateFunctionalityEvent.Invoke(myPart, false);
 
-            // give audio feedback to reflect new status
-            malfunctionAudioSource.Play();
+            // if terminal didn't initialize below threshold, give audio feedback to reflect new status
+            if (Time.time >= 0.5f)
+                malfunctionAudioSource.Play();
         }
         // if part health rises above threshold and is currently not operating
         else if (currHealth >= functionalityThreshold && !isFunctioning)
