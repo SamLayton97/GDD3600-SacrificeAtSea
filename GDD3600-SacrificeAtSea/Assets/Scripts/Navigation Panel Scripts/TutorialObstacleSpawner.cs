@@ -42,7 +42,27 @@ public class TutorialObstacleSpawner : MonoBehaviour
     /// <param name="volleyNumber">pre-determined volley to fire</param>
     void SpawnVolley(int volleyNumber)
     {
-        Debug.Log("spawn volley");
+        // spawn sea mines corresponding to volley number
+        switch (volleyNumber)
+        {
+            // spawn 1 mine from right side of screen
+            case 1:
+                SpawnMineAtPanelSide(PanelSides.Right);
+                break;
+            // spawn mines from top and right of screen
+            case 2:
+                SpawnMineAtPanelSide(PanelSides.Top);
+                SpawnMineAtPanelSide(PanelSides.Right);
+                break;
+            // spawn mines from bottom and left of screen
+            case 3:
+                SpawnMineAtPanelSide(PanelSides.Bottom);
+                SpawnMineAtPanelSide(PanelSides.Left);
+                break;
+            default:
+                Debug.Log("Error: Invalid volley number.");
+                break;
+        }
     }
 
     /// <summary>

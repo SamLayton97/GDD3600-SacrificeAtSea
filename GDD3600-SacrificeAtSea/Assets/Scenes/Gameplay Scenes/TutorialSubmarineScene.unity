@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170cea655a5cc2a4086cdf56e3df3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seaMinePrefab: {fileID: 3323217846868612947, guid: ea158df1c9f536044b2fb7dcb2e287fa,
+  seaMinePrefab: {fileID: 3323217846868612947, guid: 852360365e08fbf4892125e455e0faaa,
     type: 3}
   target: {fileID: 1809914735}
 --- !u!1001 &220066870

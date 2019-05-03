@@ -101,7 +101,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Enters third mine volley stage, telling nav panel to spawn mines from 3 directions.
+    /// Enters third mine volley stage, telling nav panel to spawn mines from 2 unexpected directions.
     /// </summary>
     void EnterThirdMineVolley()
     {
