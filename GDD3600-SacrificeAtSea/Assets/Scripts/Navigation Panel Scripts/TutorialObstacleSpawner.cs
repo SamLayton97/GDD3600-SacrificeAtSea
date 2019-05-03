@@ -24,12 +24,25 @@ public class TutorialObstacleSpawner : MonoBehaviour
         panelSize = GetComponent<SpriteRenderer>().size;
         halfPanelWidth = (panelSize.x / 2) - .1f;
         halfPanelHeight = (panelSize.y / 2) - .1f;
+
+        // add self as listener to spawn mine volley event
+        EventManager.AddMineVolleyListener(SpawnVolley);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    /// <summary>
+    /// Spawns pre-determined volley of mines based on 
+    /// current stage of tutorial.
+    /// </summary>
+    /// <param name="volleyNumber">pre-determined volley to fire</param>
+    void SpawnVolley(int volleyNumber)
+    {
+        Debug.Log("spawn volley");
     }
 
     /// <summary>

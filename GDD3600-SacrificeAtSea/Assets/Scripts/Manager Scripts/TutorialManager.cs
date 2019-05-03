@@ -89,7 +89,7 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void EnterFirstMineVolley()
     {
-
+        spawnMineVolleyEvent.Invoke(1);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void EnterSecondMineVolley()
     {
-
+        spawnMineVolleyEvent.Invoke(2);
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void EnterThirdMineVolley()
     {
-
+        spawnMineVolleyEvent.Invoke(3);
     }
 
     /// <summary>
