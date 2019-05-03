@@ -1273,6 +1273,9 @@ MonoBehaviour:
   degradingNavigationParts:
   - {fileID: 1779198546}
   - {fileID: 1472504519}
+  messageTerminalToRemove: {fileID: 1465361579}
+  messageTerminalToSpawn: {fileID: 5674614375545979667, guid: 5077809f9ad0cd24694cf339b384172d,
+    type: 3}
 --- !u!82 &823075314 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 185907578969184780, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
@@ -2261,6 +2264,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17122a9e5e03a864f9c21f8a473566e3, type: 3}
+--- !u!1 &1465361579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5674614375545979667, guid: 4631baaa0058bd94883bb569292cd49e,
+    type: 3}
+  m_PrefabInstance: {fileID: 489235019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1472504519 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5646829382093465101, guid: 457bb94e620b4b143875321e9151dc85,

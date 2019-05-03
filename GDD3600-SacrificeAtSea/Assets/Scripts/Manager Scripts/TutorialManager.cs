@@ -14,8 +14,10 @@ public class TutorialManager : MonoBehaviour
     // audio feedback support
     [SerializeField] AudioSource volleyDodgedAudioSource;
 
-    // malfunctioning submarine parts
+    // "Return to repair" phase support variables
     [SerializeField] DegradingPart[] degradingNavigationParts;
+    [SerializeField] GameObject messageTerminalToRemove;
+    [SerializeField] GameObject messageTerminalToSpawn;
 
     // event support
     SpawnMineVolleyEvent spawnMineVolleyEvent;
@@ -32,6 +34,17 @@ public class TutorialManager : MonoBehaviour
         EventManager.AddSubmarineCollisionListener(RetryVolley);
         EventManager.AddDodgedVolleyListener(EndVolley);
     }
+
+    /// <summary>
+    /// Adds given method as listener to spawn mine volley event
+    /// </summary>
+    /// <param name="listener"></param>
+    public void AddSpawnMineVolleyListener(UnityAction<int> listener)
+    {
+        spawnMineVolleyEvent.AddListener(listener);
+    }
+
+    #region Tutorial Stage Transitions
 
     /// <summary>
     /// Triggers next stage of tutorial
@@ -81,17 +94,6 @@ public class TutorialManager : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// Adds given method as listener to spawn mine volley event
-    /// </summary>
-    /// <param name="listener"></param>
-    public void AddSpawnMineVolleyListener(UnityAction<int> listener)
-    {
-        spawnMineVolleyEvent.AddListener(listener);
-    }
-
-    #region Tutorial Stage Transitions
 
     /// <summary>
     /// Ends current volley of mines when player succeeds in dodging them,
@@ -172,6 +174,11 @@ public class TutorialManager : MonoBehaviour
         // for each of the degrading parts, set their current health to 0
         for (int i = 0; i < degradingNavigationParts.Length; i++)
             degradingNavigationParts[i].CurrentHealth = 0;
+
+        // remove and replace submarine controls message terminal
+        Vector3 messageTerminalSpawnPosition = messageTerminalToRemove.transform.position;
+        Destroy(messageTerminalToRemove);
+        Instantiate(messageTerminalToSpawn, messageTerminalSpawnPosition, Quaternion.identity);
     }
 
     #endregion

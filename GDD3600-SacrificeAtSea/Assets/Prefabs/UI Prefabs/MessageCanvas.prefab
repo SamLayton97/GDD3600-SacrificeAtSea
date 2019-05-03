@@ -285,7 +285,7 @@ MonoBehaviour:
   returnToRepairMessage: '[Father]: By now, the submarine''s propellors and ballast
     tanks should have malfunctioned. When this happens, you won''t be able to move
     the submarine in a certain way. Find and repair their corresponding terminals
-    to restore the ship''s movement.'
-  defaultMessage: '[FATHER]: Hello Robot Boy. This is a test message. If you''re hearing
+    to restore the submarine''s movement.'
+  defaultMessage: '[Father]: Hello Robot Boy. This is a test message. If you''re hearing
     this, something has gone terribly wrong and the developers forgot to initialize
     a message for this terminal.'
