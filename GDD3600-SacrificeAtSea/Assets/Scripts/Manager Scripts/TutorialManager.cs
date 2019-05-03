@@ -35,29 +35,76 @@ public class TutorialManager : MonoBehaviour
             // update current stage to one triggered
             currentStage = nextStage;
 
-            // TODO: enter triggered stage
+            // enter triggered stage
             switch (nextStage)
             {
                 case TutorialStages.InitialSteps:
                     Debug.Log("ERROR: Uninitialized trigger.");
                     break;
                 case TutorialStages.Introduction:
+                    Debug.Log("Enter Introduction");
                     break;
                 case TutorialStages.FirstRepair:
+                    Debug.Log("Enter first repair");
                     break;
                 case TutorialStages.RepairRest:
+                    Debug.Log("Enter repair rest");
                     break;
                 case TutorialStages.FirstMineVolley:
+                    Debug.Log("Enter first mine volley");
+                    EnterFirstMineVolley();
                     break;
                 case TutorialStages.SecondMineVolley:
+                    EnterSecondMineVolley();
+                    Debug.Log("Enter second mine volley");
                     break;
                 case TutorialStages.ThirdMineVolley:
+                    EnterThirdMineVolley();
+                    Debug.Log("Enter third mine volley");
                     break;
                 case TutorialStages.RepairAgain:
+                    Debug.Log("Enter repair again");
                     break;
                 default:
                     break;
             }
         }
     }
+
+    #region Tutorial Stage Transitions
+
+    /// <summary>
+    /// Enters first mine volley stage, telling nav panel to spawn single mine.
+    /// </summary>
+    void EnterFirstMineVolley()
+    {
+
+    }
+
+    /// <summary>
+    /// Enters second mine volley stage, telling nav panel to spawn mines from 2 directions.
+    /// </summary>
+    void EnterSecondMineVolley()
+    {
+
+    }
+
+    /// <summary>
+    /// Enters third mine volley stage, telling nav panel to spawn mines from 3 directions.
+    /// </summary>
+    void EnterThirdMineVolley()
+    {
+
+    }
+
+    /// <summary>
+    /// Enters repair again stage, causing submarine parts to malfunction and need repair.
+    /// </summary>
+    void EnterRepairAgain()
+    {
+
+    }
+
+    #endregion
+
 }

@@ -280,8 +280,8 @@ MonoBehaviour:
     deck.'
   submarineControlsMessage: '[Father]: These levers control the propellors and ballast
     tanks of the submarine. Interacting with them will move the submarine in a certain
-    direction, helping you navigate around mines and collect my treasure. Practice
-    dodging some mines.'
+    direction, helping you navigate around treacherous sea mines and collect my treasure.
+    Practice dodging some mines now.'
   returnToRepairMessage: '[Father]: By now, the submarine''s propellors and ballast
     tanks should have malfunctioned. When this happens, you won''t be able to move
     the submarine in a certain way. Find and repair their corresponding terminals
