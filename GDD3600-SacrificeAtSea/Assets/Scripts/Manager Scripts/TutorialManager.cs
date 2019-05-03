@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Facilitates tutorial's sequencing
@@ -10,17 +11,18 @@ public class TutorialManager : MonoBehaviour
     // phase support variables
     TutorialStages currentStage = TutorialStages.InitialSteps;
 
+    // event support
+    SpawnMineVolleyEvent spawnMineVolleyEvent;
+
     // Start is called before the first frame update
     void Start()
     {
+        // add self as invoker to spawn mine volley event
+        spawnMineVolleyEvent = new SpawnMineVolleyEvent();
+        EventManager.AddMineVolleyInvoker(this);
+
         // add self as listener to trigger next stage event
         EventManager.AddTriggerNextStageListener(TriggerNextStage);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /// <summary>
@@ -69,6 +71,15 @@ public class TutorialManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    /// <summary>
+    /// Adds given method as listener to spawn mine volley event
+    /// </summary>
+    /// <param name="listener"></param>
+    public void AddSpawnMineVolleyListener(UnityAction<int> listener)
+    {
+        spawnMineVolleyEvent.AddListener(listener);
     }
 
     #region Tutorial Stage Transitions

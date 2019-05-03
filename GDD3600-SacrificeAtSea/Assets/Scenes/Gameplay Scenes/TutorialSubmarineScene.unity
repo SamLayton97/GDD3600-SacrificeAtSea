@@ -430,6 +430,21 @@ MonoBehaviour:
   maxMalfunctioningOpacity: 0.3
   minMalfuctioningOpacity: 0
   pulseRate: 1
+--- !u!114 &191825089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191825087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170cea655a5cc2a4086cdf56e3df3018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seaMinePrefab: {fileID: 3323217846868612947, guid: ea158df1c9f536044b2fb7dcb2e287fa,
+    type: 3}
+  target: {fileID: 1809914735}
 --- !u!1001 &220066870
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -344,4 +344,34 @@ public static class EventManager
     }
 
     #endregion
+
+    #region Spawn Tutorial Mine Volley
+
+    // declare lists to hold invokers and listeners to spawn mine volley event
+    static List<TutorialManager> mineVolleyInvokers = new List<TutorialManager>();
+    static List<UnityAction<int>> mineVolleyListeners = new List<UnityAction<int>>();
+
+    // Adds givent tutorial manager as invoker of spawn mine volley event
+    public static void AddMineVolleyInvoker(TutorialManager invoker)
+    {
+        // adds invoker to list and adds all listeners to this invoker
+        mineVolleyInvokers.Add(invoker);
+        foreach (UnityAction<int> listener in mineVolleyListeners)
+        {
+            invoker.AddSpawnMineVolleyListener(listener);
+        }
+    }
+
+    // Adds given method as listener to spawn mine volley event
+    public static void AddMineVolleyListener(UnityAction<int> listener)
+    {
+        // adds listener to list and to all invokers of event
+        mineVolleyListeners.Add(listener);
+        foreach (TutorialManager invoker in mineVolleyInvokers)
+        {
+            invoker.AddSpawnMineVolleyListener(listener);
+        }
+    }
+
+    #endregion
 }

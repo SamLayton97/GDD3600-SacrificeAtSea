@@ -38,7 +38,7 @@ public class UnderseaObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // retrieve sprite renderer from game object
+        // retrieve size of nav panel
         panelSize = GetComponent<SpriteRenderer>().size;
         halfPanelWidth = (panelSize.x / 2) - .1f;
         halfPanelHeight = (panelSize.y / 2) - .1f;
