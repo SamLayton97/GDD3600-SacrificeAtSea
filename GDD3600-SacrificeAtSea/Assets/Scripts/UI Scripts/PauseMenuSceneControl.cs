@@ -10,6 +10,7 @@ public class PauseMenuSceneControl : MonoBehaviour
 {
     // Relevant scene variables
     [SerializeField] string menuSceneName;
+    [SerializeField] string tutorialSceneName;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,18 @@ public class PauseMenuSceneControl : MonoBehaviour
         // reload current scene
         Scene currScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currScene.name);
+    }
+
+    /// <summary>
+    /// Returns to tutorial when user clicks 'Tutorial' button
+    /// </summary>
+    public void HandleReturnToTutorialButton()
+    {
+        // unpause game
+        Time.timeScale = 1;
+
+        // load tutorial scene
+        SceneManager.LoadScene(tutorialSceneName);
     }
 
     /// <summary>
