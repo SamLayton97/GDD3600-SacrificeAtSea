@@ -8,6 +8,8 @@ using UnityEngine.Events;
 /// </summary>
 public class TutorialManager : MonoBehaviour
 {
+    #region Fields
+
     // phase support variables
     TutorialStages currentStage = TutorialStages.InitialSteps;
 
@@ -22,6 +24,10 @@ public class TutorialManager : MonoBehaviour
 
     // event support
     SpawnMineVolleyEvent spawnMineVolleyEvent;
+
+    #endregion
+
+    #region Unity Methods
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +58,10 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
     /// <summary>
     /// Adds given method as listener to spawn mine volley event
     /// </summary>
@@ -60,6 +70,8 @@ public class TutorialManager : MonoBehaviour
     {
         spawnMineVolleyEvent.AddListener(listener);
     }
+
+    #endregion
 
     #region Tutorial Stage Transitions
 
@@ -208,7 +220,7 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void EnterTutorialEnd()
     {
-        Debug.Log("Tutorial complete.");
+        
     }
 
     #endregion
