@@ -10,6 +10,14 @@ public class InterSceneInformationHandler : MonoBehaviour
     // define singleton support variables
     public static InterSceneInformationHandler Instance;
 
+    // define player-performance data variables
+    public float IdleTimeRatio = 0f;
+    public float AdaptabilityRating = 0f;
+    public float HighestPartHealth = 0f;
+    public int FinalHullIntegrity = 0;
+    public int OpportunitiesForGold = 0;
+    public int GoldCollected = 0;
+
     // Initializes information handler singleton
     void Awake()
     {
@@ -25,17 +33,5 @@ public class InterSceneInformationHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
