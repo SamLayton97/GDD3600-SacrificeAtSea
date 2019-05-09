@@ -21,7 +21,7 @@ public class AdaptationManager : MonoBehaviour
     /// </summary>
     void ReadAndAdapt()
     {
-        Debug.Log("READ AND ADAPT");
+
     }
 
     /// <summary>
@@ -30,6 +30,6 @@ public class AdaptationManager : MonoBehaviour
     /// </summary>
     void SavePerformanceData()
     {
-        Debug.Log("SAVE PERFORMANCE DATA");
+
     }
 }
