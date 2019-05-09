@@ -659,6 +659,11 @@ PrefabInstance:
       propertyPath: damagePerCollision
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5906930164567401890, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c2fbb42c6678f541aedbf26e78f7bc2, type: 3}
 --- !u!1001 &419415413
@@ -1879,6 +1884,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3420162051677135442, guid: 4631baaa0058bd94883bb569292cd49e,
+        type: 3}
+      propertyPath: terminalTriggers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5381085951765065274, guid: 4631baaa0058bd94883bb569292cd49e,
         type: 3}
       propertyPath: m_Type
@@ -1892,11 +1902,6 @@ PrefabInstance:
     - target: {fileID: 5381085951765065274, guid: 4631baaa0058bd94883bb569292cd49e,
         type: 3}
       propertyPath: m_AreaSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3420162051677135442, guid: 4631baaa0058bd94883bb569292cd49e,
-        type: 3}
-      propertyPath: terminalTriggers
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3386,19 +3391,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2345359264952682994, guid: 941e148fef30a27409d5c3b794007756,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 475612181, guid: 941e148fef30a27409d5c3b794007756, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 2345359264574043484, guid: 941e148fef30a27409d5c3b794007756,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 475612181, guid: 941e148fef30a27409d5c3b794007756, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.2
+    - target: {fileID: 2345359264952682994, guid: 941e148fef30a27409d5c3b794007756,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1088482545, guid: 941e148fef30a27409d5c3b794007756, type: 3}
       propertyPath: m_IsActive
