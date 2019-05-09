@@ -8,6 +8,12 @@ using UnityEngine;
 /// </summary>
 public class AdaptationManager : MonoBehaviour
 {
+    // performance data collection support variables
+    ProgressManager myProgressManager;
+    SubmarineHealthManager mySubmarineHealthManager;
+    TreasureCollectionManager myTreasureCollectionManager;
+    [SerializeField] PlayerStatsTracker playerStatsTracker;
+
     // Start is called before the first frame update
     void Start()
     {

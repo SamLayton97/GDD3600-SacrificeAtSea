@@ -97,7 +97,7 @@ public class ProgressManager : MonoBehaviour
                 RunIntermediaryEvaluation();
             }
 
-            // if player reaches 100% level progress and player has not already reached 100%, they win!
+            // if player reaches 100% level progress and player has not already completed level, they win!
             if (currentProgressPercent >= 100)
             {
                 // create level-complete UI
