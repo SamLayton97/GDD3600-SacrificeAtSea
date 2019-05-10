@@ -799,6 +799,7 @@ MonoBehaviour:
   treasureCollectedText: {fileID: 386854548566436023}
   adaptabilityRatingText: {fileID: 4728488592762429164}
   hintText: {fileID: 679548279135367123}
+  failedMetricTextColor: {r: 0.68235296, g: 0.6313726, b: 0.09411765, a: 1}
 --- !u!1 &6372719304576203203
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class EndLevelPanelEvaluator : MonoBehaviour
     [SerializeField] Text treasureCollectedText;
     [SerializeField] Text adaptabilityRatingText;
     [SerializeField] Text hintText;
+    [SerializeField] Color failedMetricTextColor;
 
     // scoring display helper variables
     const string DamageTakenPrefix = "Damage Taken: ";
@@ -54,6 +55,14 @@ public class EndLevelPanelEvaluator : MonoBehaviour
         damageTakenText.text = DamageTakenPrefix + damage;
         treasureCollectedText.text = TreasureCollectedPrefix + collectedTreasure + " / " + treasureInLevel;
         adaptabilityRatingText.text = AdaptabilityRatingPrefix + Mathf.Min((int)adaptabilityRating, 30) + AdaptabilityRatingSuffix;
+
+        // set color of any failed metrics
+        if (damage >= 100)
+            damageTakenText.color = failedMetricTextColor;
+        if (collectedTreasureRatio < treasureCollectedStarThreshold)
+            treasureCollectedText.color = failedMetricTextColor;
+        if (adaptabilityRating < adaptabilityStarThreshold)
+            adaptabilityRatingText.color = failedMetricTextColor;
     }
 
     /// <summary>
