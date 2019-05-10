@@ -83,13 +83,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLength: 100
-  numberOfEvaluationsPerLevel: 2
+  numOfMidlevelEvals: 3
   degradingParts:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  routineFluidityThreshold: 50
+  routineFluidityThreshold: 22
   passThresholdSpawnScale: 0.85
   failThresholdSpawnScale: 0.75
   passEvalAudioSource: {fileID: 185907578969184780}
@@ -138,6 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892b34b7494656e438ecf05312cc0fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatsTracker: {fileID: 0}
+  underseaObjectSpawner: {fileID: 0}
+  submarineMovement: {fileID: 0}
 --- !u!82 &185907578969184776
 AudioSource:
   m_ObjectHideFlags: 0

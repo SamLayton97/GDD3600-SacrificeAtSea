@@ -27,8 +27,10 @@ public class EndLevelPanelEvaluator : MonoBehaviour
 
     // scoring display helper variables
     const string DamageTakenPrefix = "Damage Taken: ";
+    const string DamageTakenSuffix = "%";
     const string TreasureCollectedPrefix = "Treasure Collected: ";
     const string AdaptabilityRatingPrefix = "Adaptability: ";
+    const string AdaptabilityRatingSuffix = " / 30";
     const string HintPrefix = "Tip: ";
 
     #region Evaluation Methods
@@ -51,7 +53,7 @@ public class EndLevelPanelEvaluator : MonoBehaviour
         // set metrics text to reflect player's final performance
         damageTakenText.text = DamageTakenPrefix + damage;
         treasureCollectedText.text = TreasureCollectedPrefix + collectedTreasure + " / " + treasureInLevel;
-        adaptabilityRatingText.text = AdaptabilityRatingPrefix + (int)adaptabilityRating;
+        adaptabilityRatingText.text = AdaptabilityRatingPrefix + Mathf.Min((int)adaptabilityRating, 30) + AdaptabilityRatingSuffix;
     }
 
     /// <summary>
@@ -189,9 +191,6 @@ public class EndLevelPanelEvaluator : MonoBehaviour
                 }
             }
         }
-
-        // return error string if method broke from decision tree without generating a hint
-        return "null";
     }
 
     #endregion
