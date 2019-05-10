@@ -149,12 +149,20 @@ public class UnderseaObjectSpawner : MonoBehaviour
         float halfIdleCap = idleTimeCap / 2;
         float spawnRateScale = .25f;
 
+        // define accuracy scaling variables
+        float maxArcScale = .3f;
+
         // adjust frequency of sea mines according to player's idle time
         idleTimeRatio = Mathf.Clamp(idleTimeRatio, 0, idleTimeCap);
         mineMinSpawnDelay += mineMinSpawnDelay * ((idleTimeRatio - halfIdleCap) / halfIdleCap) * spawnRateScale;
         mineMaxSpawnDelay += mineMaxSpawnDelay * ((idleTimeRatio - halfIdleCap) / halfIdleCap) * spawnRateScale;
 
-        // TODO: adjust accuracy of sea mines according to damage taken
+        //adjust accuracy according to damage taken
+        int testDamageTaken = 99;
+        if (testDamageTaken < 100)
+            objectForceArc *= 1 + (((50 - (float)testDamageTaken) / 50) * maxArcScale);
+        else
+            objectForceArc *= 1 + maxArcScale;
     }
 
     #endregion
