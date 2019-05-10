@@ -312,7 +312,19 @@ public class ProgressManager : MonoBehaviour
     /// <param name="highestFunctionality">health of best submarine part last scene</param>
     public void AdaptRepairTerminalRates(float averageAdaptabilityRating, float highestFunctionality)
     {
-        Debug.Log("ADAPT REPAIR TERMINAL RATES");
+        // define degredation and repair scaling variables
+        float maxDegredationChange = .3f;
+        float maxRepairChange = .2f;
+
+        // calculate new scales for degredation and repair rate of terminals
+        averageAdaptabilityRating = Mathf.Min(30f, averageAdaptabilityRating);
+        float newDegredationRateScale = 1 + (((15 - averageAdaptabilityRating) / 15) * maxDegredationChange);
+
+        // apply new degredation and repair scales to each repair terminal
+        for (int i = 0; i < degradingParts.Length; i++)
+        {
+            degradingParts[i].DegredationRate *= newDegredationRateScale;
+        }
     }
 
     /// <summary>
