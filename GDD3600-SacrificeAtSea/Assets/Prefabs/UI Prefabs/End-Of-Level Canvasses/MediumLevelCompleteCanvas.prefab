@@ -923,7 +923,7 @@ MonoBehaviour:
   - {fileID: 2245077915830667312}
   darkenedStarSprite: {fileID: 21300000, guid: c3495bc3d7c4b3346ad7a95eafa5985c, type: 3}
   brightStarSprite: {fileID: 21300000, guid: 2811cacc4f13e384f982bb5602dbf1a6, type: 3}
-  adaptabilityStarThreshold: 25
+  adaptabilityStarThreshold: 22
   treasureCollectedStarThreshold: 30
   damageTakenText: {fileID: 7915704731057760036}
   treasureCollectedText: {fileID: 386854548566436023}
