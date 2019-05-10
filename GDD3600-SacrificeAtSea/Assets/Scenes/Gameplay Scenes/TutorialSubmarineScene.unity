@@ -654,14 +654,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 185907578969184790, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
-        type: 3}
-      propertyPath: damagePerCollision
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5906930164567401890, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 185907578969184790, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
+        type: 3}
+      propertyPath: damagePerCollision
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -958,7 +958,7 @@ PrefabInstance:
     - target: {fileID: 5674614375545979693, guid: 4631baaa0058bd94883bb569292cd49e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3420162051677135442, guid: 4631baaa0058bd94883bb569292cd49e,
         type: 3}
@@ -1976,7 +1976,7 @@ PrefabInstance:
     - target: {fileID: 5674614375545979693, guid: 4631baaa0058bd94883bb569292cd49e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3420162051677135442, guid: 4631baaa0058bd94883bb569292cd49e,
         type: 3}
