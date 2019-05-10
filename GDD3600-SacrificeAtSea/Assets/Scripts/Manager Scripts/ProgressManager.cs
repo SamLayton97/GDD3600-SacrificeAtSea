@@ -41,7 +41,8 @@ public class ProgressManager : MonoBehaviour
     GameObject endOfLevelUI;
     SubmarineHealthManager subHealthManager;
     TreasureCollectionManager treasureCollectionManager;
-    float summedAdaptabilityRatings = 0;            // used to calculate average adaptability score
+    float summedAdaptabilityRatings = 0;
+    float highestFunctioningPart= 0;
     int evalsReached = 0;
 
     // event support
@@ -68,6 +69,14 @@ public class ProgressManager : MonoBehaviour
     public float AverageAdaptability
     {
         get { return summedAdaptabilityRatings / evalsReached; }
+    }
+
+    /// <summary>
+    /// Returns health of submarine part with highest functionality.
+    /// </summary>
+    public float HighestFunctioningPart
+    {
+        get { return highestFunctioningPart; }
     }
 
     #endregion
@@ -233,7 +242,8 @@ public class ProgressManager : MonoBehaviour
             }
         }
 
-        // calculate average health
+        // store highest functioning part and calculate average health
+        highestFunctioningPart = maxDegradingPartHealth;
         averageDegradingPartHealth = totalDegradingPartsHealth / (float)degradingParts.Length;
 
         // if average health is not 0, calculate and return measurement of routine fluidity
