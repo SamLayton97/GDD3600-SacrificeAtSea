@@ -33,7 +33,5 @@ public class PlayerStatsTracker : MonoBehaviour
         // if player is motionless, increment idle time
         if (myRigidbody2D.velocity.x == 0 && myRigidbody2D.velocity.y == 0)
             idleTime += Time.deltaTime;
-
-        Debug.Log(IdleTimeRatio);
     }
 }

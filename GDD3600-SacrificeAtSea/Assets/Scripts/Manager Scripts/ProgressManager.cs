@@ -21,7 +21,7 @@ public class ProgressManager : MonoBehaviour
     float percentIncrementCounter = 0;
 
     // intermediary evaluation variables
-    [SerializeField] int numberOfEvaluationsPerLevel = 3;
+    [SerializeField] int numOfMidlevelEvals = 3;
     int[] evaluationPoints;
     bool isUnscathed = true;
     [SerializeField] DegradingPart[] degradingParts;
@@ -41,7 +41,8 @@ public class ProgressManager : MonoBehaviour
     GameObject endOfLevelUI;
     SubmarineHealthManager subHealthManager;
     TreasureCollectionManager treasureCollectionManager;
-    float summedAdaptabilityRatings = 0;            // used to assess final adaptability score
+    float summedAdaptabilityRatings = 0;            // used to calculate average adaptability score
+    int evalsReached = 0;
 
     // event support
     IncrementProgressEvent incrementProgressEvent;
@@ -56,9 +57,17 @@ public class ProgressManager : MonoBehaviour
     /// Read-access property returning number of 
     /// evaluations manager runs per level.
     /// </summary>
-    public int NumberOfMidLevelEvaluations
+    public int NumberOfEvalsPerLevel
     {
-        get { return numberOfEvaluationsPerLevel; }
+        get { return numOfMidlevelEvals + 1; }
+    }
+
+    /// <summary>
+    /// Returns average adaptability rating so far
+    /// </summary>
+    public float AverageAdaptability
+    {
+        get { return 0; }
     }
 
     #endregion
@@ -87,7 +96,7 @@ public class ProgressManager : MonoBehaviour
         EventManager.AddSubmarineCollisionListener(HandleSubmarineCollision);
 
         // find evaluation points in level
-        evaluationPoints = FindEvaluationPoints(numberOfEvaluationsPerLevel);
+        evaluationPoints = FindEvaluationPoints(numOfMidlevelEvals);
     }
 
     // Update is called once per frame
@@ -160,11 +169,6 @@ public class ProgressManager : MonoBehaviour
     /// </summary>
     void RunIntermediaryEvaluation()
     {
-        // initialize average and max component health variables
-        float totalDegradingPartsHealth = 0;
-        float averageDegradingPartHealth = 0;
-        float maxDegradingPartHealth = 0;
-
         // if player made it through portion of level unscathed
         if (isUnscathed)
         {
@@ -172,26 +176,10 @@ public class ProgressManager : MonoBehaviour
             spawnTreasureEvent.Invoke();
         }
 
-        // find sum and highest health value of each degrading part
-        for (int i = 0; i < degradingParts.Length; i++)
-        {
-            // add health of current degrading part to total
-            float currentHealth = degradingParts[i].CurrentHealth;
-            totalDegradingPartsHealth += currentHealth;
-
-            // if part's health is greater than current max, update current max
-            if (currentHealth > maxDegradingPartHealth)
-            {
-                maxDegradingPartHealth = currentHealth;
-            }
-        }
-
-        // calculate average health and assess player's 'routine fluidity'
-        averageDegradingPartHealth = totalDegradingPartsHealth / (float)degradingParts.Length;
-        float currRoutineFluidity = AssessRoutineFluidity(averageDegradingPartHealth, maxDegradingPartHealth);
-
-        // add calculated routine fluidity to summed total
+        // assess player's 'routine fluidity' and add to summed total
+        float currRoutineFluidity = AssessRoutineFluidity();
         summedAdaptabilityRatings += currRoutineFluidity;
+        Debug.Log("CURRENT ADAPTABILITY: " + currRoutineFluidity);
 
         // if player's routine fluidity grade meets threshold
         if (currRoutineFluidity >= routineFluidityThreshold)
@@ -221,14 +209,38 @@ public class ProgressManager : MonoBehaviour
     /// according to new goals. Calculated from (1 - average health / greatest health)
     /// * 100.
     /// </summary>
-    /// <param name="averageHealth">average health of submarine components</param>
-    /// <param name="greatestHealth">greatest health of any component in level</param>
-    /// <returns></returns>
-    float AssessRoutineFluidity(float averageHealth, float greatestHealth)
+    /// <returns>adaptability rating of this stage</returns>
+    float AssessRoutineFluidity()
     {
-        // if greatest health is not 0, calculate and return measurement of routine fluidity
-        if (greatestHealth > 0)
-            return (1 - (averageHealth / greatestHealth)) * 100;
+        // increment number of evaluations run
+        evalsReached++;
+        Debug.Log("EVALS RUN: " + evalsReached);
+
+        // initialize average and max component health variables
+        float totalDegradingPartsHealth = 0;
+        float averageDegradingPartHealth = 0;
+        float maxDegradingPartHealth = 0;
+
+        // find sum and highest health value of each degrading part
+        for (int i = 0; i < degradingParts.Length; i++)
+        {
+            // add health of current degrading part to total
+            float currentHealth = degradingParts[i].CurrentHealth;
+            totalDegradingPartsHealth += currentHealth;
+
+            // if part's health is greater than current max, update current max
+            if (currentHealth > maxDegradingPartHealth)
+            {
+                maxDegradingPartHealth = currentHealth;
+            }
+        }
+
+        // calculate average health
+        averageDegradingPartHealth = totalDegradingPartsHealth / (float)degradingParts.Length;
+
+        // if average health is not 0, calculate and return measurement of routine fluidity
+        if (maxDegradingPartHealth > 0)
+            return (1 - (averageDegradingPartHealth / maxDegradingPartHealth)) * 100;
 
         // otherwise (all parts have health of 0), return 0
         return 0;
@@ -256,6 +268,10 @@ public class ProgressManager : MonoBehaviour
         // if end-of-level UI doesn't already exist
         if (endOfLevelUI == null)
         {
+            // run final adaptability evaluation and add to summed total
+            float finalAdaptability = AssessRoutineFluidity();
+            summedAdaptabilityRatings += finalAdaptability;
+
             // if player successfully beat level
             if (isPlayerAlive)
             {
@@ -271,7 +287,7 @@ public class ProgressManager : MonoBehaviour
 
             // set metrics of end-of-level UI
             endOfLevelUI.GetComponentInChildren<EndLevelPanelEvaluator>().SetMetrics(subHealthManager.DamageTaken, treasureCollectionManager.TreasureCollected,
-                    numberOfEvaluationsPerLevel, summedAdaptabilityRatings / numberOfEvaluationsPerLevel);
+                    numOfMidlevelEvals, summedAdaptabilityRatings / evalsReached);
         }
     }
 
