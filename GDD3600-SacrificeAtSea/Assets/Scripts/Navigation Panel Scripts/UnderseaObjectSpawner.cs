@@ -30,6 +30,7 @@ public class UnderseaObjectSpawner : MonoBehaviour
 
     // targeting support
     [SerializeField] Transform target;
+    [SerializeField] float objectForceArc = 50f;
 
     #endregion
 
@@ -106,10 +107,11 @@ public class UnderseaObjectSpawner : MonoBehaviour
         }
         Vector3 spawnPosition = new Vector3(randSpawnX, randSpawnY);
 
-        // spawn object at clamped position and initialize its target
+        // spawn object at clamped position and initialize its target and force arc
         GameObject objectInstance = Instantiate(objectToSpawn,
             transform.position + spawnPosition, Quaternion.identity);
         objectInstance.GetComponent<MovingNavPanelIcon>().Target = target;
+        objectInstance.GetComponent<MovingNavPanelIcon>().ForceAngleArc = objectForceArc;
     }
 
     /// <summary>

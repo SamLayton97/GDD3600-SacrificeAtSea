@@ -22,6 +22,14 @@ public class MovingNavPanelIcon : MonoBehaviour
         set { target = value; }
     }
 
+    /// <summary>
+    /// Write-access property to set arc at which object moves in
+    /// </summary>
+    public float ForceAngleArc
+    {
+        set { forceAngleArc = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

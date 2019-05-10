@@ -32,7 +32,7 @@ public class AdaptationManager : MonoBehaviour
     /// </summary>
     void ReadAndAdapt()
     {
-        Debug.Log("READ AND ADAPT");
+
     }
 
     /// <summary>

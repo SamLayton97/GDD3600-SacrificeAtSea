@@ -1595,6 +1595,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5264858891619902370, guid: 9b300e4de0550de4a9318f18b20a1e79,
         type: 3}
+    - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
+        type: 3}
+      propertyPath: objectForceArc
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
+        type: 3}
+      propertyPath: mineMinSpawnDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
+        type: 3}
+      propertyPath: minMaxSpawnDelay
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 617346206, guid: dd6b9f068ff646846aee5a350a2ff67c, type: 3}
       propertyPath: m_IsActive
       value: 1
