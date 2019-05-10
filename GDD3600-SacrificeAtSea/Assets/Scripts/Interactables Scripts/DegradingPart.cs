@@ -73,6 +73,13 @@ public class DegradingPart : MonoBehaviour
         set { degredationRate = value; }
     }
 
+    // Read/write-access to rate at which player can repair degrading part
+    public float RepairRate
+    {
+        get { return repairRate; }
+        set { repairRate = value; }
+    }
+
     #endregion
 
     #region Unity Methods
