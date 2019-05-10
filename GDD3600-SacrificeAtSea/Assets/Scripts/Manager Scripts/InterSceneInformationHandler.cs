@@ -18,6 +18,24 @@ public class InterSceneInformationHandler : MonoBehaviour
     public int OpportunitiesForTreasure = -1;
     public int TreasureCollected = -1;
 
+    /// <summary>
+    /// Read-access property returning whether data has been set
+    /// to anything outside of safe defaults.
+    /// </summary>
+    public bool DataIsInitialized
+    {
+        get
+        {
+            // if any variable is set to default, data isn't initialized
+            if (IdleTimeRatio == -1 || AdaptabilityRating == -1 || HighestPartHealth == -1
+                || FinalDamageTaken == -1 || OpportunitiesForTreasure == -1 || TreasureCollected == -1)
+                return false;
+            // otherwise, data is initialized
+            else
+                return true;
+        }
+    }
+
     // Initializes information handler singleton
     void Awake()
     {

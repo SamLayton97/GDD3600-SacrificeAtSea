@@ -36,7 +36,11 @@ public class AdaptationManager : MonoBehaviour
     /// </summary>
     void ReadAndAdapt()
     {
+        // if player performance is initialized, adapt various variables to player performance
+        if (InterSceneInformationHandler.Instance.DataIsInitialized)
+        {
 
+        }
     }
 
     /// <summary>
