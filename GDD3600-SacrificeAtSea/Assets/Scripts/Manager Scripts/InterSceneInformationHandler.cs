@@ -36,6 +36,19 @@ public class InterSceneInformationHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets player-performance variables to their safe defaults
+    /// </summary>
+    public void Reset()
+    {
+        IdleTimeRatio = -1f;
+        AdaptabilityRating = -1f;
+        HighestPartHealth = -1f;
+        FinalDamageTaken = -1;
+        OpportunitiesForTreasure = -1;
+        TreasureCollected = -1;
+    }
+
     // Initializes information handler singleton
     void Awake()
     {

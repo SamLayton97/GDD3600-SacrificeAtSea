@@ -321,8 +321,6 @@ public class ProgressManager : MonoBehaviour
         float newDegredationRateScale = 1 + (((15 - averageAdaptabilityRating) / 15) * maxDegredationChange);
         float newRepairRateScale = 1 - (((highestFunctionality - 50) / 50) * maxRepairChange);
 
-        Debug.Log("NEW REPAIR RATE SCALE: " + newRepairRateScale);
-
         // apply new degredation and repair scales to each repair terminal
         for (int i = 0; i < degradingParts.Length; i++)
         {
