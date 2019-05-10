@@ -41,8 +41,6 @@ public class AdaptationManager : MonoBehaviour
     /// </summary>
     public void SavePerformanceData()
     {
-        Debug.Log("SAVE PERFORMANCE DATA");
-
         // set player-performance data for next scene
         InterSceneInformationHandler.Instance.IdleTimeRatio = playerStatsTracker.IdleTimeRatio;
         InterSceneInformationHandler.Instance.AdaptabilityRating = myProgressManager.AverageAdaptability;
