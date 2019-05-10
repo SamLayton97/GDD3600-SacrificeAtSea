@@ -50,6 +50,19 @@ public class ProgressManager : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    /// <summary>
+    /// Read-access property returning number of 
+    /// evaluations manager runs per level.
+    /// </summary>
+    public int NumberOfMidLevelEvaluations
+    {
+        get { return numberOfEvaluationsPerLevel; }
+    }
+
+    #endregion
+
     #region Unity Methods
 
     // Start is called before the first frame update

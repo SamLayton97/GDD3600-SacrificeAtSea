@@ -14,9 +14,9 @@ public class InterSceneInformationHandler : MonoBehaviour
     public float IdleTimeRatio = 0f;
     public float AdaptabilityRating = 0f;
     public float HighestPartHealth = 0f;
-    public int FinalHullIntegrity = 0;
-    public int OpportunitiesForGold = 0;
-    public int GoldCollected = 0;
+    public int FinalDamageTaken = 0;
+    public int OpportunitiesForTreasure = 0;
+    public int TreasureCollected = 0;
 
     // Initializes information handler singleton
     void Awake()

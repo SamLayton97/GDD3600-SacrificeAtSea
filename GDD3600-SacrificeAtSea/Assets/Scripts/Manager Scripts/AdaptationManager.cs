@@ -17,6 +17,11 @@ public class AdaptationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // retrieve references to data-collection components
+        myProgressManager = GetComponent<ProgressManager>();
+        mySubmarineHealthManager = GetComponent<SubmarineHealthManager>();
+        myTreasureCollectionManager = GetComponent<TreasureCollectionManager>();
+
         // read performance data and change in-game variables accordingly
         ReadAndAdapt();
     }
@@ -36,6 +41,10 @@ public class AdaptationManager : MonoBehaviour
     /// </summary>
     void SavePerformanceData()
     {
-
+        // set player-performance data for next scene
+        InterSceneInformationHandler.Instance.IdleTimeRatio = playerStatsTracker.IdleTimeRatio;
+        InterSceneInformationHandler.Instance.FinalDamageTaken = mySubmarineHealthManager.DamageTaken;
+        InterSceneInformationHandler.Instance.OpportunitiesForTreasure = myProgressManager.NumberOfMidLevelEvaluations;
+        InterSceneInformationHandler.Instance.TreasureCollected = myTreasureCollectionManager.TreasureCollected;
     }
 }

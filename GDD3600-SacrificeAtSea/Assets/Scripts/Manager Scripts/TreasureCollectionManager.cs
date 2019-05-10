@@ -26,6 +26,8 @@ public class TreasureCollectionManager : MonoBehaviour
         get { return currGold / goldValue; }
     }
 
+    #region Methods
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,4 +62,7 @@ public class TreasureCollectionManager : MonoBehaviour
     {
         addGoldCollectedEvent.AddListener(newListener);
     }
+
+    #endregion
+
 }
