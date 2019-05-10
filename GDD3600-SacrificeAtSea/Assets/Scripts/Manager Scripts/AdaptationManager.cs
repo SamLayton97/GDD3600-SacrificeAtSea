@@ -14,6 +14,10 @@ public class AdaptationManager : MonoBehaviour
     TreasureCollectionManager myTreasureCollectionManager;
     [SerializeField] PlayerStatsTracker playerStatsTracker;
 
+    // adaptation support variables
+    [SerializeField] UnderseaObjectSpawner underseaObjectSpawner;
+    [SerializeField] SubmarineMovement submarineMovement;
+
     // Start is called before the first frame update
     void Start()
     {
