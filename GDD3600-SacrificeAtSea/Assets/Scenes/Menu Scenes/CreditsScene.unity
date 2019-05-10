@@ -595,7 +595,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5c6009becaf47f140bb237aa67ed6fb5, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 1
@@ -887,7 +887,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5c6009becaf47f140bb237aa67ed6fb5, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 1
@@ -900,10 +900,10 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "A Game by Sam Layton\r\n\r\nVisual Artists\r:\n\r\nNick Curtis - Grenadier
-    NF Regular Font\r\nFreepik from Flaticon - Boat wheel icon\r\nLuke Anthony Firth
-    from the Noun Project - Sea mine icon\r\n\r\nVisual Effect Artists\r:\n\r\nanderson
-    addo - EZ Camera Shake Unity\r\n\nMusic / Ambient Sound Artists\r:\n\r\nZozzy
-    - nemoscape1\r\n\n"
+    NF Regular Font\r\nLuc(as) de Groot - Consolas Font\nFreepik from Flaticon - Boat
+    wheel icon\r\nLuke Anthony Firth from the Noun Project - Sea mine icon\r\n\r\nVisual
+    Effect Artists\r:\n\r\nanderson addo - EZ Camera Shake Unity\r\n\nMusic / Ambient
+    Sound Artists\r:\n\r\nZozzy - nemoscape1\r\n\n"
 --- !u!222 &1677760550
 CanvasRenderer:
   m_ObjectHideFlags: 0
