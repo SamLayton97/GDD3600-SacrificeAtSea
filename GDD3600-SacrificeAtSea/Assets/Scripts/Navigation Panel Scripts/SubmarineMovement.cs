@@ -85,4 +85,14 @@ public class SubmarineMovement : MonoBehaviour
         else if (moveType == SubmarineParts.ballastTanks)
             inputVector.y = inputAxis;
     }
+
+    /// <summary>
+    /// Adapts scale of force vector according to
+    /// player's performance during previous scene.
+    /// </summary>
+    /// <param name="collectedTreasure">treasure collected last scene</param>
+    public void AdaptSubmarineForceScale(int collectedTreasure)
+    {
+        Debug.Log("ADAPT SUBMARINE FORCE SCALE");
+    }
 }

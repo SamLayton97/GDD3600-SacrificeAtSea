@@ -19,16 +19,9 @@ public class AdaptationManager : MonoBehaviour
     [SerializeField] UnderseaObjectSpawner underseaObjectSpawner;
     [SerializeField] SubmarineMovement submarineMovement;
 
-    // event support
-    AdaptObstaclesEvent adaptObstaclesEvent;
-
     // Start is called before the first frame update
     void Start()
-    {
-        // add self as invoker of adapt obstacles event
-        adaptObstaclesEvent = new AdaptObstaclesEvent();
-        EventManager.AddAdaptObstaclesInvoker(this);
-        
+    {       
         // retrieve references to data-collection components
         myProgressManager = GetComponent<ProgressManager>();
         mySubmarineHealthManager = GetComponent<SubmarineHealthManager>();
@@ -47,7 +40,11 @@ public class AdaptationManager : MonoBehaviour
         // if player performance is initialized, adapt various variables to player performance
         if (InterSceneInformationHandler.Instance.DataIsInitialized)
         {
-
+            underseaObjectSpawner.AdaptObstacleSpawns(InterSceneInformationHandler.Instance.IdleTimeRatio, 
+                InterSceneInformationHandler.Instance.FinalDamageTaken);
+            myProgressManager.AdaptRepairTerminalRates(InterSceneInformationHandler.Instance.AdaptabilityRating,
+                InterSceneInformationHandler.Instance.HighestPartHealth);
+            submarineMovement.AdaptSubmarineForceScale(InterSceneInformationHandler.Instance.TreasureCollected);
         }
     }
 
@@ -64,14 +61,5 @@ public class AdaptationManager : MonoBehaviour
         InterSceneInformationHandler.Instance.FinalDamageTaken = mySubmarineHealthManager.DamageTaken;
         InterSceneInformationHandler.Instance.OpportunitiesForTreasure = myProgressManager.NumberOfMidLevelEvals;
         InterSceneInformationHandler.Instance.TreasureCollected = myTreasureCollectionManager.TreasureCollected;
-    }
-
-    /// <summary>
-    /// Adds given listener to this object's adapt obstacles event
-    /// </summary>
-    /// <param name="newListener"></param>
-    public void AddAdaptObstaclesListener(UnityAction<float, int> newListener)
-    {
-        adaptObstaclesEvent.AddListener(newListener);
     }
 }

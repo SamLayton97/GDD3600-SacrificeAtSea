@@ -305,6 +305,17 @@ public class ProgressManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Adapts each repair terminal's degredation and repair rates
+    /// according to player performance last scene.
+    /// </summary>
+    /// <param name="averageAdaptabilityRating">adaptability rating of player last scene</param>
+    /// <param name="highestFunctionality">health of best submarine part last scene</param>
+    public void AdaptRepairTerminalRates(float averageAdaptabilityRating, float highestFunctionality)
+    {
+        Debug.Log("ADAPT REPAIR TERMINAL RATES");
+    }
+
+    /// <summary>
     /// Adds given listener to object's increment progress event
     /// </summary>
     /// <param name="newListener"></param>

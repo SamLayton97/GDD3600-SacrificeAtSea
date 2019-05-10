@@ -136,6 +136,17 @@ public class UnderseaObjectSpawner : MonoBehaviour
         minMaxSpawnDelay *= spawnRateScale;
     }
 
+    /// <summary>
+    /// Adapts obstacle spawn variables according to
+    /// player performance last scene.
+    /// </summary>
+    /// <param name="idleTimeRatio">time player was idle last scene</param>
+    /// <param name="damageTaken">damage sustained by submarine last scene</param>
+    public void AdaptObstacleSpawns(float idleTimeRatio, int damageTaken)
+    {
+        Debug.Log("ADAPT OBSTACLE SPAWNS");
+    }
+
     #endregion
 
 }
