@@ -19,7 +19,7 @@ public class UnderseaObjectSpawner : MonoBehaviour
 
     // seamine spawn delay support
     [SerializeField] float mineMinSpawnDelay = 5f;
-    [SerializeField] float minMaxSpawnDelay = 10f;
+    [SerializeField] float mineMaxSpawnDelay = 10f;
     float nextSpawnCounter = 0;
     float randSpawnDelay = 0;
 
@@ -45,7 +45,7 @@ public class UnderseaObjectSpawner : MonoBehaviour
         halfPanelHeight = (panelSize.y / 2) - .1f;
 
         // generate random delay for first mine spawn
-        randSpawnDelay = Random.Range(mineMinSpawnDelay, minMaxSpawnDelay);
+        randSpawnDelay = Random.Range(mineMinSpawnDelay, mineMaxSpawnDelay);
 
         // add self as listener to respective events
         EventManager.AddSpawnTreasureListener(SpawnTreasure);
@@ -60,7 +60,7 @@ public class UnderseaObjectSpawner : MonoBehaviour
         {
             // reset spawn counter and generate new delay time
             nextSpawnCounter = 0;
-            randSpawnDelay = Random.Range(mineMinSpawnDelay, minMaxSpawnDelay);
+            randSpawnDelay = Random.Range(mineMinSpawnDelay, mineMaxSpawnDelay);
 
             // spawn a new undersea rock
             SpawnObjectAtPanelSide(underseaRockPrefab);
@@ -133,7 +133,7 @@ public class UnderseaObjectSpawner : MonoBehaviour
     {
         // scale max and min spawn delay by given rate
         mineMinSpawnDelay *= spawnRateScale;
-        minMaxSpawnDelay *= spawnRateScale;
+        mineMaxSpawnDelay *= spawnRateScale;
     }
 
     /// <summary>
@@ -144,7 +144,21 @@ public class UnderseaObjectSpawner : MonoBehaviour
     /// <param name="damageTaken">damage sustained by submarine last scene</param>
     public void AdaptObstacleSpawns(float idleTimeRatio, int damageTaken)
     {
-        Debug.Log("ADAPT OBSTACLE SPAWNS");
+        // define spawn rate scaling variables
+        float idleTimeCap = .7f;
+        float halfIdleCap = idleTimeCap / 2;
+        float spawnRateScale = .3f;
+
+        // adjust obstacle spawn times according to time player spent idle
+        idleTimeRatio = Mathf.Clamp(idleTimeRatio, 0, idleTimeCap);
+        mineMinSpawnDelay += mineMinSpawnDelay * ((idleTimeRatio - halfIdleCap) / halfIdleCap) * spawnRateScale;
+        mineMaxSpawnDelay += mineMaxSpawnDelay * ((idleTimeRatio - halfIdleCap) / halfIdleCap) * spawnRateScale;
+
+        Debug.Log("MIN SPAWN DELAY: " + mineMinSpawnDelay);
+        Debug.Log("MAX SPAWN DELAY: " + mineMaxSpawnDelay);
+
+        // adjust frequency of sea mines according to player's idle time
+        Debug.Log("IDLE TIME RATIO: " + idleTimeRatio);
     }
 
     #endregion
