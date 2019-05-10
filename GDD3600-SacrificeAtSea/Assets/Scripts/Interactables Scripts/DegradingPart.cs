@@ -66,6 +66,13 @@ public class DegradingPart : MonoBehaviour
         get { return functionalityThreshold; }
     }
 
+    // Read/write-access to rate at which component degrades
+    public float DegredationRate
+    {
+        get { return degredationRate; }
+        set { degredationRate = value; }
+    }
+
     #endregion
 
     #region Unity Methods
