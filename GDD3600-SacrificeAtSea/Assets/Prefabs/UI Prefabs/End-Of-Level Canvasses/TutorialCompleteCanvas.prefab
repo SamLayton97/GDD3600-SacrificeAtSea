@@ -1038,18 +1038,18 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ade95c339ba8cc6409cc93da3511cd48, type: 3}
+    m_Font: {fileID: 12800000, guid: 5c6009becaf47f140bb237aa67ed6fb5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 60
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[Father]: Excellent. You''ll need to keep repairing the submarine as you
+  m_Text: '[FATHER]: Excellent. You''ll need to keep repairing the submarine as you
     explore. And you may not have time to repair everything. But I think you have
     it in you. Now, go find me some treasure!'

@@ -66,13 +66,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5c6009becaf47f140bb237aa67ed6fb5, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 70
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -269,23 +269,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageText: {fileID: 7745935703403609294}
-  introductionMessage: '[Familiar Voice]: Hello Robot Boy, this is Father. Welcome
+  introductionMessage: '[FAMILIAR VOICE]: Hello Robot Boy, this is Father. Welcome
     aboard my submarine! As you know, I''ve tasked you with exploring the caverns
     in search of treasure. I''ve left you more audio logs up ahead.'
-  firstRepairMessage: '[Father]: This vessel isn''t quite what it used to be. When
+  firstRepairMessage: '[FATHER]: This vessel isn''t quite what it used to be. When
     parts fall into disrepair, they won''t work. I''ve hooked the terminal to your
     left to open the hatch above. Repair it and make your way upwards.'
-  repairRestMessage: '[Father]: In time, you''ll come to know this submarine like
+  repairRestMessage: '[FATHER]: In time, you''ll come to know this submarine like
     the back of your hand. Repair the other terminals and make your way to the control
     deck.'
-  submarineControlsMessage: '[Father]: These levers control the propellors and ballast
+  submarineControlsMessage: '[FATHER]: These levers control the propellors and ballast
     tanks of the submarine. Interacting with them will move the submarine in a certain
     direction, helping you navigate around damaging sea mines and collect my treasure.
     Practice dodging some mines now.'
-  returnToRepairMessage: '[Father]: By now, the submarine''s propellors and ballast
+  returnToRepairMessage: '[FATHER]: By now, the submarine''s propellors and ballast
     tanks should have malfunctioned. When this happens, you won''t be able to move
     the submarine in a certain way. Find and repair their corresponding terminals
     to restore the submarine''s movement.'
-  defaultMessage: '[Father]: Hello Robot Boy. This is a test message. If you''re hearing
+  defaultMessage: '[FATHER]: Hello Robot Boy. This is a test message. If you''re hearing
     this, something has gone terribly wrong and the developers forgot to initialize
     a message for this terminal.'
