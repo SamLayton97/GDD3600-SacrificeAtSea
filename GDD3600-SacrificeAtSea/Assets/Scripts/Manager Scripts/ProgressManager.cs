@@ -313,17 +313,21 @@ public class ProgressManager : MonoBehaviour
     public void AdaptRepairTerminalRates(float averageAdaptabilityRating, float highestFunctionality)
     {
         // define degredation and repair scaling variables
-        float maxDegredationChange = .3f;
-        float maxRepairChange = .2f;
+        float maxDegredationChange = .15f;
+        float maxRepairChange = .25f;
 
         // calculate new scales for degredation and repair rate of terminals
         averageAdaptabilityRating = Mathf.Min(30f, averageAdaptabilityRating);
         float newDegredationRateScale = 1 + (((15 - averageAdaptabilityRating) / 15) * maxDegredationChange);
+        float newRepairRateScale = 1 - (((highestFunctionality - 50) / 50) * maxRepairChange);
+
+        Debug.Log("NEW REPAIR RATE SCALE: " + newRepairRateScale);
 
         // apply new degredation and repair scales to each repair terminal
         for (int i = 0; i < degradingParts.Length; i++)
         {
             degradingParts[i].DegredationRate *= newDegredationRateScale;
+            degradingParts[i].RepairRate *= newRepairRateScale;
         }
     }
 
