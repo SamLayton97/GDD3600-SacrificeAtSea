@@ -13,11 +13,13 @@ public class ProgressUI : MonoBehaviour
     // hull integrity support
     [SerializeField] Text hullIntegrityText;
     const string HullIntegrityTextPrefix = "HULL: ";
+    const string HullIntegrityTextSuffix = "%";
     int startingHullIntegrity = 100;
 
     // level progress support
     [SerializeField] Text goalProgressText;
     const string GoalProgressTextPrefix = "PROGRESS: ";
+    const string GoalProgressTextSuffix = "%";
     int currGoalProgress = 0;
 
     // gold/treasure support
@@ -29,8 +31,8 @@ public class ProgressUI : MonoBehaviour
     void Start()
     {
         // initialize UI text
-        hullIntegrityText.text = HullIntegrityTextPrefix + startingHullIntegrity;
-        goalProgressText.text = GoalProgressTextPrefix + currGoalProgress;
+        hullIntegrityText.text = HullIntegrityTextPrefix + startingHullIntegrity + HullIntegrityTextSuffix;
+        goalProgressText.text = GoalProgressTextPrefix + currGoalProgress + GoalProgressTextSuffix;
         goldText.text = GoldTextPrefix + currGold;
 
         // add self as listener to respective events
@@ -43,7 +45,7 @@ public class ProgressUI : MonoBehaviour
     void UpdateHullIntegrity(int newIntegrity)
     {
         // update hull integrity text
-        hullIntegrityText.text = HullIntegrityTextPrefix + newIntegrity;
+        hullIntegrityText.text = HullIntegrityTextPrefix + newIntegrity + HullIntegrityTextSuffix;
     }
 
     // Updates UI components related to level progress
@@ -51,7 +53,7 @@ public class ProgressUI : MonoBehaviour
     {
         // update level progress text
         currGoalProgress++;
-        goalProgressText.text = GoalProgressTextPrefix + Mathf.Min(100, currGoalProgress);
+        goalProgressText.text = GoalProgressTextPrefix + Mathf.Min(100, currGoalProgress) + GoalProgressTextSuffix;
     }
 
     // Updates UI components related to gold collected
