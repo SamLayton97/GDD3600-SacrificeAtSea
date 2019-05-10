@@ -57,17 +57,17 @@ public class ProgressManager : MonoBehaviour
     /// Read-access property returning number of 
     /// evaluations manager runs per level.
     /// </summary>
-    public int NumberOfEvalsPerLevel
+    public int NumberOfMidLevelEvals
     {
-        get { return numOfMidlevelEvals + 1; }
+        get { return numOfMidlevelEvals; }
     }
 
     /// <summary>
-    /// Returns average adaptability rating so far
+    /// Returns player's average adaptability rating.
     /// </summary>
     public float AverageAdaptability
     {
-        get { return 0; }
+        get { return summedAdaptabilityRatings / evalsReached; }
     }
 
     #endregion
@@ -179,7 +179,6 @@ public class ProgressManager : MonoBehaviour
         // assess player's 'routine fluidity' and add to summed total
         float currRoutineFluidity = AssessRoutineFluidity();
         summedAdaptabilityRatings += currRoutineFluidity;
-        Debug.Log("CURRENT ADAPTABILITY: " + currRoutineFluidity);
 
         // if player's routine fluidity grade meets threshold
         if (currRoutineFluidity >= routineFluidityThreshold)
@@ -287,7 +286,7 @@ public class ProgressManager : MonoBehaviour
 
             // set metrics of end-of-level UI
             endOfLevelUI.GetComponentInChildren<EndLevelPanelEvaluator>().SetMetrics(subHealthManager.DamageTaken, treasureCollectionManager.TreasureCollected,
-                    numOfMidlevelEvals, summedAdaptabilityRatings / evalsReached);
+                    numOfMidlevelEvals, AverageAdaptability);
         }
     }
 
