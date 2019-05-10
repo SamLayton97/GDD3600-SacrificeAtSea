@@ -32,15 +32,17 @@ public class AdaptationManager : MonoBehaviour
     /// </summary>
     void ReadAndAdapt()
     {
-
+        Debug.Log("READ AND ADAPT");
     }
 
     /// <summary>
     /// Saves player performance-tracking data from
     /// current level.
     /// </summary>
-    void SavePerformanceData()
+    public void SavePerformanceData()
     {
+        Debug.Log("SAVE PERFORMANCE DATA");
+
         // set player-performance data for next scene
         InterSceneInformationHandler.Instance.IdleTimeRatio = playerStatsTracker.IdleTimeRatio;
         InterSceneInformationHandler.Instance.AdaptabilityRating = myProgressManager.AverageAdaptability;

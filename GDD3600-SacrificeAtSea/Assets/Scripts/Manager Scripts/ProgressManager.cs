@@ -35,10 +35,13 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] AudioSource passEvalAudioSource;
     [SerializeField] AudioSource failEvalAudioSource;
 
-    // final evaluation support variables
+    // end of level support
     [SerializeField] GameObject levelCompleteUI;
     [SerializeField] GameObject gameOverUI;
     GameObject endOfLevelUI;
+    AdaptationManager myAdaptationManager;
+
+    // final evaluation support
     SubmarineHealthManager subHealthManager;
     TreasureCollectionManager treasureCollectionManager;
     float summedAdaptabilityRatings = 0;
@@ -92,6 +95,7 @@ public class ProgressManager : MonoBehaviour
         // get references to various manager components
         subHealthManager = GetComponent<SubmarineHealthManager>();
         treasureCollectionManager = GetComponent<TreasureCollectionManager>();
+        myAdaptationManager = GetComponent<AdaptationManager>();
 
         // adds self as invoker of respective events
         incrementProgressEvent = new IncrementProgressEvent();
@@ -293,7 +297,8 @@ public class ProgressManager : MonoBehaviour
                 endOfLevelUI = Instantiate(gameOverUI);
             }
 
-            // set metrics of end-of-level UI
+            // save and set metrics for adaptability and UI
+            myAdaptationManager.SavePerformanceData();
             endOfLevelUI.GetComponentInChildren<EndLevelPanelEvaluator>().SetMetrics(subHealthManager.DamageTaken, treasureCollectionManager.TreasureCollected,
                     numOfMidlevelEvals, AverageAdaptability);
         }
