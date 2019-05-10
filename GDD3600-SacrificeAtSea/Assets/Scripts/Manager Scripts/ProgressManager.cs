@@ -213,7 +213,6 @@ public class ProgressManager : MonoBehaviour
     {
         // increment number of evaluations run
         evalsReached++;
-        Debug.Log("EVALS RUN: " + evalsReached);
 
         // initialize average and max component health variables
         float totalDegradingPartsHealth = 0;

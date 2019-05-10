@@ -43,6 +43,7 @@ public class AdaptationManager : MonoBehaviour
     {
         // set player-performance data for next scene
         InterSceneInformationHandler.Instance.IdleTimeRatio = playerStatsTracker.IdleTimeRatio;
+        InterSceneInformationHandler.Instance.AdaptabilityRating = myProgressManager.AverageAdaptability;
         InterSceneInformationHandler.Instance.FinalDamageTaken = mySubmarineHealthManager.DamageTaken;
         InterSceneInformationHandler.Instance.OpportunitiesForTreasure = myProgressManager.NumberOfMidLevelEvals;
         InterSceneInformationHandler.Instance.TreasureCollected = myTreasureCollectionManager.TreasureCollected;
