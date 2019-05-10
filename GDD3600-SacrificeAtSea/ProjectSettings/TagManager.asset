@@ -65,6 +65,9 @@ TagManager:
   - name: NavigationPanelBorder
     uniqueID: 1739693283
     locked: 0
+  - name: Player
+    uniqueID: 471631313
+    locked: 0
   - name: InteriorParticles
     uniqueID: 3690681425
     locked: 0
@@ -79,12 +82,6 @@ TagManager:
     locked: 0
   - name: SubmarineInteriorWalls
     uniqueID: 3729993697
-    locked: 0
-  - name: Player
-    uniqueID: 471631313
-    locked: 0
-  - name: InteractablesForeground
-    uniqueID: 3079379393
     locked: 0
   - name: SubmarineExteriorWalls
     uniqueID: 1970564297
