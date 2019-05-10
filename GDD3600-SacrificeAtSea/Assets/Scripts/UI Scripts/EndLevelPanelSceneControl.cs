@@ -49,6 +49,9 @@ public class EndLevelPanelSceneControl : MonoBehaviour
     /// </summary>
     public void HandleReturnToMenuButton()
     {
+        // reset player-performance variables
+        InterSceneInformationHandler.Instance.Reset();
+
         // go to title menu
         SceneManager.LoadScene(titleMenuSceneName);
 

@@ -820,11 +820,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.038163
+      value: -11.038792
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7299993
+      value: 3.7299995
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1226,6 +1226,11 @@ PrefabInstance:
       propertyPath: degradingParts.Array.data[3]
       value: 
       objectReference: {fileID: 725548678}
+    - target: {fileID: 185907578969184791, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
+        type: 3}
+      propertyPath: levelLength
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5906930164567401890, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
         type: 3}
       propertyPath: playerStatsTracker

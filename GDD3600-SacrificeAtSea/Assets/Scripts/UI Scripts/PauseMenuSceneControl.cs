@@ -49,6 +49,9 @@ public class PauseMenuSceneControl : MonoBehaviour
     /// </summary>
     public void HandleReturnToTutorialButton()
     {
+        // reset player-performance variables
+        InterSceneInformationHandler.Instance.Reset();
+
         // unpause game
         Time.timeScale = 1;
 
@@ -61,6 +64,9 @@ public class PauseMenuSceneControl : MonoBehaviour
     /// </summary>
     public void HandleReturnToMenuButton()
     {
+        // reset player-performance variables
+        InterSceneInformationHandler.Instance.Reset();
+
         // unpause game
         Time.timeScale = 1;
 
