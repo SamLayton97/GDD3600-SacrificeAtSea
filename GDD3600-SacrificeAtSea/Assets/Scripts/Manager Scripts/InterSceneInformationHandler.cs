@@ -11,12 +11,12 @@ public class InterSceneInformationHandler : MonoBehaviour
     public static InterSceneInformationHandler Instance;
 
     // define player-performance data variables
-    public float IdleTimeRatio = 0f;
-    public float AdaptabilityRating = 0f;
-    public float HighestPartHealth = 0f;
-    public int FinalDamageTaken = 0;
-    public int OpportunitiesForTreasure = 0;
-    public int TreasureCollected = 0;
+    public float IdleTimeRatio = -1f;
+    public float AdaptabilityRating = -1f;
+    public float HighestPartHealth = -1f;
+    public int FinalDamageTaken = -1;
+    public int OpportunitiesForTreasure = -1;
+    public int TreasureCollected = -1;
 
     // Initializes information handler singleton
     void Awake()

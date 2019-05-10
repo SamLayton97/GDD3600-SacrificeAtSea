@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ea6a5fbd53b3d408b8788c25125ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleTimeRatio: 0
-  AdaptabilityRating: 0
-  HighestPartHealth: 0
-  FinalHullIntegrity: 0
-  OpportunitiesForGold: 0
-  GoldCollected: 0
+  IdleTimeRatio: -1
+  AdaptabilityRating: -1
+  HighestPartHealth: -1
+  FinalDamageTaken: -1
+  OpportunitiesForTreasure: -1
+  TreasureCollected: -1
