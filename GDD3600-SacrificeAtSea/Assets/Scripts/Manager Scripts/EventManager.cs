@@ -405,4 +405,34 @@ public static class EventManager
 
     #endregion
 
+    #region Adapt Obstacle Spawn Rate and Accuracy
+
+    // declare lists to hold invokers and listeners to adapt obstacles event
+    static List<AdaptationManager> adaptObstaclesInvokers = new List<AdaptationManager>();
+    static List<UnityAction<float, int>> adaptObstaclesListeners = new List<UnityAction<float, int>>();
+
+    // Adds given adaptation manager as invoker of adapt obstacles event
+    public static void AddAdaptObstaclesInvoker(AdaptationManager invoker)
+    {
+        // adds given invoker to list and adds all listeners to this invoker
+        adaptObstaclesInvokers.Add(invoker);
+        foreach (UnityAction<float, int> listener in adaptObstaclesListeners)
+        {
+            invoker.AddAdaptObstaclesListener(listener);
+        }
+    }
+
+    // Adds given method as listener to adapt obstacles event
+    public static void AddAdaptObstaclesListener(UnityAction<float, int> listener)
+    {
+        // adds listener to list and to all invokers of event
+        adaptObstaclesListeners.Add(listener);
+        foreach (AdaptationManager invoker in adaptObstaclesInvokers)
+        {
+            invoker.AddAdaptObstaclesListener(listener);
+        }
+    }
+
+    #endregion
+
 }

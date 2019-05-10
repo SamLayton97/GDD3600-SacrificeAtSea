@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Manages modification of various difficulty variables
@@ -18,9 +19,16 @@ public class AdaptationManager : MonoBehaviour
     [SerializeField] UnderseaObjectSpawner underseaObjectSpawner;
     [SerializeField] SubmarineMovement submarineMovement;
 
+    // event support
+    AdaptObstaclesEvent adaptObstaclesEvent;
+
     // Start is called before the first frame update
     void Start()
     {
+        // add self as invoker of adapt obstacles event
+        adaptObstaclesEvent = new AdaptObstaclesEvent();
+        EventManager.AddAdaptObstaclesInvoker(this);
+        
         // retrieve references to data-collection components
         myProgressManager = GetComponent<ProgressManager>();
         mySubmarineHealthManager = GetComponent<SubmarineHealthManager>();
@@ -56,5 +64,14 @@ public class AdaptationManager : MonoBehaviour
         InterSceneInformationHandler.Instance.FinalDamageTaken = mySubmarineHealthManager.DamageTaken;
         InterSceneInformationHandler.Instance.OpportunitiesForTreasure = myProgressManager.NumberOfMidLevelEvals;
         InterSceneInformationHandler.Instance.TreasureCollected = myTreasureCollectionManager.TreasureCollected;
+    }
+
+    /// <summary>
+    /// Adds given listener to this object's adapt obstacles event
+    /// </summary>
+    /// <param name="newListener"></param>
+    public void AddAdaptObstaclesListener(UnityAction<float, int> newListener)
+    {
+        adaptObstaclesEvent.AddListener(newListener);
     }
 }
