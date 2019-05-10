@@ -145,20 +145,16 @@ public class UnderseaObjectSpawner : MonoBehaviour
     public void AdaptObstacleSpawns(float idleTimeRatio, int damageTaken)
     {
         // define spawn rate scaling variables
-        float idleTimeCap = .7f;
+        float idleTimeCap = .65f;
         float halfIdleCap = idleTimeCap / 2;
-        float spawnRateScale = .3f;
+        float spawnRateScale = .25f;
 
-        // adjust obstacle spawn times according to time player spent idle
+        // adjust frequency of sea mines according to player's idle time
         idleTimeRatio = Mathf.Clamp(idleTimeRatio, 0, idleTimeCap);
         mineMinSpawnDelay += mineMinSpawnDelay * ((idleTimeRatio - halfIdleCap) / halfIdleCap) * spawnRateScale;
         mineMaxSpawnDelay += mineMaxSpawnDelay * ((idleTimeRatio - halfIdleCap) / halfIdleCap) * spawnRateScale;
 
-        Debug.Log("MIN SPAWN DELAY: " + mineMinSpawnDelay);
-        Debug.Log("MAX SPAWN DELAY: " + mineMaxSpawnDelay);
-
-        // adjust frequency of sea mines according to player's idle time
-        Debug.Log("IDLE TIME RATIO: " + idleTimeRatio);
+        // TODO: adjust accuracy of sea mines according to damage taken
     }
 
     #endregion
