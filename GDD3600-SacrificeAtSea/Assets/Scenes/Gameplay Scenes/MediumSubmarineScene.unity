@@ -629,6 +629,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5145286688946258040, guid: 7c4c95f02fa70d544aaad85e1ea12409,
         type: 3}
+    - target: {fileID: 185907578969184791, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
+        type: 3}
+      propertyPath: levelLength
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5906930164567401890, guid: 3c2fbb42c6678f541aedbf26e78f7bc2,
         type: 3}
       propertyPath: playerStatsTracker
@@ -854,11 +859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.1036212
+      value: 3.2388227
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.567718
+      value: 7.6393757
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.z

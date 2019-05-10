@@ -93,6 +93,12 @@ public class SubmarineMovement : MonoBehaviour
     /// <param name="collectedTreasure">treasure collected last scene</param>
     public void AdaptSubmarineForceScale(int collectedTreasure)
     {
-        Debug.Log("ADAPT SUBMARINE FORCE SCALE");
+        // calculate scalar by which to adjust submarine propulsion force
+        float newForceScale = forceScale.x;
+        newForceScale += newForceScale * (collectedTreasure / 3);
+
+        // re-scale force
+        forceScale.x = newForceScale;
+        forceScale.y = newForceScale;
     }
 }
