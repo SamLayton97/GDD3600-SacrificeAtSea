@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7020798740061099129}
   - component: {fileID: 6226812383377087425}
   m_Layer: 10
-  m_Name: Image
+  m_Name: RepairIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,6 +411,9 @@ MonoBehaviour:
   healthSlider: {fileID: 4815672434129756635}
   healthBarFill: {fileID: 4007173317844076525}
   degradingPart: {fileID: 5646829382093465101}
+  myIcon: {fileID: 6226812383377087425}
+  functioningIcon: {fileID: 21300000, guid: e13dc7f38ae8f5d48a63d2f1c17db339, type: 3}
+  malfunctioningIcon: {fileID: 21300000, guid: fa762ea4dc14e1740bdedcb7bd084cc0, type: 3}
 --- !u!114 &6479047688242023647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +728,7 @@ GameObject:
   - component: {fileID: 8185501737663591050}
   - component: {fileID: 4815672434129756635}
   m_Layer: 10
-  m_Name: Slider
+  m_Name: FunctionalityMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

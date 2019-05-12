@@ -20,12 +20,22 @@ public class RepairTerminalHealthBar : MonoBehaviour
     Color brokenColor = Color.red;
     Color repairColor = Color.yellow;
     float functionalityThreshold = 0;
-    
+
+    // icon sprite support fields
+    [SerializeField] Image myIcon;
+    [SerializeField] Sprite functioningIcon;
+    [SerializeField] Sprite malfunctioningIcon;
+    SubmarineParts mySubmarinePart = SubmarineParts.ballastTanks;
+
     // Start is called before the first frame update
     void Start()
     {
-        // read functionality threshold from degrading part script
+        // read data from degrading parts script
         functionalityThreshold = degradingPart.FunctionalityThreshold;
+        mySubmarinePart = degradingPart.MyPart;
+
+        // add self as listener to update functionality event
+        EventManager.AddUpdateFunctionalityListeners(UpdateIcon);
     }
 
     // Update is called once per frame
@@ -53,5 +63,24 @@ public class RepairTerminalHealthBar : MonoBehaviour
 
         // update previous health value
         prevHealth = currHealth;
+    }
+
+    /// <summary>
+    /// Updates repair icon to reflect functionality
+    /// of terminal.
+    /// </summary>
+    /// <param name="updatedPart">submarine part updated by player</param>
+    /// <param name="isFunctioning">whether submarine part now functions</param>
+    void UpdateIcon(SubmarineParts updatedPart, bool isFunctioning)
+    {
+        // if updated part matches this object's submarine part
+        if (updatedPart == mySubmarinePart)
+        {
+            // swap icon according to new functionality
+            if (isFunctioning)
+                myIcon.sprite = functioningIcon;
+            else
+                myIcon.sprite = malfunctioningIcon;
+        }
     }
 }
