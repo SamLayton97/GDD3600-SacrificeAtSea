@@ -74,6 +74,9 @@ TagManager:
   - name: Interactables
     uniqueID: 314606731
     locked: 0
+  - name: InteractableHighlights
+    uniqueID: 3623625567
+    locked: 0
   - name: InaccessibleAreaDarkness
     uniqueID: 1808736059
     locked: 0
