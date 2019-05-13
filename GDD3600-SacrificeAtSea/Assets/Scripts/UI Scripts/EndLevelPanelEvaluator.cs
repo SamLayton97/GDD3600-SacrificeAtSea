@@ -46,7 +46,7 @@ public class EndLevelPanelEvaluator : MonoBehaviour
     public void SetMetrics(int damage, int collectedTreasure, int treasureInLevel, float adaptabilityRating)
     {
         // calculate ratio of collected treasure to uncollected treasure
-        float collectedTreasureRatio = collectedTreasure / treasureInLevel;
+        float collectedTreasureRatio = (float)collectedTreasure / (float)treasureInLevel;
 
         // from inputs, set star rating (0-3)
         hintText.text = HintPrefix + SetRatingAndHint(damage, collectedTreasureRatio, adaptabilityRating);
