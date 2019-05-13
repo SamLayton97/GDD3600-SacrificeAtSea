@@ -9,7 +9,7 @@ using UnityEngine;
 public class ProximityAlarm : MonoBehaviour
 {
     // alarm activity variables
-    bool isCurrentlyActive = true;
+    bool isActive = false;
 
     // audio support variables
     [SerializeField] AudioSource alarmAudioSource;
@@ -19,7 +19,6 @@ public class ProximityAlarm : MonoBehaviour
     {
         // add self as listener to proximity alarm event
         EventManager.AddProximityAlarmListener(ToggleAlarm);
-        alarmAudioSource.Play();
     }
 
     // Update is called once per frame
@@ -31,10 +30,31 @@ public class ProximityAlarm : MonoBehaviour
     /// <summary>
     /// Enables/disables proximity alarm
     /// </summary>
-    /// <param name="isActive">whether alarm is now active
+    /// <param name="activate">whether alarm is now active
     /// or inactive</param>
-    void ToggleAlarm(bool isActive)
+    void ToggleAlarm(bool activate)
     {
-        
+        Debug.Log("ACTIVATE: " + activate);
+
+        // if alarm should activate and isn't currently active
+        if (!isActive && activate)
+        {
+            // set alarm to active
+            isActive = true;
+
+            // sound alarm if alarm isn't already playing
+            if (!alarmAudioSource.isPlaying)
+                alarmAudioSource.Play();
+        }
+
+        // if alarm should deactivate and is currently active
+        if (isActive && !activate)
+        {
+            // set alarm to inactive
+            isActive = false;
+
+            // stop alarm from sounding
+            alarmAudioSource.Stop();
+        }
     }
 }
