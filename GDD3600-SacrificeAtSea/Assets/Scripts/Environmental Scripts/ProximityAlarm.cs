@@ -13,6 +13,8 @@ public class ProximityAlarm : MonoBehaviour
 
     // audio support variables
     [SerializeField] AudioSource alarmAudioSource;
+    [SerializeField] float alarmDelay = 2.0f;
+    float alarmTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,20 @@ public class ProximityAlarm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if proximity alarm is active
+        if (isActive)
+        {
+            // if alarm timer bottoms out
+            if (alarmTimer <= 0)
+            {
+                // sound alarm and reset timer
+                alarmAudioSource.Play();
+                alarmTimer = alarmDelay;
+            }
 
+            // decrement time to next alarm sounding
+            alarmTimer -= Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -42,9 +57,8 @@ public class ProximityAlarm : MonoBehaviour
             // set alarm to active
             isActive = true;
 
-            // sound alarm if alarm isn't already playing
-            if (!alarmAudioSource.isPlaying)
-                alarmAudioSource.Play();
+            // start alarm
+            alarmTimer = 0;
         }
 
         // if alarm should deactivate and is currently active
@@ -52,9 +66,6 @@ public class ProximityAlarm : MonoBehaviour
         {
             // set alarm to inactive
             isActive = false;
-
-            // stop alarm from sounding
-            alarmAudioSource.Stop();
         }
     }
 }

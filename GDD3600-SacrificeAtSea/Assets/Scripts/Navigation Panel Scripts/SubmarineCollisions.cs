@@ -14,6 +14,10 @@ public class SubmarineCollisions : MonoBehaviour
     CollectTreasureEvent collectTreasureEvent;
     ProximityAlarmEvent proximityAlarmEvent;
 
+    // proximity alarm support
+    bool isAlarmColliderEmpty = true;       // whether proximity alarm collider is clear of obstacles
+    bool wasAlarmColliderEmpty = true;      // whether collider was clear last frame -- used for updates
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,33 @@ public class SubmarineCollisions : MonoBehaviour
         proximityAlarmEvent = new ProximityAlarmEvent();
         EventManager.AddProximityAlarmInvoker(this);
 
+    }
+
+    // Called once per frame
+    void Update()
+    {
+        Debug.Log(isAlarmColliderEmpty);
+
+        // if collider was empty but now is not, sound alarm
+        if (!isAlarmColliderEmpty && wasAlarmColliderEmpty)
+            proximityAlarmEvent.Invoke(true);
+        // if collider is empty but was not, stop alarm
+        if (isAlarmColliderEmpty && !wasAlarmColliderEmpty)
+            proximityAlarmEvent.Invoke(false);
+    }
+
+    // Called after Update ends
+    void LateUpdate()
+    {
+        // update previous frame collider-empty flag
+        wasAlarmColliderEmpty = isAlarmColliderEmpty;
+    }
+
+    // Called fixed number of timer per second
+    void FixedUpdate()
+    {
+        // reset collider-empty flag
+        isAlarmColliderEmpty = true;
     }
 
     // Called first frame submarine enters collision with another
@@ -51,20 +82,10 @@ public class SubmarineCollisions : MonoBehaviour
         }
     }
 
-    // Called first frame object enters proximity of submarine
-    void OnTriggerEnter2D(Collider2D collision)
+    // Called each frame an object is within submarine's proximity collider
+    void OnTriggerStay2D(Collider2D collision)
     {
-        // activate submarine's proximity alarm
-        Debug.Log("ENTER PROXIMITY");
-        proximityAlarmEvent.Invoke(true);
-    }
-
-    // Called when object leaves proximity of submarine
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        // deactivate submarine's proximity alarm
-        Debug.Log("EXIT PROXIMITY");
-        proximityAlarmEvent.Invoke(false);
+        isAlarmColliderEmpty = false;
     }
 
     // Adds listener to object's submarine collision event
