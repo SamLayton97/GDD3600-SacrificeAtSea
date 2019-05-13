@@ -16,6 +16,11 @@ public class ProximityAlarm : MonoBehaviour
     [SerializeField] float alarmDelay = 2.0f;
     float alarmTimer = 0;
 
+    // visual support variables
+    [SerializeField] GameObject[] overheadAlarms;
+    [SerializeField] Sprite activeAlarmSprite;
+    [SerializeField] Sprite inactiveAlarmSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,13 +54,15 @@ public class ProximityAlarm : MonoBehaviour
     /// or inactive</param>
     void ToggleAlarm(bool activate)
     {
-        Debug.Log("ACTIVATE: " + activate);
-
         // if alarm should activate and isn't currently active
         if (!isActive && activate)
         {
             // set alarm to active
             isActive = true;
+
+            // set sprites of overhead alarms to active variant
+            for (int i = 0; i < overheadAlarms.Length; i++)
+                overheadAlarms[i].GetComponent<SpriteRenderer>().sprite = activeAlarmSprite;
 
             // start alarm
             alarmTimer = 0;
@@ -66,6 +73,10 @@ public class ProximityAlarm : MonoBehaviour
         {
             // set alarm to inactive
             isActive = false;
+
+            // set sprites of overhead alarms to inactive variant
+            for (int i = 0; i < overheadAlarms.Length; i++)
+                overheadAlarms[i].GetComponent<SpriteRenderer>().sprite = inactiveAlarmSprite;
         }
     }
 }
