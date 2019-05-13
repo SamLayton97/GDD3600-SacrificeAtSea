@@ -25,7 +25,7 @@ public class SubmarineCollisions : MonoBehaviour
         EventManager.AddCollectTreasureInvoker(this);
     }
 
-    // Called first frame object enters collision with another
+    // Called first frame submarine enters collision with another
     void OnCollisionEnter2D(Collision2D collision)
     {
         // retrieve tag of other object in collision
@@ -43,6 +43,18 @@ public class SubmarineCollisions : MonoBehaviour
             // invoke collect treasure event
             collectTreasureEvent.Invoke();
         }
+    }
+
+    // Called first frame object enters proximity of submarine
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("ENTER PROXIMITY");
+    }
+
+    // Called when object leaves proximity of submarine
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("EXIT PROXIMITY");
     }
 
     // Adds listener to object's submarine collision event
