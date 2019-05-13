@@ -38,8 +38,6 @@ public class SubmarineCollisions : MonoBehaviour
     // Called once per frame
     void Update()
     {
-        Debug.Log(isAlarmColliderEmpty);
-
         // if collider was empty but now is not, sound alarm
         if (!isAlarmColliderEmpty && wasAlarmColliderEmpty)
             proximityAlarmEvent.Invoke(true);
