@@ -405,4 +405,34 @@ public static class EventManager
 
     #endregion
 
+    #region Activate/Deactivate Proximity Alarm
+
+    // declare lists to hold invokers and listeners to proximity alarm event
+    static List<SubmarineCollisions> proximityAlarmInvokers = new List<SubmarineCollisions>();
+    static List<UnityAction<bool>> proximityAlarmListeners = new List<UnityAction<bool>>();
+
+    // Adds given submarine collision handler as invoker of proximity alarm event
+    public static void AddProximityAlarmInvoker(SubmarineCollisions invoker)
+    {
+        // adds invoker to list and adds all listeners to this invoker
+        proximityAlarmInvokers.Add(invoker);
+        foreach (UnityAction<bool> listener in proximityAlarmListeners)
+        {
+            invoker.AddProximityAlarmListener(listener);
+        }
+    }
+
+    // Adds given method as listener to proximity alarm event
+    public static void AddProximityAlarmListener(UnityAction<bool> listener)
+    {
+        // adds listener to list and to all invokers of event
+        proximityAlarmListeners.Add(listener);
+        foreach (SubmarineCollisions invoker in proximityAlarmInvokers)
+        {
+            invoker.AddProximityAlarmListener(listener);
+        }
+    }
+
+    #endregion
+
 }

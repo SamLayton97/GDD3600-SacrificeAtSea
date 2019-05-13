@@ -12,6 +12,7 @@ public class SubmarineCollisions : MonoBehaviour
     // event support
     SubmarineCollisionEvent submarineCollisionEvent;
     CollectTreasureEvent collectTreasureEvent;
+    ProximityAlarmEvent proximityAlarmEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,11 @@ public class SubmarineCollisions : MonoBehaviour
         // add self as invoker of Collect Treasure event
         collectTreasureEvent = new CollectTreasureEvent();
         EventManager.AddCollectTreasureInvoker(this);
+
+        // add self as invoker of Proximity Alarm event
+        proximityAlarmEvent = new ProximityAlarmEvent();
+        EventManager.AddProximityAlarmInvoker(this);
+
     }
 
     // Called first frame submarine enters collision with another
@@ -48,13 +54,17 @@ public class SubmarineCollisions : MonoBehaviour
     // Called first frame object enters proximity of submarine
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // activate submarine's proximity alarm
         Debug.Log("ENTER PROXIMITY");
+        proximityAlarmEvent.Invoke(true);
     }
 
     // Called when object leaves proximity of submarine
     void OnTriggerExit2D(Collider2D collision)
     {
+        // deactivate submarine's proximity alarm
         Debug.Log("EXIT PROXIMITY");
+        proximityAlarmEvent.Invoke(false);
     }
 
     // Adds listener to object's submarine collision event
@@ -70,6 +80,15 @@ public class SubmarineCollisions : MonoBehaviour
     public void AddCollectTreasureListener(UnityAction newListener)
     {
         collectTreasureEvent.AddListener(newListener);
+    }
+
+    /// <summary>
+    /// Adds listener to object's proximity alarm event
+    /// </summary>
+    /// <param name="newListener"></param>
+    public void AddProximityAlarmListener(UnityAction<bool> newListener)
+    {
+        proximityAlarmEvent.AddListener(newListener);
     }
 
 }
