@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0534b37a1b9f6d44b3c0e654c131fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarmAudioSource: {fileID: 0}
+  alarmAudioSource: {fileID: 1902423630081458339}
   alarmDelay: 1.5
 --- !u!82 &1902423630081458339
 AudioSource:

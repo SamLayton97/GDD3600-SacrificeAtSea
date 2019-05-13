@@ -8,9 +8,13 @@ using UnityEngine;
 /// </summary>
 public class ProximityAlarm : MonoBehaviour
 {
+    // alarm activity variables
+    bool isCurrentlyActive = true;
+
     // audio support variables
     [SerializeField] AudioSource alarmAudioSource;
     [SerializeField] float alarmDelay = 1.5f;
+    float alarmTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +26,20 @@ public class ProximityAlarm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // if alarm is currently active
+        if (isCurrentlyActive)
+        {
+            // if alarm timer bottoms out
+            if (alarmTimer <= 0)
+            {
+                // sound alarm and reset timer
+                alarmAudioSource.Play();
+                alarmTimer = alarmDelay;
+            }
+
+            // decrement time to next alarm
+            alarmTimer -= Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -32,6 +49,6 @@ public class ProximityAlarm : MonoBehaviour
     /// or inactive</param>
     void ToggleAlarm(bool isActive)
     {
-
+        
     }
 }
