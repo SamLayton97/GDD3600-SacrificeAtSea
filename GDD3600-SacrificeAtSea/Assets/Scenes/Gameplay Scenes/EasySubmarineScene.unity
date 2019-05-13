@@ -1625,7 +1625,7 @@ PrefabInstance:
     - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
       propertyPath: mineMinSpawnDelay
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
@@ -1635,7 +1635,7 @@ PrefabInstance:
     - target: {fileID: 5916979821930315821, guid: dd6b9f068ff646846aee5a350a2ff67c,
         type: 3}
       propertyPath: mineMaxSpawnDelay
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 617346206, guid: dd6b9f068ff646846aee5a350a2ff67c, type: 3}
       propertyPath: m_IsActive
